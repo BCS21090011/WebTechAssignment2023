@@ -1,0 +1,30 @@
+﻿@page
+@model Web_tech.Pages.RegisterModel
+@{
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Register</title>
+        <style type="text/css">
+            #lblMessage { margin-left:5px; color:Red; }
+            .yzyh { color:Gray; }
+        </style>
+    </head>
+    <body>
+        <form method="post">
+            <div>
+                <label>Username：</label>
+                <input type="text" id="username" name="username" value="@Model.Username" /><br />
+                <label>Password：</label>
+                <input type="password" id="password" name="password" value="@Model.Password" /><br />
+                <label>Confirm Password：</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" value="@Model.ConfirmPassword" /><br />
+                <label>Email：</label>
+                <input type="text" id="email" name="email" value="@Model.Email" /><br />
+                <button type="submit">Submit</button>
+            </div>
+            <label id="lblMessage">@Model.Message</label>
+        </form>
+    </body>
+    </html>
+}

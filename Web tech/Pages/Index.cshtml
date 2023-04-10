@@ -1,0 +1,27 @@
+﻿@page
+@model Web_tech.Pages.study_loginModel
+@{
+    <!DOCTYPE html>
+<html>
+<head>
+    <title>Loginpage</title>
+
+    <style type="text/css">
+        #lblMessage{ margin-left:5px; color:Red;}
+        .yzyh{color:Gray;}
+    </style>
+</head>
+<body>
+    <form method="post">
+        <div>
+            <label>Username：</label>
+            <input type="text" id="username" name="username" /><br />
+            <label>Password：</label>
+            <input type="password" id="password" name="password" /><br />
+            <button type="submit">Submit</button>
+        </div> 
+        <label id="lblMessage">@Model.Message</label>
+    </form>
+</body>
+</html>
+}
