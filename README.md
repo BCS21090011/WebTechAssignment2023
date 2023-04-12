@@ -49,18 +49,100 @@ Need to install SSMS first, [guide for installation](https://blog.csdn.net/weixi
 Codes to create database:
 
 ```MSSQL
-select
-    'data source=' + @@servername +
-    ';initial catalog=' + db_name() +
-    case type_desc
-        when 'WINDOWS_LOGIN' 
-            then ';trusted_connection=true'
-        else
-            ';user id=' + suser_name() + ';password=<<YourPassword>>'
-    end
-    as ConnectionString
-from sys.server_principals
-where name = suser_name()
+CREATE DATABASE WebTechAssignmentDB;
+Go
+USE WebTechAssignmentDB;
+GO
+
+IF OBJECT_ID('dbo.Users', 'U') IS NOT NULL
+    DROP TABLE dbo.Users;
+CREATE TABLE dbo.Users(
+    U_ID INT IDENTITY(1,1) NOT NULL,
+    UserName VARCHAR(255) NOT NULL,
+    UserPassword VARCHAR(255) NOT NULL,
+    UserEmail VARCHAR(255) DEFAULT NULL,
+    CONSTRAINT PK_Users PRIMARY KEY CLUSTERED (U_ID)
+);
+
+IF OBJECT_ID('dbo.Subjects', 'U') IS NOT NULL
+    DROP TABLE dbo.Subjects;
+CREATE TABLE dbo.Subjects(
+    S_ID INT IDENTITY(1,1) NOT NULL,
+    SubjectName VARCHAR(255) NOT NULL,
+    CONSTRAINT PK_Subjects PRIMARY KEY CLUSTERED (S_ID)
+);
+
+IF OBJECT_ID('dbo.Images', 'U') IS NOT NULL
+    DROP TABLE dbo.Images;
+CREATE TABLE dbo.Images(
+    I_ID INT IDENTITY(1,1) NOT NULL,
+    IImage VARBINARY(MAX) NOT NULL,
+    CONSTRAINT PK_Images PRIMARY KEY CLUSTERED (I_ID)
+);
+
+IF OBJECT_ID('dbo.Answers', 'U') IS NOT NULL
+    DROP TABLE dbo.Answers;
+CREATE TABLE dbo.Answers(
+    A_ID INT IDENTITY(1,1) NOT NULL,
+    Answer VARCHAR(255) NOT NULL,
+    CONSTRAINT PK_Answers PRIMARY KEY CLUSTERED (A_ID)
+);
+
+IF OBJECT_ID('dbo.Questions', 'U') IS NOT NULL
+    DROP TABLE dbo.Questions;
+CREATE TABLE dbo.Questions(
+    Q_ID INT IDENTITY(1,1) NOT NULL,
+    Question VARCHAR(255) NOT NULL,
+    QuestionMark INT NOT NULL,
+    S_ID INT NOT NULL,
+    CONSTRAINT PK_Questions PRIMARY KEY CLUSTERED (Q_ID),
+    CONSTRAINT FK_Questions_Subjects FOREIGN KEY (S_ID) REFERENCES dbo.Subjects(S_ID)
+);
+
+IF OBJECT_ID('dbo.QuestionImage', 'U') IS NOT NULL
+    DROP TABLE dbo.QuestionImage;
+CREATE TABLE dbo.QuestionImage(
+    QI_ID INT IDENTITY(1,1) NOT NULL,
+    Q_ID INT NOT NULL,
+    I_ID INT NOT NULL,
+    CONSTRAINT PK_QuestionImage PRIMARY KEY CLUSTERED (QI_ID),
+    CONSTRAINT FK_QuestionImage_Questions FOREIGN KEY (Q_ID) REFERENCES dbo.Questions(Q_ID),
+    CONSTRAINT FK_QuestionImage_Images FOREIGN KEY (I_ID) REFERENCES dbo.Images(I_ID)
+);
+
+IF OBJECT_ID('dbo.QuestionAnswer', 'U') IS NOT NULL
+    DROP TABLE dbo.QuestionAnswer;
+CREATE TABLE dbo.QuestionAnswer(
+    QA_ID INT IDENTITY(1,1) NOT NULL,
+    Q_ID INT NOT NULL,
+    A_ID INT NOT NULL,
+    CONSTRAINT PK_QuestionAnswer PRIMARY KEY CLUSTERED (QA_ID),
+    CONSTRAINT FK_QuestionAnswer_Questions FOREIGN KEY (Q_ID) REFERENCES dbo.Questions(Q_ID),
+    CONSTRAINT FK_QuestionAnswer_Answers FOREIGN KEY (A_ID) REFERENCES dbo.Answers(A_ID)
+);
+
+IF OBJECT_ID('dbo.History', 'U') IS NOT NULL
+    DROP TABLE dbo.History;
+CREATE TABLE dbo.History(
+    H_ID INT IDENTITY(1,1) NOT NULL,
+    GeneratedTime DATETIME NOT NULL,
+    U_ID INT NOT NULL,
+    CONSTRAINT PK_History PRIMARY KEY CLUSTERED (H_ID),
+    CONSTRAINT FK_History_Users FOREIGN KEY (U_ID) REFERENCES dbo.Users(U_ID)
+);
+
+IF OBJECT_ID('HistoryQuestion', 'U') IS NOT NULL
+    DROP TABLE HistoryQuestion;
+
+CREATE TABLE HistoryQuestion (
+    HQ_ID INT NOT NULL IDENTITY(1,1),
+    H_ID INT NOT NULL,
+    Q_ID INT NOT NULL,
+    PRIMARY KEY (HQ_ID),
+    FOREIGN KEY (H_ID) REFERENCES History(H_ID),
+    FOREIGN KEY (Q_ID) REFERENCES Questions(Q_ID)
+);
+
 ```
 
 If want to use local database, need to replace the `connectionString` in the [**pages that use database**](#Pages-use-database).
