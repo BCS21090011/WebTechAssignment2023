@@ -192,5 +192,6 @@ where name = suser_name()
 * [ChatGPT](https://chat.openai.com/chat)
 * https://blog.csdn.net/weixin_43074474/article/details/105106894
 * https://stackoverflow.com/questions/10479763/how-to-get-the-connection-string-from-a-database [^1]
+* https://www.codinglabweb.com/2022/12/free-sidebar-menu-templates.html
 
 [^1]: https://stackoverflow.com/questions/10479763/how-to-get-the-connection-string-from-a-database
