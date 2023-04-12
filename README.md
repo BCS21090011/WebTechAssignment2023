@@ -13,18 +13,18 @@ This is for Web Technology assignment.
 
 ---
 
-> ## **TODO**
-> - [ ] Create all webpages.
-> - [ ] Make the pages more presentable.
-> - [ ] Add the function to create the pdf file (both question and answer).
-> - [ ] Link to the database (online).
-> - [ ] Push the project online.
+## **TODO**
+- [ ] Create all webpages.
+- [ ] Make the pages more presentable.
+- [ ] Add the function to create the pdf file (both question and answer).
+- [ ] Link to the database (online).
+- [ ] Push the project online.
 >
-> ### **Pages needed**
-> - [ ] Login page
-> - [ ] Register page
-> - [ ] Main page
-> - [ ] User profile page
-> - [ ] Insert question page
-> - [ ] Choose topic page
-> - [ ] Create question paper page
+## **Pages needed**
+- [ ] Login page
+- [ ] Register page
+- [ ] Main page
+- [ ] User profile page
+- [ ] Insert question page
+- [ ] Choose topic page
+- [ ] Create question paper page
