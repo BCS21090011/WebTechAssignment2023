@@ -37,6 +37,7 @@ This is for Web Technology assignment.
   
 ## **Local database**
 Need to install SSMS first, [guide for installation](https://blog.csdn.net/weixin_43074474/article/details/105106894).
+
 Codes to create database:
 ```MSSQL
 select
