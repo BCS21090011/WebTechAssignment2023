@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Web_tech.Pages
 {
-    public class CreateQuestionsModel : PageModel
+    public class CreateQuestionPaperModel : PageModel
     {
         public void OnGet()
         {
