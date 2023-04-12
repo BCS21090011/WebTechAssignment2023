@@ -1,7 +1,5 @@
 # **WebTechAssignment2023**
 
---- 
-
 ## **Description**
 
 This is for Web Technology assignment.
@@ -180,12 +178,14 @@ where name = suser_name()
 
 ## **Pages use database**
 
-* Index.cshtml.cs
+* [Index.cshtml.cs](https://github.com/BCS21090011/WebTechAssignment2023/blob/master/Web%20tech/Pages/Index.cshtml.cs)
 > To login.
-* Index1.cshtml.cs
+* [Index1.cshtml.cs](https://github.com/BCS21090011/WebTechAssignment2023/blob/master/Web%20tech/Pages/Index1.cshtml.cs)
 > To register.
-* CreateQuestionPaper.cshtml.cs (will be)
+* [CreateQuestionPaper.cshtml.cs (will be)](https://github.com/BCS21090011/WebTechAssignment2023/blob/master/Web%20tech/Pages/CreateQuestionPaper.cshtml.cs)
 > To get the questions.
+
+---
 
 ## **References**
 
@@ -193,5 +193,7 @@ where name = suser_name()
 * https://blog.csdn.net/weixin_43074474/article/details/105106894
 * https://stackoverflow.com/questions/10479763/how-to-get-the-connection-string-from-a-database [^1]
 * https://www.codinglabweb.com/2022/12/free-sidebar-menu-templates.html
+
+---
 
 [^1]: https://stackoverflow.com/questions/10479763/how-to-get-the-connection-string-from-a-database
