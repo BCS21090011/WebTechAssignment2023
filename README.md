@@ -84,11 +84,11 @@ where name = suser_name()
 
 ## **Pages use database**
 
-- Index.cshtml.cs
+* Index.cshtml.cs
 > To login.
-- Index1.cshtml.cs
+* Index1.cshtml.cs
 > To register.
-- CreateQuestionPaper.cshtml.cs (will be)
+* CreateQuestionPaper.cshtml.cs (will be)
 > To get the questions.
 
 ## **References**
