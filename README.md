@@ -16,20 +16,24 @@ This is for Web Technology assignment.
 ## **TODO**
 - [ ] Create all webpages.
 - [ ] Make the pages more presentable.
-- [ ] Add the function to create the pdf file (both question and answer).
+- [ ] Add the function to generate the pdf files (both question and answer).
 - [ ] Link to the database (online).
-> - Currently link offline, need to have SSMS (this should help [^1]), create a database locally and link it first.
+> Currently link offline, need to have SSMS ([click for help](https://blog.csdn.net/weixin_43074474/article/details/105106894)), create a database locally and link it first, can get help at [**Local database**](#Local-database) section.
 - [ ] Push the project online.
 - [ ] Submit the project.
 
 ## **Pages needed**
 - [ ] Login page
+> Need to make it more presentable.
 - [ ] Register page
+> Need to make it more presentable.
 - [ ] Main page
 - [ ] User profile page
 - [ ] Insert question page
 - [ ] Choose topic page
 - [ ] Create question paper page
+> - Need to make it more presentable.
+> - Need to add in the function to generate pdf files.
   
 ## **Local database**
 Codes to create database:
@@ -47,8 +51,8 @@ select
 from sys.server_principals
 where name = suser_name()
 ```
-If want to use local database, need to replace the `connectionString` in the pages using database [^2].
-Can get `connectionString` from SSMS using these: [^3]
+If want to use local database, need to replace the `connectionString` in the pages using database [^1].
+Can get `connectionString` from SSMS using these: [^2]
 ```MSSQL
 select
     'data source=' + @@servername +
@@ -66,9 +70,8 @@ where name = suser_name()
 
 ## **References**
 - [ChatGPT](https://chat.openai.com/chat)
-- https://blog.csdn.net/weixin_43074474/article/details/105106894 [^1]
-- https://stackoverflow.com/questions/10479763/how-to-get-the-connection-string-from-a-database [^3]
+- https://blog.csdn.net/weixin_43074474/article/details/105106894
+- https://stackoverflow.com/questions/10479763/how-to-get-the-connection-string-from-a-database [^2]
 
-[^1]: https://blog.csdn.net/weixin_43074474/article/details/105106894
-[^2]: Index.cshtml.cs, Index1.cshtml.cs, CreateQuestionPaper.cshtml.cs (will be)
-[^3]: https://stackoverflow.com/questions/10479763/how-to-get-the-connection-string-from-a-database
+[^1]: Index.cshtml.cs, Index1.cshtml.cs, CreateQuestionPaper.cshtml.cs (will be)
+[^2]: https://stackoverflow.com/questions/10479763/how-to-get-the-connection-string-from-a-database
