@@ -63,7 +63,7 @@ from sys.server_principals
 where name = suser_name()
 ```
 
-If want to use local database, need to replace the `connectionString` in the [pages that use database]([^1]).
+If want to use local database, need to replace the `connectionString` in the pages that use database. [^1]
 
 Can get `connectionString` from SSMS using these: [^2]
 
