@@ -18,6 +18,7 @@ This is for Web Technology assignment.
 ## **TODO**
 
 * [ ] Create all webpages.
+* [ ] Webpages need to be "beautiful" enough.
 * [ ] Create admin panel.
 * [ ] Modify the sidebar.
 * [ ] Make the pages more presentable.
