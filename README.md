@@ -18,6 +18,8 @@ This is for Web Technology assignment.
 ## **TODO**
 
 - [ ] Create all webpages.
+- [ ] Create admin panel.
+- [ ] Modify the sidebar.
 - [ ] Make the pages more presentable.
 - [ ] Add the function to generate the pdf files (both question and answer).
 - [ ] Link to the database (online).
