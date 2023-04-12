@@ -87,5 +87,5 @@ where name = suser_name()
 * https://blog.csdn.net/weixin_43074474/article/details/105106894
 * https://stackoverflow.com/questions/10479763/how-to-get-the-connection-string-from-a-database [^2]
 
-[^1]: Index.cshtml.cs, Index1.cshtml.cs, CreateQuestionPaper.cshtml.cs (will be)
+[^1]: Pages use database: Index.cshtml.cs, Index1.cshtml.cs, CreateQuestionPaper.cshtml.cs (will be)
 [^2]: https://stackoverflow.com/questions/10479763/how-to-get-the-connection-string-from-a-database
