@@ -18,7 +18,7 @@ This is for Web Technology assignment.
 - [ ] Make the pages more presentable.
 - [ ] Add the function to generate the pdf files (both question and answer).
 - [ ] Link to the database (online).
-> Currently link offline, need to have SSMS ([click for help](https://blog.csdn.net/weixin_43074474/article/details/105106894)), create a database locally and link it first, can get help at [**Local database**](#Local-database) section.
+> Currently link offline, need to create database locally. More information at [**Local database**](#Local-database) section.
 - [ ] Push the project online.
 - [ ] Submit the project.
 
@@ -36,6 +36,7 @@ This is for Web Technology assignment.
 > - Need to add in the function to generate pdf files.
   
 ## **Local database**
+Need to install SSMS first, [guide for installation](https://blog.csdn.net/weixin_43074474/article/details/105106894).
 Codes to create database:
 ```MSSQL
 select
