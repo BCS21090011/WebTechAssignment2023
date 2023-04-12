@@ -22,7 +22,7 @@ This is for Web Technology assignment.
 * [ ] Make the pages more presentable.
 * [ ] Add the function to generate the pdf files (both question and answer).
 * [ ] Link to the database (online).
-> Currently link offline, need to create database locally. More information at [**Local database**](#Local-database) section.
+> Currently link offline, need to create database locally. More information in [**Local database**](#Local-database) section.
 * [ ] Push the project online.
 * [ ] Submit the project.
 
@@ -183,7 +183,7 @@ where name = suser_name()
 * [Index1.cshtml.cs](https://github.com/BCS21090011/WebTechAssignment2023/blob/master/Web%20tech/Pages/Index1.cshtml.cs)
 > To register.
 * [CreateQuestionPaper.cshtml.cs (will be)](https://github.com/BCS21090011/WebTechAssignment2023/blob/master/Web%20tech/Pages/CreateQuestionPaper.cshtml.cs)
-> To get the questions.
+> To get the questions and the answers.
 
 ---
 
