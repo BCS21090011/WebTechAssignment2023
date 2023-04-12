@@ -43,7 +43,7 @@ namespace Web_tech.Pages
             // Form submission
             if (IsValid())
             {
-                string connectionString = "Data Source=DESKTOP-M3I2KTO;Initial Catalog=Mydb;Integrated Security=True;";
+                string connectionString = "data source=GJohnsonPC\\MYMSSQLSERVER;initial catalog=WebTechAssignmentDB;trusted_connection=true;";
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();

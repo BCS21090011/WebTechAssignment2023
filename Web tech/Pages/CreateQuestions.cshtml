@@ -1,0 +1,28 @@
+﻿@page
+@model Web_tech.Pages.CreateQuestionsModel
+@{
+
+    <!DOCTYPE html>
+    <html>
+        <head>
+            <title>CreateQuestions</title>
+            <link rel="stylesheet" href="~/css/CreateQuestions.css" asp-append-version="true" />
+        </head>
+        <body>
+            <div class="column-container">
+                <div class="column" style="flex: 1">
+                    <div class="inner-column-container">
+                        <div class="inner-column" id="QuestionSelection"></div>
+                        <div class="inner-column" id="SelectedQuestions"></div>
+                    </div>
+                </div>
+                <div class="column" id="Outer-preview">
+                    <div class="a4Format" id="Preview">Something</div>
+                </div>
+            </div>
+
+            <script src="~/js/CreateQuestions.js" asp-append-version="true"></script>
+        </body>
+    </html>
+
+}

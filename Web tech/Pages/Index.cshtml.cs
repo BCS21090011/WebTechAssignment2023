@@ -27,7 +27,7 @@ namespace Web_tech.Pages
         {
             // This method is executed when the login button is clicked
 
-            string connectionString = "Data Source=DESKTOP-M3I2KTO;Initial Catalog=Mydb;Integrated Security=True;";
+            string connectionString = "data source=GJohnsonPC\\MYMSSQLSERVER;initial catalog=WebTechAssignmentDB;trusted_connection=true;";
             string queryString = "SELECT * FROM Users WHERE UserName=@UserName AND UserPassword=@UserPassword";
 
             SqlConnection connection = new SqlConnection(connectionString);
