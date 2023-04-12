@@ -63,9 +63,9 @@ from sys.server_principals
 where name = suser_name()
 ```
 
-If want to use local database, need to replace the `connectionString` in the pages that use database. [^1]
+If want to use local database, need to replace the `connectionString` in the [**pages that use database**](#Pages-use-database).
 
-Can get `connectionString` from SSMS using these: [^2]
+Can get `connectionString` from SSMS using these: [^1]
 
 ```MSSQL
 select
@@ -82,10 +82,19 @@ from sys.server_principals
 where name = suser_name()
 ```
 
+## **Pages use database**
+
+- Index.cshtml.cs
+> To login.
+- Index1.cshtml.cs
+> To register.
+- CreateQuestionPaper.cshtml.cs (will be)
+> To get the questions.
+
 ## **References**
+
 * [ChatGPT](https://chat.openai.com/chat)
 * https://blog.csdn.net/weixin_43074474/article/details/105106894
-* https://stackoverflow.com/questions/10479763/how-to-get-the-connection-string-from-a-database [^2]
+* https://stackoverflow.com/questions/10479763/how-to-get-the-connection-string-from-a-database [^1]
 
-[^1]: Pages use database: Index.cshtml.cs, Index1.cshtml.cs, CreateQuestionPaper.cshtml.cs (will be)
-[^2]: https://stackoverflow.com/questions/10479763/how-to-get-the-connection-string-from-a-database
+[^1]: https://stackoverflow.com/questions/10479763/how-to-get-the-connection-string-from-a-database
