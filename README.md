@@ -145,6 +145,20 @@ CREATE TABLE HistoryQuestion (
 
 ```
 
+Example codes to insert dummy users (**RUN ONLY ONCE AFTER THE DATABASE IS CREATED TO AVOID ERRORS**):
+
+```MSSQL
+USE WebTechAssignmentDB;
+GO
+
+INSERT INTO Users (UserName, UserPassword, UserEmail)
+VALUES 
+    ('JohnDoe', 'pass123', 'johndoe@example.com'),
+    ('JaneDoe', 'pass456', 'janedoe@example.com'),
+    ('BobSmith', 'pass789', 'bobsmith@example.com');
+
+```
+
 If want to use local database, need to replace the `connectionString` in the [**pages that use database**](#Pages-use-database).
 
 Can get `connectionString` from SSMS using these: [^1]
