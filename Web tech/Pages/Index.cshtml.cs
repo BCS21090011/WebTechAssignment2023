@@ -38,15 +38,22 @@ namespace Web_tech.Pages
                 command.Parameters.AddWithValue("@UserPassword", Password);
 
                 connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
+                try
+                {
+                    SqlDataReader reader = command.ExecuteReader();
 
-                if (reader.HasRows)
-                {
-                    Message = "Login successful";
+                    if (reader.HasRows)
+                    {
+                        Message = "Login successful";
+                    }
+                    else
+                    {
+                        Message = "Invalid username or password";
+                    }
                 }
-                else
+                catch(Exception errorMessage)
                 {
-                    Message = "Invalid username or password";
+                    Console.WriteLine("Error!\nError message:{\n" + errorMessage.Message + "\n}");
                 }
             }
         }
