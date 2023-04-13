@@ -33,14 +33,17 @@ This is for Web Technology assignment.
 * [ ] Register page
 > Need to make it more presentable.
 * [ ] Dashboard page
+> Need to make it more presentable.
 * [ ] Main page
+> Need to make it more presentable.
 * [ ] User profile page
 * [ ] Insert question page
 * [ ] Choose topic page
 * [ ] Create question paper page
-* [ ] History page
 > * Need to make it more presentable.
 > * Need to add in the function to generate pdf files.
+> * Both question selection and selected questions section won't display image. This page need to display question image if the question have any.
+* [ ] History page
   
 ## **Local database**
 
