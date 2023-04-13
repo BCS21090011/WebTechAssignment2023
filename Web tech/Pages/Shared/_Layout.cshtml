@@ -6,7 +6,7 @@
         <title>@ViewData["Title"] - Web_tech</title>
         <!--<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />-->
         <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-        <!--<link rel="stylesheet" href="~/Web_tech.styles.css" asp-append-version="true" />-->
+        <!--<link rel="stylesheet" href="~/Web_tech.styles.css" asp-append-version="true" />
 
         <!--Sidebar-->
         <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
@@ -14,6 +14,7 @@
     </head>
     <body>
         <div class="sidebar">
+
             <div class="logo-details">
                 <i class='bx bxl-c-plus-plus icon'></i>
                 <div class="logo_name">CodingLab</div>
@@ -33,11 +34,11 @@
                     <span class="tooltip">Homepage</span>
                 </li>
                 <li>
-                    <a href="#">
+                <a class="links_name" asp-area="" asp-page="/Index3">
                         <i class='bx bx-grid-alt'></i>
-                        <span class="links_name">Dashboard</span>
+                        <span class="links_name" >Dashboard</span>
                     </a>
-                    <span class="tooltip">Dashboard</span>
+                <span class="tooltip" >Dashboard</span>
                 </li>            
                 <li>
                     <a href="#">
@@ -57,8 +58,8 @@
                     <div class="profile-details">
                         <!--<img src="profile.jpg" alt="profileImg">-->
                         <div class="name_job">
-                            <div class="name">Prem Shahi</div>
-                            <div class="job">Web designer</div>
+                            <div class="name">YYS</div>
+                            <div class="job">WebTech Assignment</div>
                         </div>
                     </div>
                     <i class='bx bx-log-out' id="log_out" ></i>
