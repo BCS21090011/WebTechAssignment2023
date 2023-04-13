@@ -32,11 +32,13 @@ This is for Web Technology assignment.
 > Need to make it more presentable.
 * [ ] Register page
 > Need to make it more presentable.
+* [ ] Dashboard page
 * [ ] Main page
 * [ ] User profile page
 * [ ] Insert question page
 * [ ] Choose topic page
 * [ ] Create question paper page
+* [ ] History page
 > * Need to make it more presentable.
 > * Need to add in the function to generate pdf files.
   
