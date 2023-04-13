@@ -1,0 +1,148 @@
+﻿@page
+@model Web_tech.Pages.Index4Model
+@{
+}
+<html>
+<head>
+	<title>Create Exam Paper</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<style>
+	body {
+		background-color: #f8f9fa;
+		font-family: Arial, sans-serif;
+	}
+
+	.navbar {
+		background-color: #ffffff;
+		box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.1);
+		padding: 20px 30px;
+	}
+
+	.navbar-brand {
+		font-size: 32px;
+		color: #007bff;
+		font-weight: bold;
+		transition: all 0.3s ease-in-out;
+	}
+
+		.navbar-brand:hover {
+			color: #0056b3;
+			cursor: pointer;
+		}
+
+	.navbar-nav {
+		margin-right: 20px;
+	}
+
+	.nav-link {
+		color: #343a40;
+		font-size: 18px;
+		font-weight: bold;
+		transition: all 0.3s ease-in-out;
+	}
+
+		.nav-link:hover {
+			color: #007bff;
+			cursor: pointer;
+		}
+
+	.jumbotron {
+		background-color: #ffffff;
+		box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.1);
+		margin-top: 50px;
+		padding: 50px;
+		border-radius: 5px;
+	}
+
+		.jumbotron h1 {
+			font-size: 48px;
+			font-weight: bold;
+			color: #343a40;
+			margin-bottom: 30px;
+		}
+
+		.jumbotron p {
+			font-size: 24px;
+			color: #6c757d;
+			margin-bottom: 40px;
+		}
+
+	.btn-primary {
+		background-color: #007bff;
+		border-color: #007bff;
+		padding: 10px 20px;
+		font-size: 16px;
+		font-weight: bold;
+		border-radius: 25px;
+		transition: all 0.3s ease-in-out;
+	}
+
+		.btn-primary:hover {
+			background-color: #ffffff;
+			color: #007bff;
+			border-color: #007bff;
+			cursor: pointer;
+		}
+
+	.feature {
+		margin-top: 50px;
+		margin-bottom: 50px;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.feature-icon {
+		font-size: 48px;
+		color: #007bff;
+		margin-right: 20px;
+	}
+
+	.feature-text {
+		font-size: 24px;
+		font-weight: bold;
+		color: #343a40;
+		margin-left: 20px;
+	}
+</style>
+<body>
+	<header>
+		<nav class="navbar navbar-expand-lg">
+			<a class="navbar-brand" href="#">Create Exam Paper</a>
+			
+		</nav>
+	</header>
+	<section class="jumbotron">
+		<div class="container">
+			<h1>Create Exam Paper with Ease</h1>
+			<p>Our platform lets you select questions from a question bank and generate a customized exam paper in PDF format. Say goodbye to manual exam paper creation and streamline your workflow with our solution.</p>
+			<a href="/Index3" class="btn btn-primary">Get Started</a>
+		</div>
+	</section>
+	<section class="features">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4 feature">
+					<i class="fa fa-check-circle feature-icon"></i>
+					<span class="feature-text">Easy to Use</span>
+				</div>
+				<div class="col-md-4 feature">
+					<i class="fa fa-pencil feature-icon"></i>
+					<span class="feature-text">Customizable Questions</span>
+				</div>
+				<div class="col-md-4 feature">
+					<i class="fa fa-file-pdf-o feature-icon"></i>
+					<span class="feature-text">PDF Output</span>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

@@ -2,109 +2,114 @@
 @model Web_tech.Pages.Index3Model
 @{
 }
-<!DOCTYPE html>
 <html>
 <head>
-    <title>Widget Page</title>
-    <style>
-        /* CSS styles for the widgets */
-        body {
-            background-color: #2c3e50;
-            color: #fff;
-            font-family: 'Roboto', sans-serif;
-        }
-
-        .widget-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-
-        .widget {
-            position: relative;
-            width: 300px;
-            height: 200px;
-            background-color: #34495e;
-            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
-            padding: 20px;
-            margin: 20px;
-            cursor: pointer;
-        }
-
-            .widget:hover {
-                transform: translateY(-5px);
-                box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4);
-            }
-
-            .widget:before {
-                content: "";
-                position: absolute;
-                width: 100%;
-                height: 10px;
-                top: -10px;
-                left: 0;
-                background-color: #2c3e50;
-                border-radius: 10px 10px 0 0;
-            }
-
-            .widget:after {
-                content: "";
-                position: absolute;
-                width: 10px;
-                height: 100%;
-                top: 0;
-                right: -10px;
-                background-color: #2c3e50;
-                border-radius: 0 10px 10px 0;
-            }
-
-        .widget-icon {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 50px;
-        }
-
-        .widget-label {
-            position: absolute;
-            bottom: 20px;
-            left: 0;
-            right: 0;
-            text-align: center;
-            font-size: 24px;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        #widget1 .widget-icon {
-            color: #e74c3c;
-        }
-
-        #widget2 .widget-icon {
-            color: #2ecc71;
-        }
-    </style>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Select Widget - Create Exam Paper</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #fff;
+			color: #333;
+		}
+		h1, h2, h3, h4, h5, h6 {
+			font-family: 'Poppins', sans-serif;
+		}
+		.container {
+			margin-top: 50px;
+		}
+		.widget {
+			background-color: #fff;
+			border-radius: 5px;
+			box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+			padding: 40px 30px;
+			text-align: center;
+			transition: all 0.3s ease-in-out;
+			cursor: pointer;
+			margin-bottom: 30px;
+		}
+		.widget:hover {
+			box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+			transform: translateY(-5px);
+		}
+		.widget-icon {
+			font-size: 50px;
+			color: #333;
+			margin-bottom: 20px;
+		}
+		.widget-title {
+			font-size: 24px;
+			font-weight: bold;
+			color: #333;
+			margin-bottom: 20px;
+		}
+		.widget-description {
+			font-size: 18px;
+			color: #666;
+			margin-bottom: 30px;
+		}
+		.widget-link {
+			font-size: 18px;
+			font-weight: bold;
+			background-color: #17a2b8;
+			border: none;
+			border-radius: 5px;
+			padding: 10px 20px;
+			color: #fff;
+			text-transform: uppercase;
+			transition: all 0.3s ease-in-out;
+		}
+		.widget-link:hover {
+			background-color: #128ca7;
+			transform: translateY(-2px);
+			box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+		}
+		.bg-dark {
+			background-color: #333;
+			color: #fff;
+		}
+		.text-white {
+			color: #fff;
+		}
+		.mt-3 {
+			margin-top: 1rem !important;
+		}
+		.text-right {
+			text-align: right;
+		}
+		
+	</style>
 </head>
 <body>
-    <div class="widget-container">
-        <a class="links_name" asp-area="" asp-page="/Index2">
-        <div class="widget" id="widget1">
-            <i class="widget-icon fas fa-search"></i>
-            <div class="widget-label">Questionbank</div>
-        </div>
-        </a>
-        <a class="links_name" asp-area="" asp-page="/CreateQuestionPaper">
-        <div class="widget" id="widget2">
-            <i class="widget-icon fas fa-envelope"></i>
-            <div class="widget-label">CreateQuestion</div>
-        </div>
-        </a>
-    </div>
+	<section class="container">
+		<h1 class="text-center mb-5">Select Widget</h1>
+        <div class="row">
+			<div class="col-md-6">
+				<div class="widget" onclick="window.location.href='/questions-bank.html'">
+					<i class="fa fa-question-circle-o widget-icon"></i>
+					<h2 class="widget-title">Questions Bank</h2>
+					<p class="widget-description">Select questions from a bank of pre-made questions.</p>
+					<a href="/Index2">
+					<button class="widget-link" href="/Index2" >Get Started</button>
+					</a>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="widget" onclick="window.location.href='/generate-question.html'">
+					<i class="fa fa-pencil-square-o widget-icon"></i>
+					<h2 class="widget-title">Generate Questions</h2>
+					<p class="widget-description">Create custom questions and add them to your exam paper.</p>
+					<a href="/CreateQuestionPaper">
+					<button class="widget-link" >Get Started</button>
+					</a>
+				</div>
+			</div>
+		</div>
+	</section>
 
-    
+	
 </body>
 </html>
