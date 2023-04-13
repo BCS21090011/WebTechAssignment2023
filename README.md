@@ -28,13 +28,13 @@ This is for Web Technology assignment.
 
 ## **Pages needed**
 
-* [ ] Login page
+* [x] Login page
 > Need to make it more presentable.
-* [ ] Register page
+* [x] Register page
 > Need to make it more presentable.
-* [ ] Dashboard page
+* [x] Dashboard page
 > Need to make it more presentable.
-* [ ] Main page
+* [x] Main page
 > Need to make it more presentable.
 * [ ] User profile page
 * [ ] Insert question page
