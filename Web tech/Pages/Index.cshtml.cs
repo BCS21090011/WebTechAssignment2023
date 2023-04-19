@@ -27,7 +27,7 @@ namespace Web_tech.Pages
         {
             // This method is executed when the login button is clicked
 
-            string connectionString = "data source=GJohnsonPC\\MYMSSQLSERVER;initial catalog=WebTechAssignmentDB;trusted_connection=true;";
+            string connectionString = "data source=DESKTOP-M3I2KTO;initial catalog=Mydb;trusted_connection=true;";
             string queryString = "SELECT * FROM Users WHERE UserName=@UserName AND UserPassword=@UserPassword";
 
             SqlConnection connection = new SqlConnection(connectionString);
@@ -51,7 +51,7 @@ namespace Web_tech.Pages
                         Message = "Invalid username or password";
                     }
                 }
-                catch(Exception errorMessage)
+                catch (Exception errorMessage)
                 {
                     Console.WriteLine("Error!\nError message:{\n" + errorMessage.Message + "\n}");
                 }
