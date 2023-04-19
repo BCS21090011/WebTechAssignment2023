@@ -1,82 +1,86 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>@ViewData["Title"] - Web_tech</title>
-        <!--<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />-->
-        <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-        <!--<link rel="stylesheet" href="~/Web_tech.styles.css" asp-append-version="true" />
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Web_tech</title>
+    <!--<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />-->
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <!--<link rel="stylesheet" href="~/Web_tech.styles.css" asp-append-version="true" />
 
-        <!--Sidebar-->
-        <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-        <link rel="stylesheet" href="~/css/SideBar.css" asp-append-version="true" />
-    </head>
-    <body>
-        <div class="sidebar">
+    <!--Sidebar-->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="~/css/SideBar.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="sidebar">
 
-            <div class="logo-details">
-                <i class='bx bxl-c-plus-plus icon'></i>
+        <div class="logo-details">
+            <a href="/index">
+               
                 <div class="logo_name">CodingLab</div>
-                <i class='bx bx-menu' id="btn" ></i>
-            </div>
-            <ul class="nav-list">
-                <!--<li>
-                    <i class='bx bx-search' ></i>
-                    <input type="text" placeholder="Search...">
-                    <span class="tooltip">Search</span>
-                </li>-->
-                <li>
-                <a href="/Index4" >
+            </a>
+            <i class='bx bx-menu' id="btn"></i>
+        </div>
+
+        <ul class="nav-list">
+            <!--<li>
+                <i class='bx bx-search' ></i>
+                <input type="text" placeholder="Search...">
+                <span class="tooltip">Search</span>
+            </li>-->
+            <li>
+                <a href="/Index4">
                     <i class='bx bx-home' style='color:#f3f0f0'></i>
-                        <span class="links_name">Homepage</span>
-                    </a>
-                    <span class="tooltip">Homepage</span>
-                </li>
-                <li>
+                    <span class="links_name">Homepage</span>
+                </a>
+                <span class="tooltip">Homepage</span>
+            </li>
+            <li>
                 <a class="links_name" asp-area="" asp-page="/Index3">
-                        <i class='bx bx-grid-alt'></i>
-                        <span class="links_name" >Dashboard</span>
-                    </a>
-                <span class="tooltip" >Dashboard</span>
-                </li>            
-                <li>
-                    <a href="#">
+                    <i class='bx bx-grid-alt'></i>
+                    <span class="links_name">Dashboard</span>
+                </a>
+                <span class="tooltip">Dashboard</span>
+            </li>
+            <li>
+                <a href="#">
                     <i class='bx bxs-user-circle'></i>
-                        <span class="links_name">Profile</span>
-                    </a>
-                    <span class="tooltip">Profile</span>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class='bx bx-cog' ></i>
-                        <span class="links_name">Setting</span>
-                    </a>
-                    <span class="tooltip">Setting</span>
-                </li>
-                <li class="profile">
-                    <div class="profile-details">
-                        <!--<img src="profile.jpg" alt="profileImg">-->
-                        <div class="name_job">
-                            <div class="name">YYS</div>
-                            <div class="job">WebTech Assignment</div>
-                        </div>
+                    <span class="links_name">Profile</span>
+                </a>
+                <span class="tooltip">Profile</span>
+            </li>
+            <li>
+                <a href="#">
+                    <i class='bx bx-cog'></i>
+                    <span class="links_name">Setting</span>
+                </a>
+                <span class="tooltip">Setting</span>
+            </li>
+            <li class="profile">
+                <div class="profile-details">
+                    <!--<img src="profile.jpg" alt="profileImg">-->
+                    <div class="name_job">
+                        <div class="name">YYS</div>
+                        <div class="job">WebTech Assignment</div>
                     </div>
-                    <a href=".."><i class='bx bx-log-out' id="log_out" ></i>></a>
-                </li>
-            </ul>
-        </div>
-        <div class="home-section" id="Outer-sidebar">
-            @RenderBody()
-        </div>
+                </div>
+                <a href=".."><i class='bx bx-log-out' id="log_out"></i>></a>
+            </li>
+        </ul>
+    </div>
+    <div class="home-section" id="Outer-sidebar">
+        @RenderBody()
+    </div>
 
-        <!--<script src="~/lib/jquery/dist/jquery.min.js"></script>-->
-        <!--<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>-->
-        <script src="~/js/site.js" asp-append-version="true"></script>
+    <!--<script src="~/lib/jquery/dist/jquery.min.js"></script>-->
+    <!--<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>-->
+    <script src="~/js/site.js" asp-append-version="true"></script>
 
-        <!--Sidebar-->
-        <script src="~/js/SideBar.js" asp-append-version="true"></script>
+    <!--Sidebar-->
+    <script src="~/js/SideBar.js" asp-append-version="true"></script>
 
-        @await RenderSectionAsync("Scripts", required: false)
-    </body>
+    @await RenderSectionAsync("Scripts", required: false)
+
+</body>
 </html>

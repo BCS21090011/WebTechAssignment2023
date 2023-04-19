@@ -17,6 +17,19 @@
     width: 50%;
     margin: auto;
 }
+form {
+    width: 80%;
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
 
 input[type=text], input[type=password] {
     width: 100%;
@@ -28,7 +41,7 @@ input[type=text], input[type=password] {
 }
 
 button {
-    background-color: #4CAF50;
+    background-color: #af4ca1;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
@@ -63,6 +76,9 @@ span.psw {
 .login-page-container {
     margin: 0 auto;
     max-width: 500px;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 5px;
 }
 
 h1 {
@@ -80,7 +96,7 @@ input[type="password"] {
 }
 
 button[type="submit"] {
-    background-color: #4CAF50;
+    background-color: #0077cc;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
@@ -91,4 +107,39 @@ button[type="submit"] {
 
     button[type="submit"]:hover {
         opacity: 0.8;
+    }
+
+
+.navbar {
+    background-color: #0e0e0f;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
+    padding: 20px 30px;
+}
+
+.navbar-brand {
+    font-size: 36px;
+    color: #007bff;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+}
+
+    .navbar-brand:hover {
+        color: #0056b3;
+        cursor: pointer;
+    }
+
+.navbar-nav {
+    margin-right: 20px;
+}
+
+.nav-link {
+    color: #343a40;
+    font-size: 18px;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+}
+
+    .nav-link:hover {
+        color: #007bff;
+        cursor: pointer;
     }

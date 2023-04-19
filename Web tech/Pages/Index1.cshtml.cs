@@ -43,7 +43,7 @@ namespace Web_tech.Pages
             // Form submission
             if (IsValid())
             {
-                string connectionString = "data source=GJohnsonPC\\MYMSSQLSERVER;initial catalog=WebTechAssignmentDB;trusted_connection=true;";
+                string connectionString = "data source=DESKTOP-M3I2KTO;initial catalog=Mydb;trusted_connection=true;";
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
@@ -54,6 +54,7 @@ namespace Web_tech.Pages
                     checkCommand.Parameters.AddWithValue("@Username", Username);
                     checkCommand.Parameters.AddWithValue("@Email", Email);
                     int count = (int)checkCommand.ExecuteScalar();
+                    
                     if (count > 0)
                     {
                         Message = "Username or email already exists.";
@@ -69,6 +70,8 @@ namespace Web_tech.Pages
                     insertCommand.ExecuteNonQuery();
 
                     Message = "Registration successful!";
+                    Task.Delay(3000).Wait();
+                    return RedirectToPage("/index");
                 }
             }
             return Page();

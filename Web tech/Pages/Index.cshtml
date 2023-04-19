@@ -4,7 +4,9 @@
     <!DOCTYPE html>
     <html>
     <head>
-        <title>Loginpage</title>
+        <nav class="navbar navbar-expand-lg">
+            <a class="navbar-brand" href="/index4">Create Exam Paper</a>
+        </nav>
         <link rel="stylesheet" href="~/css/Login2.css" asp-append-version="true" />
     </head>
     <body>
@@ -15,25 +17,12 @@
                 <label>Password：</label>
                 <input type="password" id="password" name="password" required /><br />
                 <button type="submit">Submit</button>
-                <a href="#" class="register-button">Register</a>
+                <a href="/index1" class="register-button">Register</a>
             </div>
             <label id="lblMessage">@Model.Message</label>
         </form>
 
-        <div id="loader-wrapper">
-            <div id="loader"></div>
-            <div class="loader-section section-left"></div>
-            <div class="loader-section section-right"></div>
-        </div>
 
-        @section Scripts {
-        <script>
-            window.addEventListener("load", function(){
-                const loader = document.querySelector("#loader-wrapper");
-                loader.style.display = "none";
-            });
-        </script>
-        }
         <!-- Footer -->
         <footer>Footer content</footer>
     </body>

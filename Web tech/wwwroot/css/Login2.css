@@ -5,6 +5,41 @@
     height: 100%;
 }
 
+.navbar {
+    background-color: #0e0e0f;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
+    padding: 20px 30px;
+}
+
+.navbar-brand {
+    font-size: 36px;
+    color: #007bff;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+}
+
+    .navbar-brand:hover {
+        color: #0056b3;
+        cursor: pointer;
+    }
+
+.navbar-nav {
+    margin-right: 20px;
+}
+
+.nav-link {
+    color: #343a40;
+    font-size: 18px;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+}
+
+    .nav-link:hover {
+        color: #007bff;
+        cursor: pointer;
+    }
+
+
 form {
     width: 80%;
     max-width: 500px;
@@ -81,14 +116,10 @@ button[type="submit"], .register-button {
 }
 
     .register-button:hover {
-        background-color: #0077cc;
+        background-color: #0066b2;
     }
 
-    .register-button:active {
-        background-color: #0077cc;
-        box-shadow: 0 5px #666;
-        transform: translateY(4px);
-    }
+
 
 
 
@@ -101,4 +132,6 @@ footer {
     position: fixed;
     bottom: 0;
     width: 100%;
+    box-shadow: 0px -3px 10px rgba(0, 0, 0, 0.3); /* add a box shadow */
 }
+

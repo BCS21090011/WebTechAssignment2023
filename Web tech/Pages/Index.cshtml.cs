@@ -23,10 +23,8 @@ namespace Web_tech.Pages
             // This method is executed when the page is loaded
         }
 
-        public void OnPost()
+        public IActionResult OnPost()
         {
-            // This method is executed when the login button is clicked
-
             string connectionString = "data source=DESKTOP-M3I2KTO;initial catalog=Mydb;trusted_connection=true;";
             string queryString = "SELECT * FROM Users WHERE UserName=@UserName AND UserPassword=@UserPassword";
 
@@ -44,7 +42,8 @@ namespace Web_tech.Pages
 
                     if (reader.HasRows)
                     {
-                        Message = "Login successful";
+                        // Redirect to the Dashboard page if login is successful
+                        return RedirectToPage("/index3");
                     }
                     else
                     {
@@ -56,7 +55,9 @@ namespace Web_tech.Pages
                     Console.WriteLine("Error!\nError message:{\n" + errorMessage.Message + "\n}");
                 }
             }
-        }
 
+            return Page();
+        }
     }
 }
+    
