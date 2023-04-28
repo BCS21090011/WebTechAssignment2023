@@ -5,44 +5,11 @@
     height: 100%;
 }
 
-.navbar {
-    background-color: #0e0e0f;
-    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
-    padding: 20px 30px;
-}
-
-.navbar-brand {
-    font-size: 36px;
-    color: #007bff;
-    font-weight: bold;
-    transition: all 0.3s ease-in-out;
-}
-
-    .navbar-brand:hover {
-        color: #0056b3;
-        cursor: pointer;
-    }
-
-.navbar-nav {
-    margin-right: 20px;
-}
-
-.nav-link {
-    color: #343a40;
-    font-size: 18px;
-    font-weight: bold;
-    transition: all 0.3s ease-in-out;
-}
-
-    .nav-link:hover {
-        color: #007bff;
-        cursor: pointer;
-    }
 
 
 form {
     width: 80%;
-    max-width: 500px;
+    max-width: 450px;
     margin: 50px auto;
     padding: 20px;
     background-color: #ffffff;
@@ -65,21 +32,22 @@ label {
     color: #333333;
     display: block;
     margin-bottom: 5px;
+    margin-top : 10px;
 }
 
 input[type="text"],
 input[type="password"] {
-    width: 100%;
+    width: 90%;
     padding: 10px;
     border: 1px solid #d9d9d9;
-    border-radius: 5px;
+    border-radius: 10px;
     margin-bottom: 20px;
     font-size: 16px;
 }
 
 button[type="submit"] {
     display: block;
-    width: 100%;
+    width: 80%;
     padding: 10px;
     background-color: #0077cc;
     color: #ffffff;
@@ -87,6 +55,7 @@ button[type="submit"] {
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
+   
 }
 
     button[type="submit"]:hover {
@@ -101,7 +70,8 @@ button[type="submit"] {
 }
 
 /* Register button */
-button[type="submit"], .register-button {
+button[type="submit"]{
+    
     background-color: #0077cc;
     border: none;
     color: white;
@@ -113,25 +83,22 @@ button[type="submit"], .register-button {
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 5px;
+    width: 90%
 }
+.register-button {
+    background-color: #0077cc;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
 
+}
     .register-button:hover {
         background-color: #0066b2;
     }
-
-
-
-
-
-
-
-/* Footer */
-footer {
-    height: 50px; /* set a height for the footer */
-    background-color: #f2f2f2;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    box-shadow: 0px -3px 10px rgba(0, 0, 0, 0.3); /* add a box shadow */
-}
-
