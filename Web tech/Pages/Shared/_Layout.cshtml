@@ -83,6 +83,8 @@
                 padding: 20px;
                 cursor: pointer;
                 border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+                position: relative; /* Added position */
+                padding: 20px 20px 20px 60px; /* Updated padding */
             }
 
                 .sidebarMenuInner li span {
@@ -178,7 +180,7 @@
 
     </style>
 </head>
-<body>
+<body >
 
     <div class="header"></div>
     <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
@@ -193,7 +195,8 @@
             <li>Create Exam Paper <span>You Best Partner</span></li>
             <li><a href="index4">Homepage</a></li>
             <li><a href="index3">Create question</a></li>
-            <li><a href="">Profile</a></li>
+            <li><a href="profilepage">Profile</a></li>
+            <li><a href="contactus">Contact Us </a></li>
             
         </ul>
     </div>
@@ -203,12 +206,7 @@
         @RenderBody()
     </div>
 
-    <!--<script src="~/lib/jquery/dist/jquery.min.js"></script>-->
-    <!--<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>-->
-    <script src="~/js/site.js" asp-append-version="true"></script>
 
-    <!--Sidebar-->
-    <script src="~/js/SideBar.js" asp-append-version="true"></script>
 
     @await RenderSectionAsync("Scripts", required: false)
 

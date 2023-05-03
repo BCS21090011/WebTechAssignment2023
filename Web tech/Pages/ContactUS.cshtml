@@ -1,0 +1,119 @@
+﻿@page
+@model Web_tech.Pages.ContactUSModel
+@{
+    <html>
+    <head>
+
+        <style>
+
+            body {
+                background-image: url('/Resources/Images/contact-us.png');
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center center;
+            }
+
+            /* Form */
+            form {
+                max-width: 600px;
+                margin: 0 auto;
+                margin-top: 250px
+            }
+
+            ul {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+            }
+
+            li {
+                margin-bottom: 20px;
+            }
+
+            label {
+                display: block;
+                margin-bottom: 5px;
+                font-weight: bold;
+            }
+
+            input,
+            textarea {
+                width: 100%;
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                font-size: 16px;
+                box-sizing: border-box;
+            }
+
+            textarea {
+                height: 150px;
+            }
+
+            .btn-submit {
+                background-color: #007bff;
+                color: #fff;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 5px;
+                font-size: 16px;
+                cursor: pointer;
+            }
+
+                .btn-submit:hover {
+                    background-color: #0069d9;
+                }
+
+        </style>
+
+
+
+
+
+
+    </head>
+    <body>
+
+        <div class="container">
+
+            <div class="row body">
+
+                <form action="#">
+                    <h1>CONTACT US &nbsp;</h1>
+                    <h3>Fill out the form below to learn more!</h3>
+                    <ul>
+                        <li>
+                            <p class="left">
+                                <label for="first_name">First name</label>
+                                <input type="text" name="first_name" placeholder="John" />
+                            </p>
+                            <p class="pull-right">
+                                <label for="last_name">Last name</label>
+                                <input type="text" name="last_name" placeholder="Smith" />
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                <label for="email">Email</label>
+                                <input type="email" name="email" placeholder="john.smith@example.com" />
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                <label for="message">Message</label>
+                                <textarea name="message" placeholder="Write your message here"></textarea>
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                <button type="submit" class="btn btn-submit">Submit</button>
+                            </p>
+                        </li>
+                    </ul>
+                </form>
+            </div>
+        </div>
+
+    </body>
+    </html>
+}
