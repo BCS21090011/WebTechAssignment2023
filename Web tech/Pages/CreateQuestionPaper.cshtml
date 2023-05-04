@@ -8,21 +8,23 @@
             <link rel="stylesheet" href="~/css/CreateQuestionsVer5.css" asp-append-version="true" />
         </head>
         <body>
-            <div class="Column-Container">
-                <div class="Column" id="Selection-Section" style="flex: 1; width: 300px;">
-                    <div class="Row-Container">
-                        <ul class="Row" id="QuestionSelections"></ul>
-                        <ul class="Row" id="SelectedQuestions"></ul>
-                    </div>
-                </div>
-                <div class="Column" id="Preview-Section">
-                    <button onclick="SwitchPreview()" style="height: 5%; margin: auto;">Switch Preview</button>
-                    <div class="Preview-Container" style="height: 95%;">
-                        <div class="Preview-Container" id="Qst-Preview-Container">
-                    
+            <div style="align-content: center; margin-top: 60px;">
+                <div class="Column-Container">
+                    <div class="Column" id="Selection-Section" style="flex: 1; width: 300px;">
+                        <div class="Row-Container">
+                            <ul class="Row" id="QuestionSelections"></ul>
+                            <ul class="Row" id="SelectedQuestions"></ul>
                         </div>
-                        <div class="Preview-Container" id="Ans-Preview-Container" style="display: none;">
-                        
+                    </div>
+                    <div class="Column" id="Preview-Section">
+                        <button onclick="SwitchPreview()" style="height: 5%; margin: auto;">Switch Preview</button>
+                        <div class="Preview-Container" style="height: 95%;">
+                            <div class="Preview-Container" id="Qst-Preview-Container">
+                            
+                            </div>
+                            <div class="Preview-Container" id="Ans-Preview-Container" style="display: none;">
+                                
+                            </div>
                         </div>
                     </div>
                 </div>
