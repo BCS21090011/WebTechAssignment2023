@@ -1,0 +1,95 @@
+.Column-Container {
+    display: flex; /* This should place the elements inside horizontally since it should set flex-direction to row. */
+    flex-wrap: wrap;
+    height: 90vh;
+    padding: 20px;
+    box-sizing: border-box; /* Includes padding and border in the width and height calculation. */
+}
+
+.Column {
+    padding: 10px;
+    height: 100%;
+}
+
+.Row-Container {
+    display: flex;
+    flex-direction: column; /* This should place the elements inside vertically because display: flex will let them placed horizontally. */
+    height: 100%; /*Set inner-column-container height to 100% to fill the column. */
+    width: 95%;
+}
+
+.Row {
+    flex: 1; /* Sets the flex-grow property to 1, the flex-shrink property to 1, and the flex-basis property to 0. This means that the item will grow and shrink equally relative to the other flex items in the container, and its initial size will be 0. */
+    /* In other words, flex: 1; is often used to make an item take up all available space in the container along the main axis. */
+    min-width: 0;
+    padding: 10px;
+    height: 100%; /* Fill column-container. */
+    border: 1px solid black;
+    overflow-y: scroll;
+    width: 100%;
+}
+
+.Preview-Container {
+    aspect-ratio: 1 / 1.414; /* Ratio of A4 paper. */
+    width: auto; /* Allow the width to adjust based on parent container. */
+    max-height: 100%; /* Limit the height to the maximum height of the parent container. */
+    border: 1px solid black;
+    box-sizing: border-box;
+    height: 100%;
+    width: 100%;
+}
+
+.Question {
+    display: flex;
+    justify-content: space-between; /* This aligns the child elements horizontally within the flex container and places an equal amount of space between each element. */
+    align-items: center; /* Add this line to vertically center the text and button. */
+    white-space: nowrap; /* This prevents any line breaks within the container, keeping all text on a single line. */
+    /*cursor: pointer;    /* This sets the cursor property to pointer, which changes the mouse cursor to a hand icon to indicate that the element is clickable. */
+    padding-right: 10px;
+    border: 1px solid black;
+    max-width: 100%;
+}
+
+    /* Selects only the span elements that are direct children of an element with a class of "Question". */
+    .Question > span {
+        flex: 1; /* Add this line to make the question text take up all available space. */
+        min-width: 0; /* Add this line to allow text to wrap if necessary. */
+        padding: 5px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    /* Hide the img. */
+    .Question > img {
+        display: none;
+    }
+
+    .Question.Extended {
+        text-overflow: clip; /* Any text that extends beyond the element's width should be clipped, meaning it will be hidden and not displayed. */
+        white-space: pre-wrap; /* Should wrap the text to the next line if there isn't enough space to display all of it. */
+    }
+
+        .Question.Extended > img {
+            display: block;
+            max-width: 20%;
+            padding: 5px;
+        }
+
+    .Question.Dragging > img {
+        display: none;
+    }
+
+    .Question.Dragging {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+.QstAct-Button {
+    flex-shrink: 0; /* Add this line to prevent the button from shrinking. */
+}
+
+.Dragging {
+    opacity: 0.5;
+    background-color: lightblue;
+    border: dashed 1px black;
+}

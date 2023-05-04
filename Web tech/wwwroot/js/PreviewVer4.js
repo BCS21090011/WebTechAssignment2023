@@ -74,18 +74,18 @@ function GeneratePDF(textAttr, imgFileNameAttr, markAttr) {
     var pageNum = 1;
     var offSetY = marginTop;
     AddPageNum(PDFdoc, pageNum);
-    
-    for(var i = 0; i < questions.length; i++) {
+
+    for (var i = 0; i < questions.length; i++) {
         console.log("\tProcessing " + textAttr + " number: " + i.toString());
-        
+
         let part = selectedQsts[i];
 
         text = part[textAttr];
 
         // If need mark:
-        if(markAttr) {
+        if (markAttr) {
             // If it has mark:
-            if(part[markAttr]) {
+            if (part[markAttr]) {
                 text += "\n[Mark: " + part[markAttr].toString() + "]"; // Add in the mark.
             }
         }
@@ -95,12 +95,12 @@ function GeneratePDF(textAttr, imgFileNameAttr, markAttr) {
         let height = textHeight + spaceAfterText;
 
         // If it has image:
-        if(part[imgFileNameAttr]) {
+        if (part[imgFileNameAttr]) {
             height += imageHeight;
         }
 
         // If exceed page height:
-        if(ExceedHeight(offSetY, height) === true) {
+        if (ExceedHeight(offSetY, height) === true) {
             PDFdoc.addPage();
             pageNum += 1;
             AddPageNum(PDFdoc, pageNum);
@@ -126,7 +126,7 @@ function AddTextAndImg(PDFdoc, textNum, splittedText, imgFileName, offSetY, text
     console.log("\t\tDone add text");
 
     // Add image if any:
-    if(imgFileName) {
+    if (imgFileName) {
         console.log("\t\tAdding image: " + imgFileName);
         AddImg(PDFdoc, imgFileName, offSetY + textHeight);
         console.log("\t\tDone add image");
@@ -139,12 +139,12 @@ function AddText(PDFdoc, textNum, splittedText, offSetY) {
 }
 
 function AddImg(PDFdoc, imgFileName, y) {
-    try{
+    try {
         let img = new Image();
         img.src = imgFileName;
         PDFdoc.addImage(img, (pageWidth - imageWidth) / 2, y, imageWidth, imageHeight);
     }
-    catch(error) {
+    catch (error) {
         console.log("\t\t\tAn error occured:\n\t\t\t\t" + error.message);
     }
 }
@@ -161,10 +161,10 @@ function GetTextHeight(PDFdoc, splittedText) {
 
 // true if exceed page height:
 function ExceedHeight(offSetY, height) {
-    if(offSetY + height > textContentHeight) {
+    if (offSetY + height > textContentHeight) {
         return true;
     }
-    else{
+    else {
         return false;
     }
 }
