@@ -7,15 +7,20 @@ function Initializing() {
 }
 
 function SwitchPreview() {
-    let qstContainer = document.getElementById("Qst-Preview-Container");
-    let ansContainer = document.getElementById("Ans-Preview-Container");
+    const qstContainer = document.getElementById("Qst-Preview-Container");
+    const ansContainer = document.getElementById("Ans-Preview-Container");
+    const previewName = document.getElementById("Preview-Name");
 
     if (qstContainer.style.display === "none") {
+        console.log("Switch to Qst-Preview-Container");
         qstContainer.style.display = "block";
         ansContainer.style.display = "none";
+        previewName.textContent = "Preview Questions";
     } else {
+        console.log("Switch to Ans-Preview-Container");
         qstContainer.style.display = "none";
         ansContainer.style.display = "block";
+        previewName.textContent = "Preview Answers";
     }
 }
 
@@ -31,20 +36,36 @@ Expected elements in question:
 */
 
 function UpdateQuestions() {
-    document.getElementById("QuestionSelections").innerHTML = "";
-    document.getElementById("SelectedQuestions").innerHTML = "";
-    console.log("Displaying question selections");
-    DisplayQuestions(qstSelections, "QuestionSelections", "Add", AddButtonClickFunction, false);
-    console.log("Done display question selections");
-    console.log("Displaying selected questions");
-    DisplayQuestions(selectedQsts, "SelectedQuestions", "Remove", RemoveButtonClickFunction, true);
-    console.log("Done display selected questions");
+    QstSelectionsDisplayQuestions();
+    SelectedQuestionsDisplayQuestions();
+    QstSelectionsUlAddExtendHideButton();
+    SelectedQuestionsUlAddExtendHideButton();
     console.log("Update preview");
     UpdatePreview();
     console.log("Done update preview");
+}
+
+function QstSelectionsDisplayQuestions() {
+    document.getElementById("QuestionSelections").innerHTML = "";
+    console.log("Displaying question selections");
+    DisplayQuestions(qstSelections, "QuestionSelections", "Add", AddButtonClickFunction, false);
+    console.log("Done display question selections");
+}
+
+function SelectedQuestionsDisplayQuestions() {
+    document.getElementById("SelectedQuestions").innerHTML = "";
+    console.log("Displaying selected questions");
+    DisplayQuestions(selectedQsts, "SelectedQuestions", "Remove", RemoveButtonClickFunction, true);
+    console.log("Done display selected questions");
+}
+
+function QstSelectionsUlAddExtendHideButton() {
     console.log("Adding ExtendHideButton to QuestionSelections");
     UlAddExtendHideButton("QuestionSelections");
     console.log("Done add ExtendHideButton to QuestionSelections");
+}
+
+function SelectedQuestionsUlAddExtendHideButton() {
     console.log("Adding ExtendHideButton to SelectedQuestions");
     UlAddExtendHideButton("SelectedQuestions");
     console.log("Done add ExtendHideButton to SelectedQuestions");
