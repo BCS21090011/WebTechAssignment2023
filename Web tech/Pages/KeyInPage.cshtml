@@ -112,9 +112,13 @@
             <label for="marks">Marks:</label>
             <input type="number" id="marks" name="marks" min="0">
 
-            <label for="image">Upload image:</label>
-            <input type="file" id="image" name="image" onchange="previewImage(event)">
-            <img id="preview" src="#" alt="Preview Image" style="display: none; max-width: 300px; max-height: 300px;">
+            <label for="question-image">Upload image:</label>
+            <input type="file" id="question-image" name="question-image" onchange="previewquestionImage(event)">
+            <img id="question-preview" src="#" alt="Preview Image" style="display: none; max-width: 300px; max-height: 300px;">
+
+            <label for="answer-image">Upload image:</label>
+            <input type="file" id="answer-image" name="answer-image" onchange="previewanswerImage(event)">
+            <img id="answer-preview" src="#" alt="Preview Image" style="display: none; max-width: 300px; max-height: 300px;">
 
             <input type="submit" value="Submit">
         </form>
@@ -183,9 +187,29 @@
     });
 </script>
 <script>
-    function previewImage(event) {
+    function previewquestionImage(event) {
         var input = event.target;
-        var preview = document.getElementById("preview");
+        var preview = document.getElementById("question-preview");
+
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                preview.src = e.target.result;
+                preview.style.display = "block";
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        } else {
+            preview.src = "#";
+            preview.style.display = "none";
+        }
+    }
+</script>
+<script>
+    function previewanswerImage(event) {
+        var input = event.target;
+        var preview = document.getElementById("answer-preview");
 
         if (input.files && input.files[0]) {
             var reader = new FileReader();
