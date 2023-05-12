@@ -23,10 +23,10 @@
                         <span id="Preview-Name">Preview Questions</span>
                         <div class="Preview-Container" style="height: 95%;">
                             <div class="Preview-Container" id="Qst-Preview-Container">
-                    
+                        
                             </div>
                             <div class="Preview-Container" id="Ans-Preview-Container" style="display: none;">
-                        
+                            
                             </div>
                         </div>
                     </div>
@@ -34,6 +34,18 @@
             </div>
 
             <script>
+                function doSomething(questions)
+                {
+                    //Do things.
+                    //Call things from other JS.
+                    //Other JS should only start to do things after called from here.
+                }
+            </script>
+            <script>
+                //ajax to make api request
+                //after request success, use for loop to push() item into array
+                //call the method and pass the array
+
                 var qstSelections = [];
                 var selectedQsts = [
                     {
