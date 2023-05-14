@@ -9,6 +9,7 @@ using System.Security.Claims;
 using System.Text;
 
 
+
 namespace Web_tech.Pages
 {
     public class study_loginModel : PageModel
@@ -35,7 +36,7 @@ namespace Web_tech.Pages
 
         public IActionResult OnPost()
         {
-            string connectionString = "data source=DESKTOP-M3I2KTO;initial catalog=Mydb;trusted_connection=true;";
+            string connectionString = "data source=DESKTOP-M3I2KTO;initial catalog=WebTechAssignmentDB;trusted_connection=true;";
             string queryString = "SELECT * FROM Users WHERE UserName=@UserName AND UserPassword=@UserPassword";
 
             SqlConnection connection = new SqlConnection(connectionString);
