@@ -25,7 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
+    <ProjectReference Include="..\Mydb\Mydb.sqlproj" />
   </ItemGroup>
 
 </Project>
