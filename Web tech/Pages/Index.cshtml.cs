@@ -1,6 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
+using System;
 using System.Data.SqlClient;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
+
 
 namespace Web_tech.Pages
 {
@@ -13,6 +20,13 @@ namespace Web_tech.Pages
         public string? Password { get; set; }
 
         public string? Message { get; set; }
+
+        private readonly IConfiguration _configuration;
+
+        public study_loginModel(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
 
         public void OnGet()
         {
@@ -38,8 +52,27 @@ namespace Web_tech.Pages
 
                     if (reader.HasRows)
                     {
-                        // Redirect to the Dashboard page if login is successful
-                        return RedirectToPage("/index3");
+                        // Generate a JWT token with a user claims
+                        var tokenHandler = new JwtSecurityTokenHandler();
+                        var key = Encoding.UTF8.GetBytes(_configuration["JwtKey"]);
+                        var tokenDescriptor = new SecurityTokenDescriptor
+                        {
+                            Subject = new ClaimsIdentity(new Claim[]
+                            {
+                                new Claim(ClaimTypes.Name, Username),
+                                new Claim(ClaimTypes.Role, "User")
+                            }),
+                            Expires = DateTime.UtcNow.AddDays(7),
+                            SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+                        };
+                        var token = tokenHandler.CreateToken(tokenDescriptor);
+                        var jwtToken = tokenHandler.WriteToken(token);
+
+                        // Return the JWT token
+                        return new JsonResult(new { Token = jwtToken });
+                     
+
+                        
                     }
                     else
                     {
@@ -56,4 +89,3 @@ namespace Web_tech.Pages
         }
     }
 }
-    
