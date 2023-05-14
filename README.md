@@ -20,31 +20,36 @@ This is for Web Technology assignment.
 * [ ] Create admin panel.
 * [ ] Modify the sidebar.
 * [ ] Make the pages more presentable.
-* [ ] Add the function to generate the pdf files (both question and answer).
+* [X] Add the function to generate the pdf files (both question and answer).
 * [ ] Link to the database (online).
+
 > Currently link offline, need to create database locally. More information in [**Local database**](#Local-database) section.
+
 * [ ] Push the project online.
 * [ ] Submit the project.
 
 ## **Pages needed**
 
-* [x] Login page
-> Need to make it more presentable.
-* [x] Register page
-> Need to make it more presentable.
-* [x] Dashboard page
-> Need to make it more presentable.
-* [x] Main page
-> Need to make it more presentable.
-* [ ] User profile page
-* [ ] Insert question page
-* [ ] Choose topic page
-* [ ] Create question paper page
-> * Need to make it more presentable.
-> * Need to add in the function to generate pdf files.
-> * Both question selection and selected questions section won't display image. This page need to display question image if the question have any.
+* [X] [Login page](https://github.com/BCS21090011/WebTechAssignment2023/blob/master/Web%20tech/Pages/Index.cshtml)
+* [X] [Register page](https://github.com/BCS21090011/WebTechAssignment2023/blob/master/Web%20tech/Pages/Index1.cshtml)
+* [ ] Dashboard page
+* [X] [Home page](https://github.com/BCS21090011/WebTechAssignment2023/blob/master/Web%20tech/Pages/Index4.cshtml)
+* [ ] [User profile page](https://github.com/BCS21090011/WebTechAssignment2023/blob/master/Web%20tech/Pages/ProfilePage.cshtml)
+
+> * Need to connect to database.
+
+* [ ] [Insert question page](https://github.com/BCS21090011/WebTechAssignment2023/blob/master/Web%20tech/Pages/KeyInPage.cshtml)
+
+> * Connect to database.
+
+* [ ] [Question bank page](https://github.com/BCS21090011/WebTechAssignment2023/blob/master/Web%20tech/Pages/QuestionBank.cshtml)
+* [ ] [Create question paper page](https://github.com/BCS21090011/WebTechAssignment2023/blob/master/Web%20tech/Pages/CreateQuestionPaper.cshtml)
+
+> * Need to connect to database (maybe using ajax).
+
 * [ ] History page
-  
+* [X] [Contact us](https://github.com/BCS21090011/WebTechAssignment2023/blob/master/Web%20tech/Pages/ContactUS.cshtml)
+
 ## **Local database**
 
 Need to install SSMS first, [guide for installation](https://blog.csdn.net/weixin_43074474/article/details/105106894).
@@ -52,113 +57,64 @@ Need to install SSMS first, [guide for installation](https://blog.csdn.net/weixi
 Codes to create database:
 
 ```MSSQL
+IF EXISTS(SELECT * FROM sys.databases WHERE name = 'WebTechAssignmentDB')
+BEGIN
+    DROP DATABASE WebTechAssignmentDB;
+END
+
 CREATE DATABASE WebTechAssignmentDB;
 Go
 USE WebTechAssignmentDB;
 GO
 
-IF OBJECT_ID('dbo.Users', 'U') IS NOT NULL
-    DROP TABLE dbo.Users;
 CREATE TABLE dbo.Users(
-    U_ID INT IDENTITY(1,1) NOT NULL,
+    Users_ID INT IDENTITY(1,1) NOT NULL,
     UserName VARCHAR(255) NOT NULL,
     UserPassword VARCHAR(255) NOT NULL,
-    UserEmail VARCHAR(255) DEFAULT NULL,
-    CONSTRAINT PK_Users PRIMARY KEY CLUSTERED (U_ID)
+    UserGender VARCHAR(255) NOT NULL,
+    UserCountry VARCHAR(255) NOT NULL,
+    UserEmail VARCHAR(255) NOT NULL,
+    UserPhoneNumber INT NOT NULL,
+    UserSchoolName VARCHAR(255) NOT NULL,
+    CONSTRAINT PK_Users PRIMARY KEY CLUSTERED (Users_ID)
 );
 
-IF OBJECT_ID('dbo.Subjects', 'U') IS NOT NULL
-    DROP TABLE dbo.Subjects;
 CREATE TABLE dbo.Subjects(
-    S_ID INT IDENTITY(1,1) NOT NULL,
+    Subjects_ID INT IDENTITY(1,1) NOT NULL,
     SubjectName VARCHAR(255) NOT NULL,
-    CONSTRAINT PK_Subjects PRIMARY KEY CLUSTERED (S_ID)
+    CONSTRAINT PK_Subjects PRIMARY KEY CLUSTERED (Subjects_ID)
 );
 
-IF OBJECT_ID('dbo.Images', 'U') IS NOT NULL
-    DROP TABLE dbo.Images;
-CREATE TABLE dbo.Images(
-    I_ID INT IDENTITY(1,1) NOT NULL,
-    IImage VARBINARY(MAX) NOT NULL,
-    CONSTRAINT PK_Images PRIMARY KEY CLUSTERED (I_ID)
-);
-
-IF OBJECT_ID('dbo.Answers', 'U') IS NOT NULL
-    DROP TABLE dbo.Answers;
-CREATE TABLE dbo.Answers(
-    A_ID INT IDENTITY(1,1) NOT NULL,
-    Answer VARCHAR(255) NOT NULL,
-    CONSTRAINT PK_Answers PRIMARY KEY CLUSTERED (A_ID)
-);
-
-IF OBJECT_ID('dbo.Questions', 'U') IS NOT NULL
-    DROP TABLE dbo.Questions;
 CREATE TABLE dbo.Questions(
-    Q_ID INT IDENTITY(1,1) NOT NULL,
+    Questions_ID INT IDENTITY(1,1) NOT NULL,
     Question VARCHAR(255) NOT NULL,
     QuestionMark INT NOT NULL,
-    S_ID INT NOT NULL,
-    CONSTRAINT PK_Questions PRIMARY KEY CLUSTERED (Q_ID),
-    CONSTRAINT FK_Questions_Subjects FOREIGN KEY (S_ID) REFERENCES dbo.Subjects(S_ID)
+    QuestionDifficulty INT NOT NULL,
+    Subjects_ID INT NOT NULL,
+    QuestionImageFileName VARCHAR(255) DEFAULT NULL,
+    Answer VARCHAR(255) NOT NULL,
+    AnswerImageFileName VARCHAR(255) DEFAULT NULL,
+    CONSTRAINT PK_Questions PRIMARY KEY CLUSTERED (Questions_ID),
+    CONSTRAINT FK_Questions_Subjects FOREIGN KEY (Subjects_ID) REFERENCES dbo.Subjects(Subjects_ID)
 );
 
-IF OBJECT_ID('dbo.QuestionImage', 'U') IS NOT NULL
-    DROP TABLE dbo.QuestionImage;
-CREATE TABLE dbo.QuestionImage(
-    QI_ID INT IDENTITY(1,1) NOT NULL,
-    Q_ID INT NOT NULL,
-    I_ID INT NOT NULL,
-    CONSTRAINT PK_QuestionImage PRIMARY KEY CLUSTERED (QI_ID),
-    CONSTRAINT FK_QuestionImage_Questions FOREIGN KEY (Q_ID) REFERENCES dbo.Questions(Q_ID),
-    CONSTRAINT FK_QuestionImage_Images FOREIGN KEY (I_ID) REFERENCES dbo.Images(I_ID)
-);
-
-IF OBJECT_ID('dbo.QuestionAnswer', 'U') IS NOT NULL
-    DROP TABLE dbo.QuestionAnswer;
-CREATE TABLE dbo.QuestionAnswer(
-    QA_ID INT IDENTITY(1,1) NOT NULL,
-    Q_ID INT NOT NULL,
-    A_ID INT NOT NULL,
-    CONSTRAINT PK_QuestionAnswer PRIMARY KEY CLUSTERED (QA_ID),
-    CONSTRAINT FK_QuestionAnswer_Questions FOREIGN KEY (Q_ID) REFERENCES dbo.Questions(Q_ID),
-    CONSTRAINT FK_QuestionAnswer_Answers FOREIGN KEY (A_ID) REFERENCES dbo.Answers(A_ID)
-);
-
-IF OBJECT_ID('dbo.History', 'U') IS NOT NULL
-    DROP TABLE dbo.History;
 CREATE TABLE dbo.History(
-    H_ID INT IDENTITY(1,1) NOT NULL,
+    History_ID INT IDENTITY(1,1) NOT NULL,
     GeneratedTime DATETIME NOT NULL,
-    U_ID INT NOT NULL,
-    CONSTRAINT PK_History PRIMARY KEY CLUSTERED (H_ID),
-    CONSTRAINT FK_History_Users FOREIGN KEY (U_ID) REFERENCES dbo.Users(U_ID)
+    Users_ID INT NOT NULL,
+    CONSTRAINT PK_History PRIMARY KEY CLUSTERED (History_ID),
+    CONSTRAINT FK_History_Users FOREIGN KEY (Users_ID) REFERENCES dbo.Users(Users_ID)
 );
-
-IF OBJECT_ID('HistoryQuestion', 'U') IS NOT NULL
-    DROP TABLE HistoryQuestion;
 
 CREATE TABLE HistoryQuestion (
-    HQ_ID INT NOT NULL IDENTITY(1,1),
-    H_ID INT NOT NULL,
-    Q_ID INT NOT NULL,
-    PRIMARY KEY (HQ_ID),
-    FOREIGN KEY (H_ID) REFERENCES History(H_ID),
-    FOREIGN KEY (Q_ID) REFERENCES Questions(Q_ID)
+    HistoryQuestion_ID INT NOT NULL IDENTITY(1,1),
+    History_ID INT NOT NULL,
+    Questions_ID INT NOT NULL,
+    Question_Number INT NOT NULL,
+    PRIMARY KEY (HistoryQuestion_ID),
+    FOREIGN KEY (History_ID) REFERENCES History(History_ID),
+    FOREIGN KEY (Questions_ID) REFERENCES Questions(Questions_ID)
 );
-
-```
-
-Example codes to insert dummy users (**RUN ONLY ONCE AFTER THE DATABASE IS CREATED TO AVOID ERRORS**):
-
-```MSSQL
-USE WebTechAssignmentDB;
-GO
-
-INSERT INTO Users (UserName, UserPassword, UserEmail)
-VALUES 
-    ('JohnDoe', 'pass123', 'johndoe@example.com'),
-    ('JaneDoe', 'pass456', 'janedoe@example.com'),
-    ('BobSmith', 'pass789', 'bobsmith@example.com');
 
 ```
 
@@ -184,21 +140,60 @@ where name = suser_name()
 ## **Pages use database**
 
 * [Index.cshtml.cs](https://github.com/BCS21090011/WebTechAssignment2023/blob/master/Web%20tech/Pages/Index.cshtml.cs)
+
 > To login.
+
 * [Index1.cshtml.cs](https://github.com/BCS21090011/WebTechAssignment2023/blob/master/Web%20tech/Pages/Index1.cshtml.cs)
+
 > To register.
+
 * [CreateQuestionPaper.cshtml.cs (will be)](https://github.com/BCS21090011/WebTechAssignment2023/blob/master/Web%20tech/Pages/CreateQuestionPaper.cshtml.cs)
-> To get the questions and the answers.
+
+> * To get the questions and the answers.
+> * Insert new history into database.
+
+* [ProfilePage.cshtml.cs](https://github.com/BCS21090011/WebTechAssignment2023/blob/master/Web%20tech/Pages/ProfilePage.cshtml)
+
+> Get the user profile.
+
+* [KeyInPage.cshtml.cs](https://github.com/BCS21090011/WebTechAssignment2023/blob/master/Web%20tech/Pages/KeyInPage.cshtml)
+
+> Insert the question into the database.
+
+* [QuestionBank.cshtml.cs](https://github.com/BCS21090011/WebTechAssignment2023/blob/master/Web%20tech/Pages/QuestionBank.cshtml)
+
+> Get the questions from database.
 
 ---
 
 ## **References**
 
 * [ChatGPT](https://chat.openai.com/chat)
+* Bing
+* [Monica](https://chrome.google.com/webstore/detail/monica-%E2%80%94-your-chatgpt-cop/ofpnmcalabcbjgholdjcjblkibolbppb)
+* [Bard](https://bard.google.com/)
 * https://blog.csdn.net/weixin_43074474/article/details/105106894
 * https://stackoverflow.com/questions/10479763/how-to-get-the-connection-string-from-a-database [^1]
 * https://www.codinglabweb.com/2022/12/free-sidebar-menu-templates.html
 * http://jotform.com/login/?rp=https://www.jotform.com/build/231019333502039
+* https://www.w3schools.com/xml/ajax_database.asp
+* https://bobbyhadz.com/blog/javascript-split-string-by-newline
+* https://teleporthq.io/professional-website-builder
+* https://www.codingnepalweb.com/drag-and-drop-sortable-list-html-javascript/
+* https://codingartistweb.com/2023/02/drag-and-drop-sortable-list-javascript/
+* https://stackoverflow.com/questions/63654654/drag-and-drop-between-two-lists-list-2-only-has-sort
+* https://www.geeksforgeeks.org/jquery-ui-draggable-connecttosortable-option/
+* https://youtu.be/9HUlUnM3UG8
+* https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer/setData
+* https://www.freecodecamp.org/news/how-to-insert-an-element-into-an-array-in-javascript/amp/
+* https://stackoverflow.com/questions/21064101/understanding-offsetwidth-clientwidth-scrollwidth-and-height-respectively/21064102#21064102
+* https://stackoverflow.com/questions/67960714/how-to-get-the-scroll-amount-if-a-div-has-the-scroll
+* https://www.tutorialspoint.com/how-to-generate-a-pdf-from-an-html-webpage
+* https://www.w3schools.com/cssref/pr_text_white-space.php
+* https://stackoverflow.com/questions/15131072/check-whether-string-contains-a-line-break
+* https://stackoverflow.com/questions/1039827/when-to-use-ul-or-ol-in-html/1039834#1039834
+* https://discuss.codecademy.com/t/what-happens-if-i-directly-add-the-li-without-adding-the-ul/380816/7
+* https://stackoverflow.com/questions/24768630/is-there-a-way-to-show-a-progressbar-on-github-wiki
 
 ---
 

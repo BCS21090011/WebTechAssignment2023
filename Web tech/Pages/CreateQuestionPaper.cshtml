@@ -23,10 +23,10 @@
                         <span id="Preview-Name">Preview Questions</span>
                         <div class="Preview-Container" style="height: 95%;">
                             <div class="Preview-Container" id="Qst-Preview-Container">
-                    
+                        
                             </div>
                             <div class="Preview-Container" id="Ans-Preview-Container" style="display: none;">
-                        
+                            
                             </div>
                         </div>
                     </div>
@@ -34,12 +34,26 @@
             </div>
 
             <script>
+                function doSomething(questions)
+                {
+                    //Do things.
+                    //Call things from other JS.
+                    //Other JS should only start to do things after called from here.
+                }
+            </script>
+            <script>
+                //ajax to make api request
+                //after request success, use for loop to push() item into array
+                //call the method and pass the array
+
                 var qstSelections = [];
                 var selectedQsts = [
                     {
                         ID: 1,
                         Qst: "Question 1",
                         Mark: 10,
+                        Subject: "Math",
+                        Difficulty: "Easy",
                         QstImgFileName: "https://fastly.picsum.photos/id/703/500/300.jpg?hmac=y-u4GOcV5D90uuBH-_LsIDDOlPAkN4kgkm4fFhD1aJk",
                         Ans: "Answer 1",
                         AnsImgFileName: null
@@ -48,6 +62,8 @@
                         ID: 2,
                         Qst: "Question 2",
                         Mark: 20,
+                        Subject: "Science",
+                        Difficulty: "Medium",
                         QstImgFileName: null,
                         Ans: "Answer 2",
                         AnsImgFileName: null
@@ -56,6 +72,8 @@
                         ID: 3,
                         Qst: "This is just a long nasty very very very very long question example that should be too long to be a question but I cannot actually write that long since real question might be very very very long, you know sometimes there are questions that give you too much unneeded additional information that you would not be needed but can cause distraction and confusion, which is kind of the reason why those are there. If this is a real question I might just ask you to give me an example with maybe minimum 100 words.",
                         Mark: 100,
+                        Subject: "Science",
+                        Difficulty: "Easy",
                         QstImgFileName: null,
                         Ans: "Blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah.",
                         AnsImgFileName: null
@@ -64,6 +82,8 @@
                         ID: 4,
                         Qst: "Just continue that question that should be very very very long, in seems that I would need to add more questions so that I can see how it do when exceed the page.",
                         Mark: 0,
+                        Subject: "Math",
+                        Difficulty: "Hard",
                         QstImgFileName: null,
                         Ans: "Hey",
                         AnsImgFileName: null
@@ -72,6 +92,8 @@
                         ID: 5,
                         Qst: "Which I mean a lot.",
                         Mark: 0,
+                        Subject: "English",
+                        Difficulty: "Easy",
                         QstImgFileName: null,
                         Ans: "How is the weather.",
                         AnsImgFileName: null
@@ -80,6 +102,8 @@
                         ID: 6,
                         Qst: "These questions does not need to be very long though.",
                         Mark: 0,
+                        Subject: "Germany",
+                        Difficulty: "Hard",
                         QstImgFileName: null,
                         Ans: "Good?",
                         AnsImgFileName: null
@@ -88,7 +112,9 @@
                         ID: 7,
                         Qst: "But I would need enough questions.",
                         Mark: 0,
-                        QstImgFileName: null,
+                        Subject: "Math",
+                        Difficulty: "Easy",
+                        QstImgFileName: "/Resources/Images/Teacher_FlatLine.png",
                         Ans: "You know, these questions and answers,",
                         AnsImgFileName: null
                     },
@@ -96,6 +122,8 @@
                         ID: 8,
                         Qst: "BTW I don\'t know how many questions had I created.",
                         Mark: 0,
+                        Subject: "Physic",
+                        Difficulty: "Medium",
                         QstImgFileName: null,
                         Ans: "If they ain\'t continuous in correct order,",
                         AnsImgFileName: null
@@ -104,6 +132,8 @@
                         ID: 9,
                         Qst: "Because I only need to append at the end of the list.",
                         Mark: 0,
+                        Subject: "Math",
+                        Difficulty: "Easy",
                         QstImgFileName: null,//"https://i.pinimg.com/originals/06/37/fd/0637fd8fcd22bc3ea4cd8ff63ddbc7ce.jpg",
                         Ans: "They might look weird.",
                         AnsImgFileName: "https://i.imgflip.com/34tsbv.png"
@@ -112,6 +142,8 @@
                         ID: 10,
                         Qst: "I just type random stuffs here.",
                         Mark: 0,
+                        Subject: "Math",
+                        Difficulty: "Easy",
                         QstImgFileName: "https://media.makeameme.org/created/dont-mind-me-5acd01.jpg",
                         Ans: "But I don't care.",
                         AnsImgFileName: null
@@ -120,6 +152,8 @@
                         ID: 11,
                         Qst: "But it seems that it is still not enough (atleast until now).",
                         Mark: 0,
+                        Subject: "Math",
+                        Difficulty: "Easy",
                         QstImgFileName: null,
                         Ans: "Yo!",
                         AnsImgFileName: null
@@ -128,6 +162,8 @@
                         ID: 12,
                         Qst: "There is no way I am going to find real questions for this.",
                         Mark: 0,
+                        Subject: "Math",
+                        Difficulty: "Easy",
                         QstImgFileName: null,
                         Ans: "Dogs and humans share many similarities. They both have hair, two eyes, a nose, a mouth, and a similar skeletal structure. Both dogs and humans also have a heart that pumps blood, lungs that help them breathe, and a brain that allows them to think and feel. They are both social creatures that enjoy companionship and can form strong bonds with their family and friends. Additionally, they both require regular exercise and a balanced diet to maintain good health.",
                         AnsImgFileName: null
@@ -136,6 +172,8 @@
                         ID: 13,
                         Qst: "I think it is more easier to just type whatever thing here.",
                         Mark: 0,
+                        Subject: "Math",
+                        Difficulty: "Easy",
                         QstImgFileName: null,
                         Ans: "Some of the questions and answers was provided by Carol. Can you guess which?\nTips: It is easy if you know who is Carol.",
                         AnsImgFileName: null
@@ -144,6 +182,8 @@
                         ID: 14,
                         Qst: "Which I starting to rethink about now.",
                         Mark: 0,
+                        Subject: "Math",
+                        Difficulty: "Easy",
                         QstImgFileName: null,
                         Ans: "Hey hey hey hey hey hey hey hey hey hey hey hey hey hey hey hey hey hey hey hey hey hey hey hey hey hey hey hey hey hey",
                         AnsImgFileName: null
@@ -152,6 +192,8 @@
                         ID: 15,
                         Qst: "Generate by ChatGPT:\nHow does the human circulatory system work? The circulatory system is made up of the heart, blood vessels, and blood. The heart pumps blood throughout the body, delivering oxygen and nutrients to the organs and tissues. Blood vessels, including arteries, veins, and capillaries, transport the blood. Arteries carry oxygenated blood away from the heart, while veins carry deoxygenated blood back to the heart. Capillaries are the smallest blood vessels, and they allow for the exchange of oxygen, carbon dioxide, and other substances between the blood and the body\'s tissues. How does the circulatory system maintain blood pressure, and what happens when it malfunctions?",
                         Mark: 1000,
+                        Subject: "Biology",
+                        Difficulty: "Hard",
                         QstImgFileName: null,
                         Ans: "Generate by ChatGPT:\nThe circulatory system maintains blood pressure by regulating the diameter of blood vessels and adjusting the force and rate of heart contractions. When the system malfunctions, it can lead to high or low blood pressure, heart disease, stroke, or other health problems.",
                         AnsImgFileName: null
@@ -160,6 +202,8 @@
                         ID: 16,
                         Qst: "This should be some kind of objective question, what do you think?\nA) OK\nB) Don\'t know\nC) Dice\nD) Not good",
                         Mark: 0.25,
+                        Subject: "Math",
+                        Difficulty: "Easy",
                         QstImgFileName: null,//"https://www.kindpng.com/picc/m/120-1209732_dog-head-png-dog-meme-face-png-transparent.png",
                         Ans: "B\nWhat answer do you expect?",
                         AnsImgFileName: null//"https://i.pinimg.com/236x/a1/b8/17/a1b81740b36374e7a9a690e683e3e423.jpg"
