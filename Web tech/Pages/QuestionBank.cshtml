@@ -2,3 +2,333 @@
 @model Web_tech.Pages.QuestionBankModel
 @{
 }
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+          integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="~/css/QATablesVer2.css">
+
+</head>
+<style>
+
+    body {
+        font-family: 'Roboto', sans-serif;
+    }
+
+    .ui-w-100 {
+        width: 100px !important;
+        height: auto;
+    }
+
+    .container {
+        padding: 20px;
+    }
+
+
+    .card {
+        margin-top: 80px;
+        border: none;
+        border-radius: 0;
+        box-shadow: 0 1px 4px rgba(24, 28, 33, 0.012);
+        background: rgba(255, 255, 255, 0.72);
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+
+    }
+
+
+    .user-view-table td:first-child {
+        width: 9rem;
+    }
+
+    .user-view-table td {
+        padding-right: 0;
+        padding-left: 0;
+        border: 0;
+    }
+
+    .text-light {
+        color: #babbbc !important;
+    }
+
+    .card .row-bordered > [class*=" col-"]::after {
+        border-color: rgba(24, 28, 33, 0.075);
+    }
+
+    .text-xlarge {
+        font-size: 170% !important;
+    }
+
+    .btn-primary {
+        color: #fff;
+        background-color: #007bff;
+        border-color: #007bff;
+        padding: 0.375rem 0.75rem;
+        font-size: 0.875rem;
+        line-height: 1.5;
+        border-radius: 0.2rem;
+    }
+
+        .btn-primary:hover {
+            color: #fff;
+            background-color: #0069d9;
+            border-color: #0062cc;
+        }
+
+        .btn-primary:focus, .btn-primary.focus {
+            box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.5);
+        }
+
+
+
+    .history-title {
+        font-size: 20rem;
+        font-weight: bold;
+        margin-bottom: 1.25rem;
+    }
+
+    .table {
+        background-color: #fff;
+        border: 1px solid #dee2e6;
+        border-radius: 4px;
+    }
+
+        .table th,
+        .table td {
+            border: none;
+            padding: 10px 15px;
+        }
+
+        .table th {
+            background-color: #f5f5f5;
+            font-weight: 600;
+            text-align: left;
+        }
+
+        .table tbody tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    .cardquestionbank
+    {
+        width:auto;
+        height:auto;
+        margin-top: 80px;
+        border: none;
+        border-radius: 0;
+        display:table;
+        padding:30px 30px;
+        box-shadow: 0 1px 4px rgba(24, 28, 33, 0.012);
+        background: rgba(255, 255, 255, 0.72);
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+
+</style>
+<body>
+    <div class="cardquestionbank mb-4">
+        <h2 class="mt-4 mb-3" style="text-align: center;">History</h2>
+        <hr class="border-light m-0">
+        <div class="table-responsive" id="questionbanks">
+        </div>
+    </div>
+
+    <script src="~/js/QATables.js">
+
+    </script>
+
+    <script>
+        var Qsts = [
+            {
+                ID: 1,
+                Qst: "Question 1",
+                Mark: 10,
+                Subjects_ID: 1,
+                Subject: "Math",
+                Difficulty: 1,
+                QstImgFileName: "https://fastly.picsum.photos/id/703/500/300.jpg?hmac=y-u4GOcV5D90uuBH-_LsIDDOlPAkN4kgkm4fFhD1aJk",
+                Ans: "Answer 1",
+                AnsImgFileName: null
+            },
+            {
+                ID: 2,
+                Qst: "Question 2",
+                Mark: 20,
+                Subjects_ID: 2,
+                Subject: "Science",
+                Difficulty: 5,
+                QstImgFileName: null,
+                Ans: "Answer 2",
+                AnsImgFileName: null
+            },
+            {
+                ID: 3,
+                Qst: "This is just a long nasty very very very very long question example that should be too long to be a question but I cannot actually write that long since real question might be very very very long, you know sometimes there are questions that give you too much unneeded additional information that you would not be needed but can cause distraction and confusion, which is kind of the reason why those are there. If this is a real question I might just ask you to give me an example with maybe minimum 100 words.",
+                Mark: 100,
+                Subjects_ID: 2,
+                Subject: "Science",
+                Difficulty: 1,
+                QstImgFileName: null,
+                Ans: "Blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah.",
+                AnsImgFileName: null
+            },
+            {
+                ID: 4,
+                Qst: "Just continue that question that should be very very very long, in seems that I would need to add more questions so that I can see how it do when exceed the page.",
+                Mark: 0,
+                Subjects_ID: 1,
+                Subject: "Math",
+                Difficulty: 10,
+                QstImgFileName: null,
+                Ans: "Hey",
+                AnsImgFileName: null
+            },
+            {
+                ID: 5,
+                Qst: "Which I mean a lot.",
+                Mark: 0,
+                Subjects_ID: 3,
+                Subject: "English",
+                Difficulty: 1,
+                QstImgFileName: null,
+                Ans: "How is the weather.",
+                AnsImgFileName: null
+            },
+            {
+                ID: 6,
+                Qst: "These questions does not need to be very long though.",
+                Mark: 0,
+                Subjects_ID: 4,
+                Subject: "Germany",
+                Difficulty: 10,
+                QstImgFileName: null,
+                Ans: "Good?",
+                AnsImgFileName: null
+            },
+            {
+                ID: 7,
+                Qst: "But I would need enough questions.",
+                Mark: 0,
+                Subjects_ID: 1,
+                Subject: "Math",
+                Difficulty: 1,
+                QstImgFileName: "E:/杂七杂八EDrive/俺/私人EDrive/图片/mL0j-hutwezf7566947.gif",
+                Ans: "You know, these questions and answers,",
+                AnsImgFileName: null
+            },
+            {
+                ID: 8,
+                Qst: "BTW I don\'t know how many questions had I created.",
+                Mark: 0,
+                Subjects_ID: 5,
+                Subject: "Physic",
+                Difficulty: 5,
+                QstImgFileName: null,
+                Ans: "If they ain\'t continuous in correct order,",
+                AnsImgFileName: null
+            },
+            {
+                ID: 9,
+                Qst: "Because I only need to append at the end of the list.",
+                Mark: 0,
+                Subjects_ID: 1,
+                Subject: "Math",
+                Difficulty: 1,
+                QstImgFileName: null,//"https://i.pinimg.com/originals/06/37/fd/0637fd8fcd22bc3ea4cd8ff63ddbc7ce.jpg",
+                Ans: "They might look weird.",
+                AnsImgFileName: "https://i.imgflip.com/34tsbv.png"
+            },
+            {
+                ID: 10,
+                Qst: "I just type random stuffs here.",
+                Mark: 0,
+                Subjects_ID: 1,
+                Subject: "Math",
+                Difficulty: 1,
+                QstImgFileName: "https://media.makeameme.org/created/dont-mind-me-5acd01.jpg",
+                Ans: "But I don't care.",
+                AnsImgFileName: null
+            },
+            {
+                ID: 11,
+                Qst: "But it seems that it is still not enough (atleast until now).",
+                Mark: 0,
+                Subjects_ID: 1,
+                Subject: "Math",
+                Difficulty: 1,
+                QstImgFileName: null,
+                Ans: "Yo!",
+                AnsImgFileName: null
+            },
+            {
+                ID: 12,
+                Qst: "There is no way I am going to find real questions for this.",
+                Mark: 0,
+                Subjects_ID: 1,
+                Subject: "Math",
+                Difficulty: 1,
+                QstImgFileName: null,
+                Ans: "Dogs and humans share many similarities. They both have hair, two eyes, a nose, a mouth, and a similar skeletal structure. Both dogs and humans also have a heart that pumps blood, lungs that help them breathe, and a brain that allows them to think and feel. They are both social creatures that enjoy companionship and can form strong bonds with their family and friends. Additionally, they both require regular exercise and a balanced diet to maintain good health.",
+                AnsImgFileName: null
+            },
+            {
+                ID: 13,
+                Qst: "I think it is more easier to just type whatever thing here.",
+                Mark: 0,
+                Subjects_ID: 1,
+                Subject: "Math",
+                Difficulty: 1,
+                QstImgFileName: null,
+                Ans: "Some of the questions and answers was provided by Carol. Can you guess which?\nTips: It is easy if you know who is Carol.",
+                AnsImgFileName: null
+            },
+            {
+                ID: 14,
+                Qst: "Which I starting to rethink about now.",
+                Mark: 0,
+                Subjects_ID: 1,
+                Subject: "Math",
+                Difficulty: 1,
+                QstImgFileName: null,
+                Ans: "Hey hey hey hey hey hey hey hey hey hey hey hey hey hey hey hey hey hey hey hey hey hey hey hey hey hey hey hey hey hey",
+                AnsImgFileName: null
+            },
+            {
+                ID: 15,
+                Qst: "Generate by ChatGPT:\nHow does the human circulatory system work? The circulatory system is made up of the heart, blood vessels, and blood. The heart pumps blood throughout the body, delivering oxygen and nutrients to the organs and tissues. Blood vessels, including arteries, veins, and capillaries, transport the blood. Arteries carry oxygenated blood away from the heart, while veins carry deoxygenated blood back to the heart. Capillaries are the smallest blood vessels, and they allow for the exchange of oxygen, carbon dioxide, and other substances between the blood and the body\'s tissues. How does the circulatory system maintain blood pressure, and what happens when it malfunctions?",
+                Mark: 1000,
+                Subjects_ID: 6,
+                Subject: "Biology",
+                Difficulty: 10,
+                QstImgFileName: null,
+                Ans: "Generate by ChatGPT:\nThe circulatory system maintains blood pressure by regulating the diameter of blood vessels and adjusting the force and rate of heart contractions. When the system malfunctions, it can lead to high or low blood pressure, heart disease, stroke, or other health problems.",
+                AnsImgFileName: null
+            },
+            {
+                ID: 16,
+                Qst: "This should be some kind of objective question, what do you think?\nA) OK\nB) Don\'t know\nC) Dice\nD) Not good",
+                Mark: 0.25,
+                Subjects_ID: 1,
+                Subject: "Math",
+                Difficulty: 1,
+                QstImgFileName: null,//"https://www.kindpng.com/picc/m/120-1209732_dog-head-png-dog-meme-face-png-transparent.png",
+                Ans: "B\nWhat answer do you expect?",
+                AnsImgFileName: null//"https://i.pinimg.com/236x/a1/b8/17/a1b81740b36374e7a9a690e683e3e423.jpg"
+            }
+        ];
+
+        CreateQATable(Qsts, "questionbanks");
+    </script>
+</body>
+</html>

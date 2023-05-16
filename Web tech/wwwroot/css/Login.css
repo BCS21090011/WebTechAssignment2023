@@ -3,10 +3,7 @@
     font-family: Arial, sans-serif;
     width: 100%;
     height: 100%;
-    background-image: url('/Resources/Images/back.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
+    
 }
 h2 {
     text-align: center;
@@ -28,20 +25,22 @@ h2 {
     padding: 16px;
     width: 50%;
     margin: auto;
+
+    
 }
 form {
-    width: 90%;
-    height: 70%;
+    width: 100%;
+    height: 85%;
     max-width: 450px;
-    margin: 30px auto;
+    margin: 150px auto;
     padding: 50px;
     background-color: #ffffff;
-    border-radius: 50px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    
+    background: rgba(255, 255, 255, 0.72);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(7.8px);
+    -webkit-backdrop-filter: blur(7.8px);
 }
 @media screen and (max-width: 768px) {
     form {

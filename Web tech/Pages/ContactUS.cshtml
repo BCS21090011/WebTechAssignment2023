@@ -7,23 +7,34 @@
         <style>
 
             body {
-                background-image: url('/Resources/Images/contact-us.png');
-                background-size: cover;
-                background-repeat: no-repeat;
-                background-position: center center;
+               
+            }
+
+            .container {
+                margin-top:0;
+                
+               margin-bottom: calc(10vh + 2vw);
+               
             }
 
             /* Form */
             form {
+                
                 max-width: 600px;
-                margin: 0 auto;
-                margin-top: 250px
+                
+                margin: calc(5vh + 2vw) auto 0;
+                padding: 2% 2vw; /* Add padding to create margin around the form */
+                background: rgba(255, 255, 255, 0.72);
+                border-radius: 16px;
+                box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
             }
 
             ul {
                 list-style: none;
                 padding: 0;
-                margin: 0;
+                margin: auto;
             }
 
             li {
@@ -106,7 +117,7 @@
                         </li>
                         <li>
                             <p>
-                                <button type="submit" class="btn btn-submit">Submit</button>
+                                <button type="submit" class="btn btn-primary btn-lg mt-4">Submit</button>
                             </p>
                         </li>
                     </ul>

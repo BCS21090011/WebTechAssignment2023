@@ -1,6 +1,8 @@
 ﻿@page
-@model Web_tech.Pages.Index3Model
+@model Web_tech.Pages.CreateQuestionPagesModel
 @{
+}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,18 +24,34 @@
         }
 
         .container {
-            margin-top: 350px;
+            margin-top: calc(30vh + 2vw);
+            margin-bottom: calc(10vh + 2vw);
+        }
+        .row{
+            margin-bottom:50px;
+
         }
 
+        .row .widget {
+            height: 40vh;
+            width: 100%;
+            margin:auto;
+            padding: 20px;
+            
+        }
         .widget {
-            background-color: #fff;
-            border-radius: 5px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            padding: 40px 30px;
+            
+            
+            padding: 40px 40 px;
             text-align: center;
             transition: all 0.3s ease-in-out;
             cursor: pointer;
             margin-bottom: 30px;
+            background: rgba(255, 255, 255, 0.72);
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(7.8px);
+            -webkit-backdrop-filter: blur(7.8px);
         }
 
             .widget:hover {
@@ -63,7 +81,7 @@
         .widget-link {
             font-size: 18px;
             font-weight: bold;
-            background-color: #17a2b8;
+            background-color: #007bff;
             border: none;
             border-radius: 5px;
             padding: 10px 20px;
@@ -73,7 +91,10 @@
         }
 
             .widget-link:hover {
-                background-color: #128ca7;
+                background-color: #ffffff;
+                color: #007bff;
+                border-color: #007bff;
+                cursor: pointer;
                 transform: translateY(-2px);
                 box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
             }
@@ -135,27 +156,32 @@
 
         <div class="row">
             <div class="col-md-6">
-                <div class="widget" onclick="window.location.href='/questions-bank'">
+                <div class="widget" ">
                     <i class="fa fa-question-circle-o widget-icon" alt="Questions Bank Icon"></i>
                     <h2 class="widget-title">Questions Bank</h2>
-                    <p class="widget-description">Select questions from a bank of pre-made questions.</p>
-                    <a href="/questions-bank">
-                        <button class="widget-link">Get Started</button>
-                    </a>
+                    <p class="widget-description">Select questions from a bank of pre-made questions.</p>                   
+                    <button class="widget-link" onclick="redirectToPage1() ">Get Started</button>
+                  
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="widget" onclick="window.location.href='/generate-question'">
+                <div class="widget" >
                     <i class="fa fa-pencil-square-o widget-icon" alt="Generate Questions Icon"></i>
                     <h2 class="widget-title">Generate Questions</h2>
                     <p class="widget-description">Create custom questions and add them to your exam paper.</p>
-                    <a href="/generate-question">
-                        <button class="widget-link">Get Started</button>
-                    </a>
+                    <button class="widget-link" onclick="redirectToPage() ">Get Started</button>
+                    
                 </div>
             </div>
         </div>
     </main>
+    <script>
+        function redirectToPage() {
+            window.location.href = '/CreateQuestionPaper';
+        }
+        function redirectToPage1() {
+            window.location.href = '/QuestionBank';
+        }
+    </script>
 </body>
-    </html>
-}
+</html>

@@ -13,15 +13,14 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
           integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="~/css/QATablesVer2.css">
+
 </head>
 <style>
 
     body {
         font-family: 'Roboto', sans-serif;
-        background-image: url('/Resources/Images/profile.jpg');
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center center;
+       
     }
 
     .ui-w-100 {
@@ -33,11 +32,40 @@
         padding: 20px;
     }
 
+
     .card {
         margin-top: 80px;
         border: none;
         border-radius: 0;
         box-shadow: 0 1px 4px rgba(24, 28, 33, 0.012);
+        background: rgba(255, 255, 255, 0.72);
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+    .cardhistory
+    {
+        margin-top: 80px;
+        border: none;
+        border-radius: 0;
+        display:table;
+        padding:30px 30px;
+        box-shadow: 0 1px 4px rgba(24, 28, 33, 0.012);
+        background: rgba(255, 255, 255, 0.72);
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+    .media
+    {
+        box-shadow: 0 1px 4px rgba(24, 28, 33, 0.012);
+        background: rgba(255, 255, 255, 0.72);
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
     }
 
 
@@ -63,26 +91,7 @@
         font-size: 170% !important;
     }
 
-    .btn-primary {
-        color: #fff;
-        background-color: #007bff;
-        border-color: #007bff;
-        padding: 0.375rem 0.75rem;
-        font-size: 0.875rem;
-        line-height: 1.5;
-        border-radius: 0.2rem;
-    }
-
-        .btn-primary:hover {
-            color: #fff;
-            background-color: #0069d9;
-            border-color: #0062cc;
-        }
-
-        .btn-primary:focus, .btn-primary.focus {
-            box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.5);
-        }
-
+    
 
 
     .history-title {
@@ -96,7 +105,7 @@
         background-color: #fff;
         border: 1px solid #dee2e6;
         border-radius: 4px;
-
+        
         
     }
 
@@ -136,7 +145,7 @@
 
         <div class="card">
 
-            <hr class="border-light m-0">
+            
             <div class="card-body">
                 <h5 class="mt-4 mb-3">Information</h5>
                 <table class="table user-view-table m-0">
@@ -183,56 +192,127 @@
 
             </div>
         </div>
-        <div class="card mb-4">
+        <div class="cardhistory mb-4">
             <h2 class="mt-4 mb-3" style="text-align: center;">History</h2>
             <hr class="border-light m-0">
-            <div class="table-responsive">
-                <table class="table card-table m-0">
-                    <tbody>
-                        <tr>
-                            <th>Question Title</th>
-                            <th>Question Subject </th>
-                            <th>Date and Time</th>
-                            <th>Create by</th>
-                            <th>Actions</th>
-                        </tr>
-                        <tr>
-                            <td>Title 1</td>
-                            <td>Subject 1</td>
-                            <td>2023-04-28 10:00 AM</td>
-                            <td>User 1</td>
-                            <td>
-                                <button type="button" class="btn btn-primary">Edit</button>
-                                <button type="button" class="btn btn-danger">Delete</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Title 2</td>
-                            <td>Subject 2</td>
-                            <td>2023-04-27 02:30 PM</td>
-                            <td>User 2</td>
-                            <td>
-                                <button type="button" class="btn btn-primary">Edit</button>
-                                <button type="button" class="btn btn-danger">Delete</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Title 3</td>
-                            <td>Subject 3</td>
-                            <td>2023-04-26 08:45 AM</td>
-                            <td>User 3</td>
-                            <td>
-                                <button type="button" class="btn btn-primary">Edit</button>
-                                <button type="button" class="btn btn-danger">Delete</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="table-responsive" id="profilep">
+               
+                
             </div>
         </div>
 
 
     </div>
+
+<script src="~/js/HistoryTables.js">
+    
+</script>
+<script>
+        let histories = [
+            {
+                ID: 1,
+                GeneratedTime: "1901/10/24 09:00:00",
+                Subject: "History"
+            },
+            {
+                ID: 2,
+                GeneratedTime: "1901/10/25 10:30:00",
+                Subject: "Math"
+            },
+            {
+                ID: 3,
+                GeneratedTime: "1901/10/26 14:15:00",
+                Subject: "English"
+            },
+            {
+                ID: 4,
+                GeneratedTime: "1901/10/27 16:45:00",
+                Subject: "Science"
+            },
+            {
+                ID: 5,
+                GeneratedTime: "1901/10/28 11:20:00",
+                Subject: "Geography"
+            },
+            {
+                ID: 6,
+                GeneratedTime: "1991/10/29 08:30:00",
+                Subject: "Art"
+            },
+            {
+                ID: 7,
+                GeneratedTime: "1999/10/30 13:10:00",
+                Subject: "Music"
+            },
+            {
+                ID: 8,
+                GeneratedTime: "2011/10/31 17:00:00",
+                Subject: "Physical Education"
+            },
+            {
+                ID: 9,
+                GeneratedTime: "2012/11/01 09:45:00",
+                Subject: "Chemistry"
+            },
+            {
+                ID: 10,
+                GeneratedTime: "2023/11/02 12:30:00",
+                Subject: "Biology"
+            },
+            {
+                ID: 11,
+                GeneratedTime: "2023/11/03 14:00:00",
+                Subject: "Physics"
+            },
+            {
+                ID: 12,
+                GeneratedTime: "2023/11/04 16:20:00",
+                Subject: "Computer Science"
+            },
+            {
+                ID: 13,
+                GeneratedTime: "2023/11/05 09:10:00",
+                Subject: "Economics"
+            },
+            {
+                ID: 14,
+                GeneratedTime: "2023/11/06 10:45:00",
+                Subject: "Literature"
+            },
+            {
+                ID: 15,
+                GeneratedTime: "2023/11/07 12:15:00",
+                Subject: "Psychology"
+            },
+            {
+                ID: 16,
+                GeneratedTime: "2023/11/08 14:30:00",
+                Subject: "Sociology"
+            },
+            {
+                ID: 17,
+                GeneratedTime: "2023/11/09 16:50:00",
+                Subject: "Anthropology"
+            },
+            {
+                ID: 18,
+                GeneratedTime: "2023/11/10 09:40:00",
+                Subject: "Philosophy"
+            },
+            {
+                ID: 19,
+                GeneratedTime: "2023/11/11 11:05:00",
+                Subject: "Political Science"
+            },
+            {
+                ID: 20,
+                GeneratedTime: "4048/11/12 13:25:00",
+                Subject: "Foreign Languages"
+            }
+        ];
+
+        CreateHistoryTable(histories, "profilep");
+</script>
 </body>
 
 </html>

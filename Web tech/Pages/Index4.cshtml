@@ -13,64 +13,70 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <style>
-    body {
-        font-family: Arial, sans-serif;
-        background-image: url('/Resources/Images/home.jpg');
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center center;
-    }
+    
+body {
+    font-family: Arial, sans-serif;
+       
+        
+}
 
 
-    .jumbotron {
-        background-color: transparent;
-        margin-top: 0px;
-        padding: 70px;
-    }
 
-        .jumbotron h1 {
-            font-size: 48px;
-            font-weight: bold;
-            color: #343a40;
-            margin-bottom: 30px;
-        }
+.jumbotron {
+    background-color: transparent;
+    margin-top: 0px;
+    padding: 70px;
+}
 
-        .jumbotron p {
-            font-size: 24px;
-            color: #6c757d;
-            margin-bottom: 40px;
-        }
-
-    .btn-primary {
-        background-color: #007bff;
-        border-color: #007bff;
-        padding: 10px 20px;
-        font-size: 16px;
+    .jumbotron h1 {
+        font-size: 48px;
         font-weight: bold;
-        border-radius: 25px;
-        transition: all 0.3s ease-in-out;
+        color: #343a40;
+        margin-bottom: 30px;
     }
 
-        .btn-primary:hover {
-            background-color: #ffffff;
-            color: #007bff;
-            border-color: #007bff;
-            cursor: pointer;
-        }
+    .jumbotron p {
+        font-size: 24px;
+        color: #6c757d;
+        margin-bottom: 40px;
+    }
 
-    .feature {
-        margin-top: 20px;
+     .jumbotron h1.display-4,
+
+     .jumbotron p.lead {
+        color: white;
+     }
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 25px;
+    transition: all 0.3s ease-in-out;
+}
+
+    .btn-primary:hover {
+        background-color: #ffffff;
+        color: #007bff;
+        border-color: #007bff;
+        cursor: pointer;
+    }
+
+.feature {
+    margin-top: 20px;
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+    .feature h2 {
+        font-size: 32px;
+        font-weight: 700;
         margin-bottom: 50px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
     }
-
-        .feature h2 {
-            font-size: 32px;
-            font-weight: 700;
-            margin-bottom: 50px;
-        }
 
 
     .feature-icon {
@@ -88,11 +94,39 @@
         color: #343a40;
         text-align: center;
     }
-
-    .testimonial {
-        padding: 50px 0;
-        
+    .features .card {
+        height: 400px;
+        width: 80%;
+        margin: 0 auto;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.72);
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(7.8px);
+        -webkit-backdrop-filter: blur(7.8px);
     }
+
+    .features .feature-icon {
+        width: 60px;
+        height: 60px;
+    }
+
+    .features .feature-text {
+        font-size: 20px;
+        margin-top: 20px;
+    }
+
+    .features .card-text {
+        font-size: 16px;
+        line-height: 1.5;
+    }
+
+.testimonial {
+        padding: 50px 0;
+
+
+        
+}
 
         .testimonial h2 {
             font-size: 32px;
@@ -102,6 +136,14 @@
 
         .testimonial .card {
             border: none;
+            background: rgba(255, 255, 255, 0.72);
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(7.8px);
+            -webkit-backdrop-filter: blur(7.8px);
+
+
+
         }
 
         .testimonial .card-body {
@@ -129,11 +171,38 @@
             color: #007bff;
             margin-bottom: 0;
         }
+.pricing{}
+        .pricing .card {
+            background: rgba(255, 255, 255, 0.72);
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(7.8px);
+            -webkit-backdrop-filter: blur(7.8px);
+        }
+
+.custom-heading {
+    font-family: Arial, sans-serif;
+    color: white;
+    font-size:32px;
+    font-weight:700;
+        
+}
+
+ .glass-section {
+    background: rgba(255, 255, 255, 0.24);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(7.6px);
+    -webkit-backdrop-filter: blur(7.6px);
+}
+
+    
 
 </style>
-<body>
 
-    <section class="jumbotron text-center">
+<body >
+
+    <section class="jumbotron text-center ">
         <div class="container">
             <h1 class="display-4">Create Exam Paper with Ease</h1>
             <p class="lead">Streamline your workflow and reduce your workload with our platfrom, the easiest and most customizable platform for creating exam papers. Our platform lets you select questions from a question bank and generate a customized exam paper in PDF format. No more time-consuming manual exam paper creation!</p>
@@ -141,9 +210,9 @@
         </div>
     </section>
 
-    <section class="features py-5" style="margin-bottom: 60px; margin-top: -30px;>
+    <section class="features py-5 glass-section " style="margin-bottom: 60px; margin-top: -30px;>
         <div class="container">
-            <h2 class="text-center mb-5">Why Choose Our Platform?</h2>
+            <h2 class="text-center mb-5 text-white custom-heading">Why Choose Our Platform?</h2>
             <div class="row">
                 <div class="col-md-4 mb-4 mb-md-0">
                     <div class="card border-0 feature h-100">
@@ -175,11 +244,11 @@
             </div>
         </div>
     </section>
-    <section class="testimonial" style="margin-bottom: 80px;">
+    <section class="testimonial glass-section" style="margin-bottom: 60px;">
         <div class="container">
-            <h2 class="text-center mb-5">What Our Users Say</h2>
+            <h2 class="text-center mb-5 text-white ">What Our Users Say</h2>
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-4 ">
                     <div class="card h-100">
                         <div class="card-body">
                             <img src="/Resources/Images/Teacher_Flatline.png" alt="Testimonial avatar">
@@ -217,9 +286,9 @@
         </div>
     </section>
 
-    <section class="pricing" style="margin-bottom: 80px; margin-top:-30px;">
+    <section class="pricing glass-section" style="margin-bottom: 80px; margin-top:-30px;">
         <div class="container">
-            <h2 class="text-center mb-5" style="margin-top:30px">Pricing Plans</h2>
+            <h2 class="text-center mb-5 text-white custom-heading" style="margin-top:30px">Pricing Plans</h2>
             <div class="row">
                 <div class="col-md-4">
                     <div class="card">
@@ -271,6 +340,7 @@
                             <a href="#" class="btn btn-primary">Contact Us</a>
                         </div>
                     </div>
+    </section>
 
 
 </body>
