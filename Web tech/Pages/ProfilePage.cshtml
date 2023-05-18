@@ -5,314 +5,315 @@
 
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Profile</title>
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
-          integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-    <link rel="stylesheet" href="index.css">
-    <link rel="stylesheet" href="~/css/QATablesVer2.css">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>User Profile</title>
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+              integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+        <link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="~/css/QATablesVer4.css">
 
-</head>
-<style>
+    </head>
+    <style>
 
-    body {
-        font-family: 'Roboto', sans-serif;
+        body {
+            font-family: 'Roboto', sans-serif;
        
-    }
+        }
 
-    .ui-w-100 {
-        width: 100px !important;
-        height: auto;
-    }
+        .ui-w-100 {
+            width: 100px !important;
+            height: auto;
+        }
 
-    .container {
-        padding: 20px;
-    }
-
-
-    .card {
-        margin-top: 80px;
-        border: none;
-        border-radius: 0;
-        box-shadow: 0 1px 4px rgba(24, 28, 33, 0.012);
-        background: rgba(255, 255, 255, 0.72);
-        border-radius: 16px;
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-    }
-    .cardhistory
-    {
-        margin-top: 80px;
-        border: none;
-        border-radius: 0;
-        display:table;
-        padding:30px 30px;
-        box-shadow: 0 1px 4px rgba(24, 28, 33, 0.012);
-        background: rgba(255, 255, 255, 0.72);
-        border-radius: 16px;
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-    }
-    .media
-    {
-        box-shadow: 0 1px 4px rgba(24, 28, 33, 0.012);
-        background: rgba(255, 255, 255, 0.72);
-        border-radius: 16px;
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-    }
+        .container {
+            padding: 20px;
+        }
 
 
-    .user-view-table td:first-child {
-        width: 9rem;
-    }
+        .card {
+            margin-top: 80px;
+            border: none;
+            border-radius: 0;
+            box-shadow: 0 1px 4px rgba(24, 28, 33, 0.012);
+            background: rgba(255, 255, 255, 0.72);
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        .cardhistory
+        {
+            margin-top: 80px;
+            border: none;
+            border-radius: 0;
+            display:table;
+            padding:30px 30px;
+            box-shadow: 0 1px 4px rgba(24, 28, 33, 0.012);
+            background: rgba(255, 255, 255, 0.72);
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        .media
+        {
+            box-shadow: 0 1px 4px rgba(24, 28, 33, 0.012);
+            background: rgba(255, 255, 255, 0.72);
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
 
-    .user-view-table td {
-        padding-right: 0;
-        padding-left: 0;
-        border: 0;
-    }
 
-    .text-light {
-        color: #babbbc !important;
-    }
+        .user-view-table td:first-child {
+            width: 9rem;
+        }
 
-    .card .row-bordered > [class*=" col-"]::after {
-        border-color: rgba(24, 28, 33, 0.075);
-    }
+        .user-view-table td {
+            padding-right: 0;
+            padding-left: 0;
+            border: 0;
+        }
 
-    .text-xlarge {
-        font-size: 170% !important;
-    }
+        .text-light {
+            color: #babbbc !important;
+        }
+
+        .card .row-bordered > [class*=" col-"]::after {
+            border-color: rgba(24, 28, 33, 0.075);
+        }
+
+        .text-xlarge {
+            font-size: 170% !important;
+        }
 
     
 
 
-    .history-title {
-        font-size: 20rem;
-        font-weight: bold;
-        margin-bottom: 1.25rem;
+        .history-title {
+            font-size: 20rem;
+            font-weight: bold;
+            margin-bottom: 1.25rem;
         
-    }
-
-    .table {
-        background-color: #fff;
-        border: 1px solid #dee2e6;
-        border-radius: 4px;
-        
-        
-    }
-
-        .table th,
-        .table td {
-            border: none;
-            padding: 10px 15px;
         }
 
-        .table th {
-            background-color: #f5f5f5;
-            font-weight: 600;
-            text-align: left;
+        .table {
+            background-color: #fff;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+        
+        
         }
 
-        .table tbody tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
+            .table th,
+            .table td {
+                border: none;
+                padding: 10px 15px;
+            }
+
+            .table th {
+                background-color: #f5f5f5;
+                font-weight: 600;
+                text-align: left;
+            }
+
+            .table tbody tr:nth-child(even) {
+                background-color: #f2f2f2;
+            }
 
 
-</style>
+    </style>
 
-<body>
+    <body>
 
-    <div class="container bootdey flex-grow-1 container-p-y">
+        <div class="container bootdey flex-grow-1 container-p-y">
 
-        <div class="media align-items-center py-3 mb-3" style="margin-top: 80px;background: #f5f5f5;">
-            <img src="/Resources/Images/user.png" alt="My Image" class="d-block ui-w-100 rounded-circle">
-            <div class="media-body ml-4">
-                <h4 class="font-weight-bold mb-0">Username<span class="text-muted font-weight-normal">Username</span></h4>
-                <div class="text-muted mb-2">ID: </div>
-                <a href="javascript:void(0)" class="btn btn-primary btn-sm">Edit Profile</a>&nbsp;
+            <div class="media align-items-center py-3 mb-3" style="margin-top: 80px;background: #f5f5f5;">
+                <img src="/Resources/Images/user.png" alt="My Image" class="d-block ui-w-100 rounded-circle">
+                <div class="media-body ml-4">
+                    <h4 class="font-weight-bold mb-0">Username<span class="text-muted font-weight-normal">Username</span></h4>
+                    <div class="text-muted mb-2">ID: </div>
+                    <a href="javascript:void(0)" class="btn btn-primary btn-sm">Edit Profile</a>&nbsp;
+                </div>
             </div>
-        </div>
 
 
 
-        <div class="card">
+            <div class="card">
 
             
-            <div class="card-body">
-                <h5 class="mt-4 mb-3">Information</h5>
-                <table class="table user-view-table m-0">
-                    <tbody>
-                        <tr>
-                            <td>Username:</td>
-                        </tr>
-                        <tr>
-                            <td>Name:</td>
-                        </tr>
-                        <tr>
-                            <td>E-mail:</td>
-                        </tr>
-                        <tr>
-                            <td>School:</td>
-                        </tr>
-                        <tr>
-                            <td>Phone:</td>
-                        </tr>
+                <div class="card-body">
+                    <h5 class="mt-4 mb-3">Information</h5>
+                    <table class="table user-view-table m-0">
+                        <tbody>
+                            <tr>
+                                <td>Username:</td>
+                            </tr>
+                            <tr>
+                                <td>Name:</td>
+                            </tr>
+                            <tr>
+                                <td>E-mail:</td>
+                            </tr>
+                            <tr>
+                                <td>School:</td>
+                            </tr>
+                            <tr>
+                                <td>Phone:</td>
+                            </tr>
 
-                    </tbody>
-                </table>
-                <h5 class="mt-4 mb-3">Personal info</h5>
+                        </tbody>
+                    </table>
+                    <h5 class="mt-4 mb-3">Personal info</h5>
 
-                <table class="table user-view-table m-0">
-                    <tbody>
-                        <tr>
-                            <td>Birthday:</td>
+                    <table class="table user-view-table m-0">
+                        <tbody>
+                            <tr>
+                                <td>Birthday:</td>
 
-                        </tr>
-                        <tr>
-                            <td>Country:</td>
+                            </tr>
+                            <tr>
+                                <td>Country:</td>
 
-                        </tr>
-                        <tr>
-                            <td>Languages:</td>
+                            </tr>
+                            <tr>
+                                <td>Languages:</td>
 
-                        </tr>
-                    </tbody>
-                </table>
-
-
+                            </tr>
+                        </tbody>
+                    </table>
 
 
+
+
+                </div>
             </div>
-        </div>
-        <div class="cardhistory mb-4">
-            <h2 class="mt-4 mb-3" style="text-align: center;">History</h2>
-            <hr class="border-light m-0">
-            <div class="table-responsive" id="profilep">
+            <div class="cardhistory mb-4">
+                <h2 class="mt-4 mb-3" style="text-align: center;">History</h2>
+                <hr class="border-light m-0">
+                <div class="table-responsive" id="profilep">
                
                 
+                </div>
             </div>
+
+
         </div>
 
+        <script src="~/js/HistoryTables.js">
+            
+        </script>
 
-    </div>
+        <script>
+            let histories = [
+                {
+                    ID: 1,
+                    GeneratedTime: "1901/10/24 09:00:00",
+                    Subject: "History"
+                },
+                {
+                    ID: 2,
+                    GeneratedTime: "1901/10/25 10:30:00",
+                    Subject: "Math"
+                },
+                {
+                    ID: 3,
+                    GeneratedTime: "1901/10/26 14:15:00",
+                    Subject: "English"
+                },
+                {
+                    ID: 4,
+                    GeneratedTime: "1901/10/27 16:45:00",
+                    Subject: "Science"
+                },
+                {
+                    ID: 5,
+                    GeneratedTime: "1901/10/28 11:20:00",
+                    Subject: "Geography"
+                },
+                {
+                    ID: 6,
+                    GeneratedTime: "1991/10/29 08:30:00",
+                    Subject: "Art"
+                },
+                {
+                    ID: 7,
+                    GeneratedTime: "1999/10/30 13:10:00",
+                    Subject: "Music"
+                },
+                {
+                    ID: 8,
+                    GeneratedTime: "2011/10/31 17:00:00",
+                    Subject: "Physical Education"
+                },
+                {
+                    ID: 9,
+                    GeneratedTime: "2012/11/01 09:45:00",
+                    Subject: "Chemistry"
+                },
+                {
+                    ID: 10,
+                    GeneratedTime: "2023/11/02 12:30:00",
+                    Subject: "Biology"
+                },
+                {
+                    ID: 11,
+                    GeneratedTime: "2023/11/03 14:00:00",
+                    Subject: "Physics"
+                },
+                {
+                    ID: 12,
+                    GeneratedTime: "2023/11/04 16:20:00",
+                    Subject: "Computer Science"
+                },
+                {
+                    ID: 13,
+                    GeneratedTime: "2023/11/05 09:10:00",
+                    Subject: "Economics"
+                },
+                {
+                    ID: 14,
+                    GeneratedTime: "2023/11/06 10:45:00",
+                    Subject: "Literature"
+                },
+                {
+                    ID: 15,
+                    GeneratedTime: "2023/11/07 12:15:00",
+                    Subject: "Psychology"
+                },
+                {
+                    ID: 16,
+                    GeneratedTime: "2023/11/08 14:30:00",
+                    Subject: "Sociology"
+                },
+                {
+                    ID: 17,
+                    GeneratedTime: "2023/11/09 16:50:00",
+                    Subject: "Anthropology"
+                },
+                {
+                    ID: 18,
+                    GeneratedTime: "2023/11/10 09:40:00",
+                    Subject: "Philosophy"
+                },
+                {
+                    ID: 19,
+                    GeneratedTime: "2023/11/11 11:05:00",
+                    Subject: "Political Science"
+                },
+                {
+                    ID: 20,
+                    GeneratedTime: "4048/11/12 13:25:00",
+                    Subject: "Foreign Languages"
+                }
+            ];
 
-<script src="~/js/HistoryTables.js">
-    
-</script>
-<script>
-        let histories = [
-            {
-                ID: 1,
-                GeneratedTime: "1901/10/24 09:00:00",
-                Subject: "History"
-            },
-            {
-                ID: 2,
-                GeneratedTime: "1901/10/25 10:30:00",
-                Subject: "Math"
-            },
-            {
-                ID: 3,
-                GeneratedTime: "1901/10/26 14:15:00",
-                Subject: "English"
-            },
-            {
-                ID: 4,
-                GeneratedTime: "1901/10/27 16:45:00",
-                Subject: "Science"
-            },
-            {
-                ID: 5,
-                GeneratedTime: "1901/10/28 11:20:00",
-                Subject: "Geography"
-            },
-            {
-                ID: 6,
-                GeneratedTime: "1991/10/29 08:30:00",
-                Subject: "Art"
-            },
-            {
-                ID: 7,
-                GeneratedTime: "1999/10/30 13:10:00",
-                Subject: "Music"
-            },
-            {
-                ID: 8,
-                GeneratedTime: "2011/10/31 17:00:00",
-                Subject: "Physical Education"
-            },
-            {
-                ID: 9,
-                GeneratedTime: "2012/11/01 09:45:00",
-                Subject: "Chemistry"
-            },
-            {
-                ID: 10,
-                GeneratedTime: "2023/11/02 12:30:00",
-                Subject: "Biology"
-            },
-            {
-                ID: 11,
-                GeneratedTime: "2023/11/03 14:00:00",
-                Subject: "Physics"
-            },
-            {
-                ID: 12,
-                GeneratedTime: "2023/11/04 16:20:00",
-                Subject: "Computer Science"
-            },
-            {
-                ID: 13,
-                GeneratedTime: "2023/11/05 09:10:00",
-                Subject: "Economics"
-            },
-            {
-                ID: 14,
-                GeneratedTime: "2023/11/06 10:45:00",
-                Subject: "Literature"
-            },
-            {
-                ID: 15,
-                GeneratedTime: "2023/11/07 12:15:00",
-                Subject: "Psychology"
-            },
-            {
-                ID: 16,
-                GeneratedTime: "2023/11/08 14:30:00",
-                Subject: "Sociology"
-            },
-            {
-                ID: 17,
-                GeneratedTime: "2023/11/09 16:50:00",
-                Subject: "Anthropology"
-            },
-            {
-                ID: 18,
-                GeneratedTime: "2023/11/10 09:40:00",
-                Subject: "Philosophy"
-            },
-            {
-                ID: 19,
-                GeneratedTime: "2023/11/11 11:05:00",
-                Subject: "Political Science"
-            },
-            {
-                ID: 20,
-                GeneratedTime: "4048/11/12 13:25:00",
-                Subject: "Foreign Languages"
-            }
-        ];
-
-        CreateHistoryTable(histories, "profilep");
-</script>
-</body>
+            CreateHistoryTable(histories, "profilep");
+        </script>
+    </body>
 
 </html>

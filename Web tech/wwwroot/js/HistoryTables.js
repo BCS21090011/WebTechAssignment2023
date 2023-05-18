@@ -56,6 +56,8 @@ function CreateHistoryTable(histories, containerID) {
 
         // Actions:
         const actionTd = document.createElement("td");
+        actionTd.classList.add("QAValue");
+        
         const editBtn = document.createElement("button");
         editBtn.textContent = "Edit";
         editBtn.style.width = "50%";

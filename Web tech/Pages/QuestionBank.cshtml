@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
           integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="index.css">
-    <link rel="stylesheet" href="~/css/QATablesVer2.css">
+    <link rel="stylesheet" href="~/css/QATablesVer4.css">
 
 </head>
 <style>
@@ -138,13 +138,20 @@
 </style>
 <body>
     <div class="cardquestionbank mb-4">
-        <h2 class="mt-4 mb-3" style="text-align: center;">History</h2>
+        <h2 class="mt-4 mb-3" style="text-align: center;">Question Bank</h2>
         <hr class="border-light m-0">
-        <div class="table-responsive" id="questionbanks">
+        <div class="table-responsive" id="questionbanks" style="height: 60vh; max-height: 60vh; overflow-y: auto;">
+
+        </div>
+        <div style="display: flex; justify-content: center; align-items: center;">
+            <button onclick="PrevChunck()">Prev</button>
+            <input type="number" id="CurPageNum" value="1" min="1" oninput="CurPageNumFunc()" onchange="CurPageNumFunc()">
+            <span id="MaxPageNum"></span>
+            <button onclick="NextChunck()">Next</button>
         </div>
     </div>
 
-    <script src="~/js/QATables.js">
+    <script src="~/js/QATablesVer2.js">
 
     </script>
 
@@ -328,7 +335,72 @@
             }
         ];
 
-        CreateQATable(Qsts, "questionbanks");
+        function SplitArrayIntoChuncks(array, sizePerChunck) {
+            let chuncks = [];
+
+            for(let i = 0; i < array.length; i += sizePerChunck) {
+                const chunck = array.slice(i, i + sizePerChunck);
+                chuncks.push(chunck);
+            }
+
+            return chuncks;
+        }
+
+        let QstsChuncks = SplitArrayIntoChuncks(Qsts, 4);
+        var curChunckIndex = 0;
+
+        const curPageNum = document.getElementById("CurPageNum");
+        const maxPageNum = document.getElementById("MaxPageNum");
+        if(QstsChuncks.length > 0) {
+            curPageNum.max = QstsChuncks.length;
+            maxPageNum.textContent = '/' + QstsChuncks.length;
+        }
+        else {
+            curPageNum.max = 1;
+            maxPageNum.textContent = '/' + 1;
+        }
+            
+        function CurPageNumFunc() {
+            const page = parseInt(curPageNum.value);
+            if(!isNaN(page)) {
+                GotoChunckIndex(page - 1);
+            }
+        }
+
+        function NextChunck() {
+            if(curChunckIndex < QstsChuncks.length - 1) {
+                GotoChunckIndex(curChunckIndex + 1);
+            }
+            else {
+                GotoChunckIndex(0);
+            }
+        }
+
+        function PrevChunck() {
+            if(curChunckIndex > 0) {
+                GotoChunckIndex(curChunckIndex - 1);
+            }
+            else {
+                GotoChunckIndex(QstsChuncks.length - 1);
+            }
+        }
+
+        function GotoChunckIndex(index) {
+            if(index >= 0 && index < QstsChuncks.length) {
+                curPageNum.value = index + 1;
+                curChunckIndex = index;
+                CreateQATable(QstsChuncks[index], "questionbanks");
+            }
+            else {
+                console.log("Chunck index (" + index + ") is out of range (0, " + QstsChuncks.length + ")");
+                curPageNum.value = curChunckIndex + 1;
+            }
+        }
+
+        GotoChunckIndex(0);
+
+        // These below will just display all instead of chunk by chunck.
+        // CreateQATable(Qsts, "questionbanks");
     </script>
 </body>
 </html>
