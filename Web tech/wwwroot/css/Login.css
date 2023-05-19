@@ -124,8 +124,8 @@ input[type="password"] {
 }
 
 button[type="submit"] {
-    background-color: #0077cc;
-    color: white;
+    background-color: #007bff;
+    border-color: #007bff;
     padding: 14px 20px;
     margin: 8px 0;
     border: none;
@@ -136,6 +136,10 @@ button[type="submit"] {
 
     button[type="submit"]:hover {
         opacity: 0.8;
+        background-color: #ffffff;
+        color: #007bff;
+        border-color: #007bff;
+        cursor: pointer;
     }
 
 

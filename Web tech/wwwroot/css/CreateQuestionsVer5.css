@@ -93,3 +93,22 @@
     background-color: lightblue;
     border: dashed 1px black;
 }
+
+.container {
+    width: 90%;
+    height: 90%;
+    
+    margin-left: auto;
+    margin-right: auto;
+    
+    border: none;
+    border-radius: 0;
+    display: table;
+    padding: 30px 30px;
+    box-shadow: 0 1px 4px rgba(24, 28, 33, 0.012);
+    background: rgba(255, 255, 255, 0.24);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}

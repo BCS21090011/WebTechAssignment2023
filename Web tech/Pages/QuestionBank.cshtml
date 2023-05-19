@@ -161,7 +161,7 @@
 </style>
 <body>
     <div class="cardquestionbank mb-4">
-        <a href="/KeyInPage" class="btn-top-left">+ New Question</a>
+        <button onclick="redirectToPage()" class="btn-top-left">New Question</button>
         <h2 class="mt-4 mb-3" style="text-align: left; font-weight:bold; color:white;">Question Bank</h2>
         <hr class="border-light m-0">
         <div class="table-responsive" id="questionbanks" style="height: 60vh; max-height: 60vh; overflow-y: auto;">
@@ -178,7 +178,12 @@
     <script src="~/js/QATablesVer2.js">
 
     </script>
-   
+    <script>
+        function redirectToPage() {
+            window.location.href = '/CreateQuestionPaper';
+        }
+        
+    </script>
     <script>
         var Qsts = [
             {
