@@ -11,25 +11,25 @@
             }
 
             .container {
-                margin-top:0;
-                
-               margin-bottom: calc(10vh + 2vw);
+                margin-top:0;                
+                margin-bottom: calc(10vh + 2vw);
                
             }
 
             /* Form */
             form {
                 
-                max-width: 600px;
-                
-                margin: calc(5vh + 2vw) auto 0;
-                padding: 2% 2vw; /* Add padding to create margin around the form */
+                max-width: 700px;
+                        
+                margin: calc(5vh + 3vw) auto 0;
+                padding: 5% 2vw  ; /* Add padding to create margin around the form */
                 background: rgba(255, 255, 255, 0.72);
                 border-radius: 16px;
                 box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
                 backdrop-filter: blur(10px);
                 -webkit-backdrop-filter: blur(10px);
             }
+
 
             ul {
                 list-style: none;
@@ -61,19 +61,28 @@
                 height: 150px;
             }
 
-            .btn-submit {
+          
+                
+              .rowbody button[type="submit"]{
+                
                 background-color: #007bff;
-                color: #fff;
+                color: white;
+                padding: 12px 20px;
                 border: none;
-                padding: 10px 20px;
-                border-radius: 5px;
-                font-size: 16px;
+                position: absolute;
+                border-radius: 15px;
                 cursor: pointer;
+                margin-bottom:10px;
+                font-weight: bold;
+                transition: all 0.3s ease-in-out;
             }
 
-                .btn-submit:hover {
-                    background-color: #0069d9;
-                }
+            .rowbody button[type="submit"]:hover {
+                background-color: #ffffff;
+                color: #007bff;
+                border-color: #007bff;
+                cursor: pointer;
+            }
 
         </style>
 
@@ -87,7 +96,7 @@
 
         <div class="container">
 
-            <div class="row body">
+            <div class="rowbody">
 
                 <form action="#">
                     <h1>CONTACT US &nbsp;</h1>
@@ -117,7 +126,7 @@
                         </li>
                         <li>
                             <p>
-                                <button type="submit" class="btn btn-primary btn-lg mt-4">Submit</button>
+                                <button type="submit" >Submit</button>
                             </p>
                         </li>
                     </ul>

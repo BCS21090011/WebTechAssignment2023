@@ -99,7 +99,7 @@
 
     .table {
         background-color: #fff;
-        border: 1px solid #dee2e6;
+        
         border-radius: 4px;
     }
 
@@ -110,13 +110,13 @@
         }
 
         .table th {
-            background-color: #f5f5f5;
+            
             font-weight: 600;
             text-align: left;
         }
 
         .table tbody tr:nth-child(even) {
-            background-color: #f2f2f2;
+            
         }
     .cardquestionbank
     {
@@ -128,17 +128,41 @@
         display:table;
         padding:30px 30px;
         box-shadow: 0 1px 4px rgba(24, 28, 33, 0.012);
-        background: rgba(255, 255, 255, 0.72);
+        background: rgba(255, 255, 255, 0.24);
         border-radius: 16px;
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
     }
 
+    .btn-top-left {
+        position: absolute;
+        top:60px;
+        right: 30px;
+        background-color: #007bff;
+        color: white;
+        padding: 8px 15px;
+        border: none;
+        
+        border-radius: 10px;
+        cursor: pointer;
+        
+        font-weight: bold;
+        transition: all 0.3s ease-in-out;}    
+        
+        .btn-top-left:hover{
+            background-color: #ffffff;
+            color: #007bff;
+            border-color: #007bff;
+            cursor: pointer;
+        }
+
+
 </style>
 <body>
     <div class="cardquestionbank mb-4">
-        <h2 class="mt-4 mb-3" style="text-align: center;">Question Bank</h2>
+        <a href="/KeyInPage" class="btn-top-left">+ New Question</a>
+        <h2 class="mt-4 mb-3" style="text-align: left; font-weight:bold; color:white;">Question Bank</h2>
         <hr class="border-light m-0">
         <div class="table-responsive" id="questionbanks" style="height: 60vh; max-height: 60vh; overflow-y: auto;">
 
@@ -154,7 +178,7 @@
     <script src="~/js/QATablesVer2.js">
 
     </script>
-
+   
     <script>
         var Qsts = [
             {

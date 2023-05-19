@@ -95,15 +95,17 @@ body {
         text-align: center;
     }
     .features .card {
-        height: 400px;
-        width: 80%;
-        margin: 0 auto;
+        width: clamp(200px, 80%, 500px);
+        max-height: clamp(200px, 50vh, 350px);
+        
         padding: 20px;
         background: rgba(255, 255, 255, 0.72);
         border-radius: 16px;
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         backdrop-filter: blur(7.8px);
         -webkit-backdrop-filter: blur(7.8px);
+        margin: calc( 2vw) auto ;
+        overflow:hidden;
     }
 
     .features .feature-icon {
@@ -119,6 +121,7 @@ body {
     .features .card-text {
         font-size: 16px;
         line-height: 1.5;
+
     }
 
 .testimonial {
@@ -152,8 +155,8 @@ body {
 
             .testimonial .card-body img {
                 border-radius: 50%;
-                width: 250px;
-                height: 150px;
+                max-width: 100%;
+                height: auto;
                 object-fit: cover;
                 margin-bottom: 20px;
             }
@@ -171,13 +174,21 @@ body {
             color: #007bff;
             margin-bottom: 0;
         }
-.pricing{}
+.pricing{
+        padding: 50px 0;
+    }
         .pricing .card {
+           
             background: rgba(255, 255, 255, 0.72);
             border-radius: 16px;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
             backdrop-filter: blur(7.8px);
             -webkit-backdrop-filter: blur(7.8px);
+        }
+        .pricing h2{
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 50px;
         }
 
 .custom-heading {
@@ -190,10 +201,11 @@ body {
 
  .glass-section {
     background: rgba(255, 255, 255, 0.24);
-    border-radius: 16px;
+    
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(7.6px);
     -webkit-backdrop-filter: blur(7.6px);
+        margin: calc( 5vh+2vw) auto 0;
 }
 
     
@@ -286,9 +298,9 @@ body {
         </div>
     </section>
 
-    <section class="pricing glass-section" style="margin-bottom: 80px; margin-top:-30px;">
+    <section class="pricing glass-section" style="margin-bottom: 80px;">
         <div class="container">
-            <h2 class="text-center mb-5 text-white custom-heading" style="margin-top:30px">Pricing Plans</h2>
+            <h2 class="text-center mb-5 text-white custom-heading" >Pricing Plans</h2>
             <div class="row">
                 <div class="col-md-4">
                     <div class="card">

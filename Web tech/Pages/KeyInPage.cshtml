@@ -44,11 +44,13 @@
             #subject-editor {
                 height: 200px;
                 width: 100%;
+            background-color: white;
             }
 
             #answer-editor {
                 height: 200px;
                 width: 100%;
+                background-color:white;
             }
 
             .form-wrapper {
@@ -59,61 +61,91 @@
                 margin: auto;
                 margin-top: 50px;
                 position: relative;
+                background: rgba(255, 255, 255, 0.72);
+                border-radius: 16px;
+                box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+                backdrop-filter: blur(7.8px);
+                -webkit-backdrop-filter: blur(7.8px);
+                
             }
 
                 .form-wrapper input[type="submit"] {
-                    background-color: #4CAF50;
+                    background-color: #007bff;
                     color: white;
                     padding: 12px 20px;
                     border: none;
                     position: absolute;
-                    border-radius: 4px;
+                    border-radius: 15px;
                     cursor: pointer;
                     bottom: 15px;
                     right: 15px;
+                    font-weight: bold;
+                    transition: all 0.3s ease-in-out;
+
+                }
+
+                .form-wrapper input[type="submit"]:hover{
+                    background-color: #ffffff;
+                    color: #007bff;
+                    border-color: #007bff;
+                    cursor: pointer;
+                }
+            .Container
+            {
+            margin-top: calc(10vh + 2vw) ;
+            margin-bottom: calc(10vh + 2vw) ;
+            }
+            
+                .submitbut:hover{
+                background-color: #ffffff;
+                color: #007bff;
+                border-color: #007bff;
+                cursor: pointer;
                 }
         </style>
 
         <body>
-            <div class="form-wrapper">
-                <form>
-                    <label for="difficulty">Difficulty level:</label>
-                    <select id="difficulty" name="difficulty">
-                        <option value="easy">Easy</option>
-                        <option value="medium">Medium</option>
-                        <option value="hard">Hard</option>
-                    </select>
+            <div class="Container">
+                <div class="form-wrapper">
+                    <form>
+                        <label for="difficulty">Difficulty level:</label>
+                        <select id="difficulty" name="difficulty">
+                            <option value="easy">Easy</option>
+                            <option value="medium">Medium</option>
+                            <option value="hard">Hard</option>
+                        </select>
 
-                    <label for="subject">Subject:</label>
-                    <select id="subject">
-                        <option value="math">Math</option>
-                        <option value="english">English</option>
-                        <option value="history">History</option>
-                        <option value="science">Science</option>
-                        <option value="other">Other</option>
-                    </select>
-                    <input type="text" id="other-subject" placeholder="Enter subject">
+                        <label for="subject">Subject:</label>
+                        <select id="subject">
+                            <option value="math">Math</option>
+                            <option value="english">English</option>
+                            <option value="history">History</option>
+                            <option value="science">Science</option>
+                            <option value="other">Other</option>
+                        </select>
+                        <input type="text" id="other-subject" placeholder="Enter subject">
 
-                    <label for="question">Question:</label>
-                    <div id="subject-editor"></div>
+                        <label for="question">Question:</label>
+                        <div id="subject-editor"></div>
 
-                    <label for="answer">Answer:</label>
-                    <div id="answer-editor"></div>
+                        <label for="answer">Answer:</label>
+                        <div id="answer-editor"></div>
 
 
-                    <label for="marks">Marks:</label>
-                    <input type="number" id="marks" name="marks" min="0">
+                        <label for="marks">Marks:</label>
+                        <input type="number" id="marks" name="marks" min="0">
 
-                    <label for="question-image">Upload image:</label>
-                    <input type="file" id="question-image" name="question-image" onchange="previewquestionImage(event)">
-                    <img id="question-preview" src="#" alt="Preview Image" style="display: none; max-width: 300px; max-height: 300px;">
+                        <label for="question-image">Upload image:</label>
+                        <input type="file" id="question-image" name="question-image" onchange="previewquestionImage(event)">
+                        <img id="question-preview" src="#" alt="Preview Image" style="display: none; max-width: 300px; max-height: 300px;">
 
-                    <label for="answer-image">Upload image:</label>
-                    <input type="file" id="answer-image" name="answer-image" onchange="previewanswerImage(event)">
-                    <img id="answer-preview" src="#" alt="Preview Image" style="display: none; max-width: 300px; max-height: 300px;">
+                        <label for="answer-image">Upload image:</label>
+                        <input type="file" id="answer-image" name="answer-image" onchange="previewanswerImage(event)">
+                        <img id="answer-preview" src="#" alt="Preview Image" style="display: none; max-width: 300px; max-height: 300px;">
 
-                    <input type="submit" value="Submit">
-                </form>
+                        <input type="submit"  value="Submit">
+                    </form>
+                </div>
             </div>
         </body>
         <script>
