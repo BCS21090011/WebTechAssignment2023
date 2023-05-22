@@ -4,16 +4,19 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Data.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("Web_techContextConnection") ?? throw new InvalidOperationException("Connection string 'Web_techContextConnection' not found.");
 
-builder.Services.AddDbContext<context>(options =>
+builder.Services.AddDbContext<DatabaseContext>(options =>
     options.UseSqlServer(connectionString));
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddSession(); // Add session support
+
+
 
 builder.Services.AddAuthentication(options =>
 {
@@ -54,8 +57,15 @@ app.UseStaticFiles();
 app.UseSession();
 
 app.UseRouting();
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllerRoute(
+        name: "default",
+        pattern: "{controller=Home}/{action=Index}/{id?}");
+    endpoints.MapRazorPages();
+});
 app.UseAuthentication();
-app.UseAuthorization();
+
 
 app.MapRazorPages();
 
