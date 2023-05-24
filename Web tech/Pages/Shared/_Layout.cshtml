@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -155,13 +157,16 @@
                 <a href="CreateQuestionPages" class="nav-menu__link">Create question</a>
                 <a href="profilepage" class="nav-menu__link" >Profile</a>
                 <a href="contactus" class="nav-menu__link">Contact Us</a>
+               <!--@Html.Partial("_LoginPartial")-->
+                
             </div>
-            
+
         </div>
     </div>
 <div>
         @RenderBody()
 </div>
     @await RenderSectionAsync("Scripts", required: false)
+
 </body>
 </html>

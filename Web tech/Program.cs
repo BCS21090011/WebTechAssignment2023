@@ -1,10 +1,10 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Data.Models;
+
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("Web_techContextConnection") ?? throw new InvalidOperationException("Connection string 'Web_techContextConnection' not found.");
@@ -16,7 +16,13 @@ builder.Services.AddDbContext<DatabaseContext>(options =>
 builder.Services.AddRazorPages();
 builder.Services.AddSession(); // Add session support
 
-
+builder.Services.AddDefaultIdentity<IdentityUser>(options =>
+{
+    //options
+})
+    .AddRoles<IdentityRole>()
+    .AddEntityFrameworkStores<DatabaseContext>()
+    .AddDefaultTokenProviders();
 
 builder.Services.AddAuthentication(options =>
 {
@@ -40,7 +46,11 @@ builder.Services.AddAuthentication(options =>
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
         };
     });
-
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("AdminOnly", policy =>
+        policy.RequireRole("Admin"));
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -57,6 +67,8 @@ app.UseStaticFiles();
 app.UseSession();
 
 app.UseRouting();
+app.UseAuthorization();
+
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapControllerRoute(
@@ -65,6 +77,7 @@ app.UseEndpoints(endpoints =>
     endpoints.MapRazorPages();
 });
 app.UseAuthentication();
+
 
 
 app.MapRazorPages();

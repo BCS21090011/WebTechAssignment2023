@@ -2,12 +2,17 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
+
+
+
 namespace Data.Models
 {
-    public partial class DatabaseContext : DbContext
+    public partial class DatabaseContext : IdentityDbContext<IdentityUser>
     {
         public DatabaseContext()
         {
@@ -27,6 +32,8 @@ namespace Data.Models
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasAnnotation("Scaffolding:ConnectionString", "Data Source=(local);Initial Catalog=Database;Integrated Security=true");
+            base.OnModelCreating(modelBuilder);
+
 
             modelBuilder.Entity<History>(entity =>
             {

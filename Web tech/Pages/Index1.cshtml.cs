@@ -1,130 +1,168 @@
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.Extensions.Configuration;
-using System.Data.SqlClient;
-using System.Threading.Tasks;
-
+using System.Text;
+using System.Text.Encodings.Web;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using Microsoft.AspNetCore.WebUtilities;
 namespace Web_tech.Pages
 {
     public class RegisterModel : PageModel
     {
-        [BindProperty]
-        public string? UserName { get; set; }
+        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<IdentityUser> _userManager;
+        private readonly IUserStore<IdentityUser> _userStore;
+        private readonly IUserEmailStore<IdentityUser> _emailStore;
+        private readonly ILogger<RegisterModel> _logger;
+        private readonly IEmailSender _emailSender;
 
-        [BindProperty]
-        [DataType(DataType.Password)]
-        public string? UserPassword { get; set; }
-
-        [BindProperty]
-        [DataType(DataType.Password)]
-        [Compare(nameof(UserPassword), ErrorMessage = "Passwords do not match.")]
-        public string? ConfirmPassword { get; set; }
-
-        [BindProperty]
-        public string? UserGender { get; set; }
-
-        [BindProperty]
-        public string? UserCountry { get; set; }
-
-        [BindProperty]
-        [DataType(DataType.EmailAddress)]
-        public string? UserEmail { get; set; }
-
-        [BindProperty]
-        public int UserPhoneNumber { get; set; }
-
-        [BindProperty]
-        public string? UserSchoolName { get; set; }
-
-        public string? Message { get; set; }
-
-        private readonly IConfiguration _config;
-
-        public RegisterModel(IConfiguration config)
+        public RegisterModel(
+            UserManager<IdentityUser> userManager,
+            IUserStore<IdentityUser> userStore,
+            SignInManager<IdentityUser> signInManager,
+            ILogger<RegisterModel> logger,
+            IEmailSender emailSender)
         {
-            _config = config;
+            _userManager = userManager;
+            _userStore = userStore;
+            _emailStore = GetEmailStore();
+            _signInManager = signInManager;
+            _logger = logger;
+            _emailSender = emailSender;
         }
 
-        public void OnGet()
+        /// <summary>
+        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
+        ///     directly from your code. This API may change or be removed in future releases.
+        /// </summary>
+        [BindProperty]
+        public InputModel? Input { get; set; }
+
+        /// <summary>
+        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
+        ///     directly from your code. This API may change or be removed in future releases.
+        /// </summary>
+        public string? ReturnUrl { get; set; }
+
+        /// <summary>
+        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
+        ///     directly from your code. This API may change or be removed in future releases.
+        /// </summary>
+        public IList<AuthenticationScheme>? ExternalLogins { get; set; }
+
+        /// <summary>
+        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
+        ///     directly from your code. This API may change or be removed in future releases.
+        /// </summary>
+        public class InputModel
         {
-            // Initial page load
+            /// <summary>
+            ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
+            ///     directly from your code. This API may change or be removed in future releases.
+            /// </summary>
+            [Required]
+            [EmailAddress]
+            [Display(Name = "Email")]
+            public string? Email { get; set; }
+
+            /// <summary>
+            ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
+            ///     directly from your code. This API may change or be removed in future releases.
+            /// </summary>
+            [Required]
+            [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
+            [DataType(DataType.Password)]
+            [Display(Name = "Password")]
+            public string? Password { get; set; }
+
+            /// <summary>
+            ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
+            ///     directly from your code. This API may change or be removed in future releases.
+            /// </summary>
+            [DataType(DataType.Password)]
+            [Display(Name = "Confirm password")]
+            [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+            public string? ConfirmPassword { get; set; }
         }
 
-        public IActionResult OnPost()
+
+        public async Task OnGetAsync(string? returnUrl = null)
         {
-            // Form submission
-            if (IsValid())
+            ReturnUrl = returnUrl;
+            ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+        }
+
+        public async Task<IActionResult> OnPostAsync(string? returnUrl = null)
+        {
+            returnUrl ??= Url.Content("~/");
+            ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+            if (ModelState.IsValid)
             {
-                string connectionString = "data source=DESKTOP-M3I2KTO;initial catalog=WebTechAssignmentDB;trusted_connection=true;";
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                var user = CreateUser();
+
+                await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
+                await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
+                var result = await _userManager.CreateAsync(user, Input.Password);
+
+                if (result.Succeeded)
                 {
-                    connection.Open();
+                    _logger.LogInformation("User created a new account with password.");
 
-                    // Check if username or email already exist in the database
-                    string checkQuery = "SELECT COUNT(*) FROM dbo.Users WHERE UserName = @Username OR UserEmail = @Email";
-                    using (SqlCommand checkCommand = new SqlCommand(checkQuery, connection))
+                    var userId = await _userManager.GetUserIdAsync(user);
+                    var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                    code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
+                    var callbackUrl = Url.Page(
+                        "/Account/ConfirmEmail",
+                        pageHandler: null,
+                        values: new { area = "Identity", userId = userId, code = code, returnUrl = returnUrl },
+                        protocol: Request.Scheme);
+
+                    await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
+                        $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+
+                    if (_userManager.Options.SignIn.RequireConfirmedAccount)
                     {
-                        checkCommand.Parameters.AddWithValue("@Username", UserName);
-                        checkCommand.Parameters.AddWithValue("@Email", UserEmail);
-                        int count = (int)checkCommand.ExecuteScalar();
-
-                        if (count > 0)
-                        {
-                            Message = "Username or email already exists.";
-                            return Page();
-                        }
+                        return RedirectToPage("/identity/account/RegisterConfirmation", new { email = Input.Email, returnUrl = returnUrl });
                     }
-
-                    // Insert new user into the database
-                    string insertQuery = "INSERT INTO dbo.Users (UserName, UserPassword, UserGender, UserCountry, UserEmail, UserPhoneNumber, UserSchoolName) " +
-                        "VALUES (@Username, @Password, @Gender, @Country, @Email, @PhoneNumber, @SchoolName)";
-                    using (SqlCommand insertCommand = new SqlCommand(insertQuery, connection))
+                    else
                     {
-                        insertCommand.Parameters.AddWithValue("@Username", UserName);
-                        insertCommand.Parameters.AddWithValue("@Password", UserPassword);
-                        insertCommand.Parameters.AddWithValue("@Gender", UserGender);
-                        insertCommand.Parameters.AddWithValue("@Country", UserCountry);
-                        insertCommand.Parameters.AddWithValue("@Email", UserEmail);
-                        insertCommand.Parameters.AddWithValue("@PhoneNumber", UserPhoneNumber);
-                        insertCommand.Parameters.AddWithValue("@SchoolName", UserSchoolName);
-                        insertCommand.ExecuteNonQuery();
+                        await _signInManager.SignInAsync(user, isPersistent: false);
+                        return LocalRedirect(returnUrl);
                     }
-
-                    Message = "Registration successful!";
-                    Task.Delay(3000).Wait();
-                    return RedirectToPage("/index");
+                }
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError(string.Empty, error.Description);
                 }
             }
+
+            // If we got this far, something failed, redisplay form
             return Page();
         }
 
-        private bool IsValid()
+        private IdentityUser CreateUser()
         {
-            // perform validation on the inputs
-            if (string.IsNullOrWhiteSpace(UserName) || string.IsNullOrWhiteSpace(UserPassword) || string.IsNullOrWhiteSpace(UserEmail))
+            try
             {
-                Message = "Please fill in all required fields.";
-                return false;
+                return Activator.CreateInstance<IdentityUser>();
             }
-            if (UserPassword != ConfirmPassword)
+            catch
             {
-                Message = "Passwords do not match.";
-                return false;
+                throw new InvalidOperationException($"Can't create an instance of '{nameof(IdentityUser)}'. " +
+                    $"Ensure that '{nameof(IdentityUser)}' is not an abstract class and has a parameterless constructor, or alternatively " +
+                    $"override the register page in /Areas/Identity/Pages/Account/Register.cshtml");
             }
-            if (!IsValidEmail(UserEmail))
-            {
-                Message = "Invalid email address.";
-                return false;
-            }
-            return true;
         }
 
-        private bool IsValidEmail(string email)
+        private IUserEmailStore<IdentityUser> GetEmailStore()
         {
-            // perform email validation using regex or other methods
-            // this is a simple example using a regular expression
-            return new EmailAddressAttribute().IsValid(email);
+            if (!_userManager.SupportsUserEmail)
+            {
+                throw new NotSupportedException("The default UI requires a user store with email support.");
+            }
+            return (IUserEmailStore<IdentityUser>)_userStore;
         }
     }
 }
