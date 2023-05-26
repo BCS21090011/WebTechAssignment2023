@@ -106,7 +106,28 @@
                 cursor: pointer;
             }
 
+        .headerLinks button {
+            color: #fff;
+            text-decoration: none;
+            padding: 0 10px;
+            transition: color 0.3s;
+            flex-grow: 1;
+        }
 
+        button{
+            border: none;
+            outline: none;
+            background: none;
+            
+            margin: 0;
+            cursor: pointer;
+            color: #fff;
+            text-decoration: none;
+            padding: 0 10px;
+            transition: color 0.3s;
+        }
+
+        
 
         .main {
             margin: 0 auto;
@@ -182,28 +203,28 @@
                 <a href="~/pages/CreateQuestionPages" class="nav-menu__link">Create question</a>
                 <a href="/user/profilepage" class="nav-menu__link">Profile</a>
                 <a href="~/contactus" class="nav-menu__link">Contact Us</a>
-                <ul>
+                
                     @if (SignInManager.IsSignedIn(User))
                     {
-                        <li>
+                        
                             <a id="manage" class="headerLinks" asp-area="Identity" asp-page="/user/profilepage" title="Manage">Hello @UserManager.GetUserName(User)!</a>
-                        </li>
-                        <li>
+                        
+                        
                             <form id="logoutForm" class="headerLinks" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/Index", new { area = "" })">
-                                <button id="logout" type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+                                <button id="logout" type="submit" class="headerLinks">Logout</button>
                             </form>
-                        </li>
+                        
                     }
                     else
                     {
-                        <li>
+                        
                             <a href="~/user/Register">Register</a>
-                        </li>
-                        <li>
+                        
+                        
                             <a  href="~/user/Login">Login</a>
-                        </li>
+                        
                     }
-                </ul>
+                
             </div>
 
 

@@ -16,6 +16,7 @@ namespace Data.Models
     {
         public DatabaseContext()
         {
+            
         }
 
         public DatabaseContext(DbContextOptions<DatabaseContext> options)

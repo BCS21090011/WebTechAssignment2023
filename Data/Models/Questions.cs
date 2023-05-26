@@ -17,9 +17,9 @@ namespace Data.Models
         public int QuestionMark { get; set; }
         public int QuestionDifficulty { get; set; }
         public int SubjectsId { get; set; }
-        public string QuestionImageFileName { get; set; }
+        public string? QuestionImageFileName { get; set; }
         public string Answer { get; set; }
-        public string AnswerImageFileName { get; set; }
+        public string? AnswerImageFileName { get; set; }
 
         public virtual Subjects Subjects { get; set; }
         public virtual ICollection<HistoryQuestion> HistoryQuestion { get; set; }

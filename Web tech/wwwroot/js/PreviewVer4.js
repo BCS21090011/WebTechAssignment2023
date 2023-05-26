@@ -175,4 +175,4 @@ function DisplayPreview(PDFdoc, previewContainerTagID) {
     previewContainer.innerHTML = '<embed src="' + pdfDataUri + '" type="application/pdf" width="100%" height="100%" zoom="true#page=' + 1 + '">';
 }
 
-UpdatePreview();
+// UpdatePreview();

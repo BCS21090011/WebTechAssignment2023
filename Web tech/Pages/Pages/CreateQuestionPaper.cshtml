@@ -22,7 +22,7 @@
                         <ul class="Row" id="SelectedQuestions"></ul>
                     </div>
                 </div>
-                <div class="Column" id="Preview-Section">
+                <div class="Column" id="Preview-Section" style="z-index: 10;">
                     <button onclick="SwitchPreview()" style="height: 5%; margin: auto;">Switch Preview</button>
                     <span id="Preview-Name">Preview Questions</span>
                     <div class="Preview-Container" style="height: 95%;">
@@ -45,6 +45,9 @@
         <script src="~/js/UpdateOptions.js">
 
         </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+        <script src="~/js/PreviewVer4.js" asp-append-version="true"></script>
+        <script src="~/js/CreateQuestionsVer5.js" asp-append-version="true"></script>
         <script>
             //ajax to make api request
             //after request success, use for loop to push() item into array
@@ -252,13 +255,35 @@
                 }
             ];
 
+            function AppendQuestionsList(list, id, qst, mark, subject, difficulty, qstImgFileName, ans, ansImgFileName){
+                let question = {
+                    ID: id,
+                    Qst: qst,
+                    Mark: mark,
+                    Subject: subject,
+                    Difficulty: difficulty,
+                    QstImgFileName: qstImgFileName,
+                    Ans: ans,
+                    AnsImgFileName: ansImgFileName
+                }
+
+                list.push(question);
+            }
+        </script>
+
+        @foreach(var qst in Model.Qsts)
+        {
+            <script>
+                AppendQuestionsList(qstSelections, @qst.QuestionsId, "@qst.Question", @qst.QuestionMark, "@qst.QuestionDifficulty", "@qst.SubjectsId", "@qst.QuestionImageFileName", "@qst.Answer", "@qst.AnswerImageFileName");
+            </script>
+        }
+
+        <script>
             UpdateOptions(subjects, "Subject");
             UpdateOptions(difficulty, "Difficulty");
 
+            Initializing();
         </script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-        <script src="~/js/PreviewVer4.js" asp-append-version="true"></script>
-        <script src="~/js/CreateQuestionsVer5.js" asp-append-version="true"></script>
     </body>
     </html>
 }
