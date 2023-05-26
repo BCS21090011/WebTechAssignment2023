@@ -1,4 +1,4 @@
-﻿form {
+﻿.LoginForm {
     width: 90%;
     height: 50%;
     max-width: 450px;
@@ -19,7 +19,7 @@
 }
 
 @media screen and (max-width: 768px) {
-    form {
+    .LoginForm {
         width: 70%;
         height: 40%;
         max-width: 450px;

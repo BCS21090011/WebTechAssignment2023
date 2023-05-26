@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.WebUtilities;
+using System.Drawing.Printing;
+
 namespace Web_tech.Pages
 {
     public class RegisterModel : PageModel
@@ -18,12 +20,16 @@ namespace Web_tech.Pages
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
 
+        // For Role thingy:
+        private readonly RoleManager<IdentityRole> _roleManager;
+
         public RegisterModel(
             UserManager<IdentityUser> userManager,
             IUserStore<IdentityUser> userStore,
             SignInManager<IdentityUser> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+            RoleManager<IdentityRole> roleManager)
         {
             _userManager = userManager;
             _userStore = userStore;
@@ -31,6 +37,8 @@ namespace Web_tech.Pages
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
+
+            _roleManager = roleManager;
         }
 
         /// <summary>
@@ -108,6 +116,25 @@ namespace Web_tech.Pages
 
                 if (result.Succeeded)
                 {
+
+                    // For role:
+                    // Check if the role exists
+                    var roleExists = await _roleManager.RoleExistsAsync("Admin");
+
+                    if (!roleExists)
+                    {
+                        // Create the role if it doesn't exist
+                        var role = new IdentityRole("Admin");
+                        await _roleManager.CreateAsync(role);
+                    }
+
+                    // Assign the role to the user
+                    await _userManager.AddToRoleAsync(user, "Admin");
+
+                    // Redirect to a success page or perform other actions
+                    return RedirectToAction("RegisterSuccess");
+
+                    /*
                     _logger.LogInformation("User created a new account with password.");
 
                     var userId = await _userManager.GetUserIdAsync(user);
@@ -131,6 +158,8 @@ namespace Web_tech.Pages
                         await _signInManager.SignInAsync(user, isPersistent: false);
                         return LocalRedirect(returnUrl);
                     }
+                    */
+
                 }
                 foreach (var error in result.Errors)
                 {
