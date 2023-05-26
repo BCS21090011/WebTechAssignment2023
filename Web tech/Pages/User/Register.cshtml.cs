@@ -93,6 +93,8 @@ namespace Web_tech.Pages
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string? ConfirmPassword { get; set; }
+
+
         }
 
 
@@ -104,7 +106,7 @@ namespace Web_tech.Pages
 
         public async Task<IActionResult> OnPostAsync(string? returnUrl = null)
         {
-            returnUrl ??= Url.Content("~/");
+            _ = returnUrl ?? Url.Content("~/");
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
@@ -132,7 +134,7 @@ namespace Web_tech.Pages
                     await _userManager.AddToRoleAsync(user, "Admin");
 
                     // Redirect to a success page or perform other actions
-                    return RedirectToAction("RegisterSuccess");
+                    return RedirectToPage("/user/login");
 
                     /*
                     _logger.LogInformation("User created a new account with password.");

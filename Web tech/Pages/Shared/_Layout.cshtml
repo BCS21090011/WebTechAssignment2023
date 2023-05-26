@@ -1,5 +1,7 @@
-﻿
+﻿@using Microsoft.AspNetCore.Identity
 
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,16 +14,17 @@
             overflow-x: hidden;
             height: 100%;
         }
-        body::-webkit-scrollbar{
-            display:none;
-        }
+
+            body::-webkit-scrollbar {
+                display: none;
+            }
+
         body {
             background: rgb(0,14,255);
             background: linear-gradient(152deg, rgba(0,14,255,1) 0%, rgba(70,255,247,1) 100%);
             padding: 0;
             margin: 0;
             font-family: 'Varela Round', sans-serif;
-
         }
 
         .header {
@@ -30,18 +33,16 @@
             width: 100%;
             max-width: 100%;
             box-shadow: none;
-            height:60px;
+            height: 60px;
             position: fixed;
             height: 60px !important;
             overflow: hidden;
             z-index: 10;
-             background: rgba(255, 255, 255, 0.24);
-    
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(7.6px);
-    -webkit-backdrop-filter: blur(7.6px);
+            background: rgba(255, 255, 255, 0.24);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(7.6px);
+            -webkit-backdrop-filter: blur(7.6px);
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-
         }
 
         .headerInner {
@@ -51,6 +52,11 @@
             height: 100%;
             padding: 0 20px;
             color: #fff;
+        }
+
+        .headerLinks {
+            display: flex;
+            align-items: center;
         }
 
         .headerTitle {
@@ -64,16 +70,34 @@
             text-decoration: none;
             padding: 0 10px;
             transition: color 0.3s;
+            flex-grow: 1;
         }
 
             .headerLinks a:hover {
                 color: #fff;
             }
 
+        .headerLinks ul {
+            display: flex;
+            align-items: center;
+            margin-left: auto;
+            list-style: none;
+            padding: 0;
+        }
+
+        .headerLinks li {
+            margin-left: 0px;
+        }
+
+            .headerLinks li:first-child {
+                margin-left: 0;
+            }
         .headerAction {
             font-size: 18px;
             font-weight: bold;
             color: #fff;
+            display: flex;
+            align-items: center;
         }
 
             .headerAction:hover {
@@ -145,6 +169,7 @@
                     color: #fff;
                     transform: scaleX(1);
                 }
+
     </style>
 </head>
 <body>
@@ -153,20 +178,40 @@
         <div class="headerInner">
             <div class="headerTitle">Create Exam Paper</div>
             <div class="headerLinks">
-                <a href="index4" class="nav-menu__link">Homepage</a>
-                <a href="CreateQuestionPages" class="nav-menu__link">Create question</a>
-                <a href="profilepage" class="nav-menu__link" >Profile</a>
-                <a href="contactus" class="nav-menu__link">Contact Us</a>
-                @await Html.PartialAsync("_LoginPartial")
-
-                
+                <a href="/index" class="nav-menu__link">Homepage</a>
+                <a href="~/pages/CreateQuestionPages" class="nav-menu__link">Create question</a>
+                <a href="/user/profilepage" class="nav-menu__link">Profile</a>
+                <a href="~/contactus" class="nav-menu__link">Contact Us</a>
+                <ul>
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        <li>
+                            <a id="manage" class="nav-link text-dark" asp-area="Identity" asp-page="/user/profilepage" title="Manage">Hello @UserManager.GetUserName(User)!</a>
+                        </li>
+                        <li>
+                            <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/Index", new { area = "" })">
+                                <button id="logout" type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+                            </form>
+                        </li>
+                    }
+                    else
+                    {
+                        <li>
+                            <a href="~/user/Register">Register</a>
+                        </li>
+                        <li>
+                            <a  href="~/user/Login">Login</a>
+                        </li>
+                    }
+                </ul>
             </div>
+
 
         </div>
     </div>
-<div>
+    <div>
         @RenderBody()
-</div>
+    </div>
     @await RenderSectionAsync("Scripts", required: false)
 
 </body>
