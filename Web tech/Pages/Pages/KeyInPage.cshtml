@@ -1,4 +1,4 @@
-﻿@page
+﻿@page "/pages/keyinpage"
 @model Web_tech.Pages.KeyInPageModel
 @{
     <html lang="en">
@@ -41,7 +41,7 @@
                 background-color: #45a049;
             }
 
-        #subject-editor {
+        #question-editor {
             height: 200px;
             width: 100%;
             background-color: white;
@@ -107,24 +107,26 @@
     <body>
         <div class="Container">
             <div class="form-wrapper">
-                <form>
-                    <label for="difficulty">Difficulty level:</label>
-                    <select id="difficulty" name="difficulty">
+                <form method="post">
+                    <label for="difficulty"  >Difficulty level:</label>
+                    <select id="difficulty" asp-for="Questions.QuestionDifficulty" class="form-control">
                     </select>
 
                     <label for="subject">Subject:</label>
-                    <select id="subject">
+                    <select id="subject" asp-for="Questions.SubjectsId" class="form-control">
                     </select>
 
                     <label for="question">Question:</label>
-                    <div id="subject-editor"></div>
+                    <div id="question-editor" class="form-control"></div>
+                    <input type="hidden" id="question" name="Questions.Question" />>
 
                     <label for="answer">Answer:</label>
-                    <div id="answer-editor"></div>
+                    <div id="answer-editor" class="form-control"></div>
+                    <input type="hidden" id="answer" name="Questions.Answer" />
 
 
                     <label for="marks">Marks:</label>
-                    <input type="number" id="marks" name="marks" min="0">
+                    <input type="number" id="marks" name="marks" min="0" asp-for="Questions.QuestionMark" class="form-control">
 
                     <label for="question-image">Upload image:</label>
                     <input type="file" id="question-image" name="question-image" onchange="previewquestionImage(event)">
@@ -134,10 +136,22 @@
                     <input type="file" id="answer-image" name="answer-image" onchange="previewanswerImage(event)">
                     <img id="answer-preview" src="#" alt="Preview Image" style="display: none; max-width: 300px; max-height: 300px;">
 
-                    <input type="submit" value="Submit">
+                    <input type="submit" value="Submit"  class="btn btn-primary form-control">
                 </form>
             </div>
         </div>
+        <div class="validation-summary-errors">
+            <ul>
+                @foreach (var modelStateEntry in ViewData.ModelState.Values)
+                {
+                    foreach (var error in modelStateEntry.Errors)
+                    {
+                        <li>@error.ErrorMessage</li>
+                    }
+                }
+            </ul>
+        </div>
+
     </body>
     <script src="~/js/UpdateOptions.js">
 
@@ -150,19 +164,19 @@
             },
             {
                 Text: "Math",
-                Value: "math"
+                Value: "1"
             },
             {
                 Text: "English",
-                Value: "english"
+                Value: "2"
             },
             {
                 Text: "History",
-                Value: "history"
+                Value: "3"
             },
             {
                 Text: "Science",
-                Value: "science"
+                Value: "4"
             }
         ];
 
@@ -197,7 +211,7 @@
         });
     </script>
     <script>
-        var subjectEditor = new Quill('#subject-editor', {
+        var questionEditor = new Quill('#question-editor', {
             modules: {
                 toolbar: [
                     [{ 'header': [1, 2, 3, false] }],
@@ -208,20 +222,19 @@
                     ['clean']
                 ]
             },
-
             placeholder: 'Enter your question here',
-            theme: 'snow',
-            contentStyle: {
-                fontSize: '72px'
-            }
+            theme: 'snow'
         });
 
-        subjectEditor.on('text-change', function() {
-            document.getElementById('subject').value = subjectEditor.root.innerHTML;
+        questionEditor.on('text-change', function () {
+            var questionContent = questionEditor.root.innerHTML;
+            var questionContent = questionContent.replace(/<p><\/p>/g, '');
+            questionContent = questionContent.replace(/<p>/g, ''); // Remove opening <p> tags
+            questionContent = questionContent.replace(/<\/p>/g, ''); // Remove closing </p> tags
+
+            document.getElementById('question').value = questionContent.trim();
         });
-        var editorElement = document.querySelector('#editor');
-    </script>
-    <script>
+
         var answerEditor = new Quill('#answer-editor', {
             modules: {
                 toolbar: [
@@ -241,39 +254,23 @@
             theme: 'snow'
         });
 
-        answerEditor.on('text-change', function() {
-            document.getElementById('answer').value = answerEditor.root.innerHTML;
+        answerEditor.on('text-change', function () {
+            var answerContent = answerEditor.root.innerHTML;
+            var asnwerContent = answerContent.replace(/<p><\/p>/g, ''); // Remove empty <p> tags
+            asnwerContent = asnwerContent.replace(/<p>/g, ''); // Remove opening <p> tags
+            asnwerContent = asnwerContent.replace(/<\/p>/g, ''); // Remove closing </p> tags
+            document.getElementById('answer').value = asnwerContent.trim();
         });
-    </script>
-    <script>
-        function previewquestionImage(event) {
+
+
+        function previewImage(event, previewId) {
             var input = event.target;
-            var preview = document.getElementById("question-preview");
+            var preview = document.getElementById(previewId);
 
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
 
-                reader.onload = function(e) {
-                    preview.src = e.target.result;
-                    preview.style.display = "block";
-                };
-
-                reader.readAsDataURL(input.files[0]);
-            } else {
-                preview.src = "#";
-                preview.style.display = "none";
-            }
-        }
-    </script>
-    <script>
-        function previewanswerImage(event) {
-            var input = event.target;
-            var preview = document.getElementById("answer-preview");
-
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-
-                reader.onload = function(e) {
+                reader.onload = function (e) {
                     preview.src = e.target.result;
                     preview.style.display = "block";
                 };
