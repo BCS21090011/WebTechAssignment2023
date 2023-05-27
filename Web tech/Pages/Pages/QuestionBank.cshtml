@@ -160,11 +160,11 @@
 
 </style>
 <body>
-    <div class="cardquestionbank mb-4">
+    <div class="cardquestionbank mb-4" style="margin-left: auto; margin-right: auto;">
         <button onclick="redirectToPage()" class="btn-top-left">New Question</button>
         <h2 class="mt-4 mb-3" style="text-align: left; font-weight:bold; color:white;">Question Bank</h2>
         <hr class="border-light m-0">
-        <div class="table-responsive" id="questionbanks" style="height: 60vh; max-height: 60vh; overflow-y: auto;">
+        <div class="table-responsive" id="questionbanks" style="margin: auto; height: 60vh; max-height: 60vh; overflow-y: auto; width: 80vw;">
 
         </div>
         <div style="display: flex; justify-content: center; align-items: center;">
@@ -180,11 +180,12 @@
     </script>
     <script>
         function redirectToPage() {
-            window.location.href = '/CreateQuestionPaper';
+            window.location.href = '/Pages/KeyInPage';
         }
         
     </script>
     <script>
+        /*
         var Qsts = [
             {
                 ID: 1,
@@ -363,6 +364,35 @@
                 AnsImgFileName: null//"https://i.pinimg.com/236x/a1/b8/17/a1b81740b36374e7a9a690e683e3e423.jpg"
             }
         ];
+        */
+
+
+       var Qsts = [];
+
+        function AppendQuestionsList(list, id, qst, mark, subject, difficulty, qstImgFileName, ans, ansImgFileName) {
+            let question = {
+                ID: id,
+                Qst: qst,
+                Mark: mark,
+                Subject: subject,
+                Difficulty: difficulty,
+                QstImgFileName: qstImgFileName,
+                Ans: ans,
+                AnsImgFileName: ansImgFileName
+            }
+
+            list.push(question);
+        }
+    </script>
+
+    @foreach (var qst in Model.Qsts)
+    {
+        <script>
+            AppendQuestionsList(Qsts, @qst.QuestionsId, "@qst.Question", @qst.QuestionMark, "@qst.SubjectsId", "@qst.QuestionDifficulty", "@qst.QuestionImageFileName", "@qst.Answer", "@qst.AnswerImageFileName");
+        </script>
+    }
+
+    <script>
 
         function SplitArrayIntoChuncks(array, sizePerChunck) {
             let chuncks = [];

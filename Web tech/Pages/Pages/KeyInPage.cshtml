@@ -107,7 +107,7 @@
     <body>
         <div class="Container">
             <div class="form-wrapper">
-                <form method="post">
+                <form method="post" >
                     <label for="difficulty"  >Difficulty level:</label>
                     <select id="difficulty" asp-for="Questions.QuestionDifficulty" class="form-control">
                     </select>
@@ -118,22 +118,21 @@
 
                     <label for="question">Question:</label>
                     <div id="question-editor" class="form-control"></div>
-                    <input type="hidden" id="question" name="Questions.Question" />>
+                    <input type="hidden" id="question" name="Questions.Question" />
 
                     <label for="answer">Answer:</label>
                     <div id="answer-editor" class="form-control"></div>
                     <input type="hidden" id="answer" name="Questions.Answer" />
 
-
                     <label for="marks">Marks:</label>
-                    <input type="number" id="marks" name="marks" min="0" asp-for="Questions.QuestionMark" class="form-control">
-
+                    <input type="number" id="marks" name="Questions.QuestionMark" min="0" asp-for="Questions.QuestionMark" class="form-control">
+                    
                     <label for="question-image">Upload image:</label>
-                    <input type="file" id="question-image" name="question-image" onchange="previewquestionImage(event)">
+                    <input type="file" id="question-image" name="questionImage" onchange="previewImage(event, 'question-preview')">
                     <img id="question-preview" src="#" alt="Preview Image" style="display: none; max-width: 300px; max-height: 300px;">
 
                     <label for="answer-image">Upload image:</label>
-                    <input type="file" id="answer-image" name="answer-image" onchange="previewanswerImage(event)">
+                    <input type="file" id="answer-image" name="answerImage" onchange="previewImage(event, 'answer-preview')">
                     <img id="answer-preview" src="#" alt="Preview Image" style="display: none; max-width: 300px; max-height: 300px;">
 
                     <input type="submit" value="Submit"  class="btn btn-primary form-control">
@@ -158,25 +157,22 @@
     </script>
     <script>
         let subjects = [
-            {
-                Text: "All",
-                Value: "*"
-            },
+            
             {
                 Text: "Math",
-                Value: "1"
+                Value: "7"
             },
             {
                 Text: "English",
-                Value: "2"
+                Value: "8"
             },
             {
                 Text: "History",
-                Value: "3"
+                Value: "9"
             },
             {
                 Text: "Science",
-                Value: "4"
+                Value: "10"
             }
         ];
 
@@ -268,15 +264,18 @@
             var preview = document.getElementById(previewId);
 
             if (input.files && input.files[0]) {
+                console.log("Image should be displayed!");
                 var reader = new FileReader();
 
                 reader.onload = function (e) {
+                    console.log(e);
                     preview.src = e.target.result;
                     preview.style.display = "block";
                 };
 
                 reader.readAsDataURL(input.files[0]);
             } else {
+                console.log("No image should be displayed!");
                 preview.src = "#";
                 preview.style.display = "none";
             }

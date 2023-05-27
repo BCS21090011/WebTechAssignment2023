@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using Data.Models;
@@ -18,6 +19,14 @@ namespace Web_tech.Pages
 
         private readonly DatabaseContext _context;
 
+        /*
+        [Display(Name = "Question Image")]
+        public IFormFile questionImage { get; set; }
+
+        [Display(Name = "Answer Image")]
+        public IFormFile answerImage { get; set; }
+        */
+
         public KeyInPageModel(DatabaseContext context)
         {
             _context = context;
@@ -33,7 +42,17 @@ namespace Web_tech.Pages
         {
             if (ModelState.IsValid)
             {
+                /*
+                // Handle question image upload
+                string? questionImageName = HandleImgFile(questionImage);
 
+                // Handle answer image upload
+                string? answerImageName = HandleImgFile(answerImage);
+
+                // Save the image filenames in the database
+                Questions.QuestionImageFileName = questionImageName;
+                Questions.AnswerImageFileName = answerImageName;
+                */
 
                 // Save the data to the database
                 await _context.Questions.AddAsync(Questions);
@@ -47,6 +66,31 @@ namespace Web_tech.Pages
             {
                 return Page();
             }
+        }
+
+        private string? HandleImgFile(IFormFile imageFile)
+        {
+            if (imageFile != null)
+            {
+                string uniqueFileName = GetUniqueFileName(imageFile.FileName);
+                string filePath = Path.Combine("/WareHouse/Images", uniqueFileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    imageFile.CopyTo(stream);
+                }
+
+                return uniqueFileName;
+            }
+
+            return null;
+        }
+
+        private string GetUniqueFileName(string fileName)
+        {
+            string uniqueFileName = Path.GetFileNameWithoutExtension(fileName) + "_" + DateTime.Now.ToString("yyyyMMddHHmmssfff") + Path.GetExtension(fileName);
+
+            return uniqueFileName;
         }
 
     }
