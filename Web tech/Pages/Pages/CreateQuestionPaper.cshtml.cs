@@ -7,13 +7,13 @@ using System.Data;
 
 namespace Web_tech.Pages
 {
-    
+    [Authorize(Roles = "Admin")]
     public class CreateQuestionPaperModel : PageModel
     {
-        private readonly DatabaseContext _context;
+        private readonly DatabaseContext? _context;
 
         [BindProperty]
-        public List<Questions> Qsts { get; set; }
+        public List<Questions>? Qsts { get; set; }
 
         public CreateQuestionPaperModel(DatabaseContext? context)
         {
