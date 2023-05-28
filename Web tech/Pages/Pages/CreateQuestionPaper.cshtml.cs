@@ -22,11 +22,11 @@ namespace Web_tech.Pages
 
         public void OnGet()
         {
-            /*
+            
             Qsts = _context.Questions.ToList();
             Console.WriteLine("Qsts:\n");
             Console.Write(Qsts);
-            */
+            /*
 
             // Testing samples:
             Qsts = new List<Questions>();
@@ -45,8 +45,8 @@ namespace Web_tech.Pages
                     AnswerImageFileName = null
                 };
 
-                Qsts.Add(question);
-            }
+                Qsts.Add(question); */
         }
     }
+    
 }

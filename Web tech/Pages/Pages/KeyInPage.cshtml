@@ -114,8 +114,13 @@
 
                     <label for="subject">Subject:</label>
                     <select id="subject" asp-for="Questions.SubjectsId" class="form-control">
-                    </select>
+                        @foreach (var subject in Model.Subjects)
+                        {
+                            <option values="@subject.SubjectsId">@subject.SubjectName</option>
+                        }
 
+                    </select>
+                   
                     <label for="question">Question:</label>
                     <div id="question-editor" class="form-control"></div>
                     <input type="hidden" id="question" name="Questions.Question" />
@@ -156,6 +161,7 @@
 
     </script>
     <script>
+/*
         let subjects = [
             
             {
@@ -174,7 +180,7 @@
                 Text: "Science",
                 Value: "10"
             }
-        ];
+                ];*/
 
         let difficulty = [
             {
@@ -191,7 +197,7 @@
             }
         ];
 
-        UpdateOptions(subjects, "subject");
+        /*UpdateOptions(subjects, "subject");*/
         UpdateOptions(difficulty, "difficulty");
     </script>
     <script>

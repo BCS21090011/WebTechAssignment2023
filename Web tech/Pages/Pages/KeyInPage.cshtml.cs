@@ -34,9 +34,13 @@ namespace Web_tech.Pages
         [BindProperty]
         public Questions? Questions { get; set; }
 
+        [BindProperty]
+        public List<Subjects>? Subjects { get; set; }
+
         public void OnGet()
         {
-
+            // Get the subjects:
+            Subjects = _context.Subjects.ToList();
         }
         public async Task<IActionResult> OnPost()
         {
@@ -95,5 +99,3 @@ namespace Web_tech.Pages
 
     }
 }
-
-
