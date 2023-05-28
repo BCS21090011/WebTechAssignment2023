@@ -116,9 +116,8 @@
                     <select id="subject" asp-for="Questions.SubjectsId" class="form-control">
                         @foreach (var subject in Model.Subjects)
                         {
-                            <option values="@subject.SubjectsId">@subject.SubjectName</option>
+                            <option value="@subject.SubjectsId">@subject.SubjectName</option>
                         }
-
                     </select>
                    
                     <label for="question">Question:</label>
@@ -161,7 +160,6 @@
 
     </script>
     <script>
-/*
         let subjects = [
             
             {
@@ -180,7 +178,7 @@
                 Text: "Science",
                 Value: "10"
             }
-                ];*/
+        ];
 
         let difficulty = [
             {
@@ -197,7 +195,7 @@
             }
         ];
 
-        /*UpdateOptions(subjects, "subject");*/
+        // UpdateOptions(subjects, "subject");
         UpdateOptions(difficulty, "difficulty");
     </script>
     <script>
