@@ -20,8 +20,9 @@
             }
 
         body {
-            background: rgb(0,14,255);
-            background: linear-gradient(152deg, rgba(0,14,255,1) 0%, rgba(70,255,247,1) 100%);
+            /*background: rgb(0,14,255);*/
+            /*background: linear-gradient(152deg, rgba(10,14,255,1) 0%, rgba(70,255,247,1) 100%);*/
+            background-color: grey;
             padding: 0;
             margin: 0;
             font-family: 'Varela Round', sans-serif;
@@ -38,7 +39,8 @@
             height: 60px !important;
             overflow: hidden;
             z-index: 10;
-            background: rgba(255, 255, 255, 0.24);
+            background: black;
+            /*background: rgba(255, 255, 255, 0.24);*/
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
             backdrop-filter: blur(7.6px);
             -webkit-backdrop-filter: blur(7.6px);
@@ -92,6 +94,7 @@
             .headerLinks li:first-child {
                 margin-left: 0;
             }
+
         .headerAction {
             font-size: 18px;
             font-weight: bold;
@@ -114,11 +117,10 @@
             flex-grow: 1;
         }
 
-        button{
+        button {
             border: none;
             outline: none;
             background: none;
-            
             margin: 0;
             cursor: pointer;
             color: #fff;
@@ -127,7 +129,7 @@
             transition: color 0.3s;
         }
 
-        
+
 
         .main {
             margin: 0 auto;
@@ -203,28 +205,28 @@
                 <a href="~/pages/CreateQuestionPages" class="nav-menu__link">Create question</a>
                 <a href="/user/profilepage" class="nav-menu__link">Profile</a>
                 <a href="~/contactus" class="nav-menu__link">Contact Us</a>
-                
-                    @if (SignInManager.IsSignedIn(User))
-                    {
-                        
-                            <a id="manage" class="headerLinks" asp-area="Identity" asp-page="/user/profilepage" title="Manage">Hello @UserManager.GetUserName(User)!</a>
-                        
-                        
-                            <form id="logoutForm" class="headerLinks" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/Index", new { area = "" })">
-                                <button id="logout" type="submit" class="headerLinks">Logout</button>
-                            </form>
-                        
-                    }
-                    else
-                    {
-                        
-                            <a href="~/user/Register">Register</a>
-                        
-                        
-                            <a  href="~/user/Login">Login</a>
-                        
-                    }
-                
+
+                @if (SignInManager.IsSignedIn(User))
+                {
+
+                    <a id="manage" class="headerLinks" asp-area="Identity" asp-page="/user/profilepage" title="Manage">Hello @UserManager.GetUserName(User)!</a>
+
+
+                    <form id="logoutForm" class="headerLinks" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/Index", new { area = "" })">
+                        <button id="logout" type="submit" class="headerLinks">Logout</button>
+                    </form>
+
+                }
+                else
+                {
+
+                    <a href="~/user/Register">Register</a>
+
+
+                    <a href="~/user/Login">Login</a>
+
+                }
+
             </div>
 
 

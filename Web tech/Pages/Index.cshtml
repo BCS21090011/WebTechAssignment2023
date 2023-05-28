@@ -14,70 +14,73 @@
 
 </head>
 <style>
-    
-body {
-    font-family: Arial, sans-serif;
-       
+
+    body {
+        font-family: Arial, sans-serif;
+        background: grey;   
+    }
+
+    .jumbotron {
+        background-color: transparent;
+        margin-top: 50px;
+        padding: 70px;
         
-}
+    }
 
+        .jumbotron h1 {
+            font-size: 48px;
+            font-weight: bold;
+            color: #343a40;
+            margin-bottom: 30px;
+        }
 
+        .jumbotron p {
+            font-size: 24px;
+            color: #6c757d;
+            margin-bottom: 40px;
+        }
 
-.jumbotron {
-    background-color: transparent;
-    margin-top: 0px;
-    padding: 70px;
-}
+            .jumbotron h1.display-4,
+            .jumbotron p.lead {
+                /*color: white;*/
+                color: black;
+            }
 
-    .jumbotron h1 {
-        font-size: 48px;
+    .btn-primary {
+        /*background-color: #007bff;*/
+        background-color: black;
+        /*border-color: #007bff;*/
+        border-color: black;
+        padding: 10px 20px;
+        font-size: 16px;
         font-weight: bold;
-        color: #343a40;
-        margin-bottom: 30px;
+        border-radius: 25px;
+        transition: all 0.3s ease-in-out;
     }
 
-    .jumbotron p {
-        font-size: 24px;
-        color: #6c757d;
-        margin-bottom: 40px;
-    }
+        .btn-primary:hover {
+            /*background-color: #ffffff;*/
+            background-color: black;
+            border-color: aqua;
+      /*      color: #007bff;
+            border-color: #007bff;*/
+            
+            cursor: pointer;
+        }
 
-     .jumbotron h1.display-4,
-
-     .jumbotron p.lead {
-        color: white;
-     }
-
-.btn-primary {
-    background-color: #007bff;
-    border-color: #007bff;
-    padding: 10px 20px;
-    font-size: 16px;
-    font-weight: bold;
-    border-radius: 25px;
-    transition: all 0.3s ease-in-out;
-}
-
-    .btn-primary:hover {
-        background-color: #ffffff;
-        color: #007bff;
-        border-color: #007bff;
-        cursor: pointer;
-    }
-
-.feature {
-    margin-top: 20px;
-    margin-bottom: 50px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-    .feature h2 {
-        font-size: 32px;
-        font-weight: 700;
+    .feature {
+        margin-top: 20px;
         margin-bottom: 50px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
+
+        .feature h2 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 50px;
+        }
 
 
     .feature-icon {
@@ -95,18 +98,18 @@ body {
         color: #343a40;
         text-align: center;
     }
+
     .features .card {
         width: clamp(200px, 80%, 500px);
         max-height: clamp(200px, 50vh, 350px);
-        
         padding: 20px;
         background: rgba(255, 255, 255, 0.72);
         border-radius: 16px;
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         backdrop-filter: blur(7.8px);
         -webkit-backdrop-filter: blur(7.8px);
-        margin: calc( 2vw) auto ;
-        overflow:hidden;
+        margin: calc( 2vw) auto;
+        overflow: hidden;
     }
 
     .features .feature-icon {
@@ -122,15 +125,11 @@ body {
     .features .card-text {
         font-size: 16px;
         line-height: 1.5;
-
     }
 
-.testimonial {
+    .testimonial {
         padding: 50px 0;
-
-
-        
-}
+    }
 
         .testimonial h2 {
             font-size: 32px;
@@ -145,9 +144,6 @@ body {
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
             backdrop-filter: blur(7.8px);
             -webkit-backdrop-filter: blur(7.8px);
-
-
-
         }
 
         .testimonial .card-body {
@@ -175,45 +171,43 @@ body {
             color: #007bff;
             margin-bottom: 0;
         }
-.pricing{
+
+    .pricing {
         padding: 50px 0;
     }
+
         .pricing .card {
-           
             background: rgba(255, 255, 255, 0.72);
             border-radius: 16px;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
             backdrop-filter: blur(7.8px);
             -webkit-backdrop-filter: blur(7.8px);
         }
-        .pricing h2{
+
+        .pricing h2 {
             font-size: 32px;
             font-weight: 700;
             margin-bottom: 50px;
         }
 
-.custom-heading {
-    font-family: Arial, sans-serif;
-    color: white;
-    font-size:32px;
-    font-weight:700;
-        
-}
+    .custom-heading {
+        font-family: Arial, sans-serif;
+        color: white;
+        font-size: 32px;
+        font-weight: 700;
+    }
 
- .glass-section {
-    background: rgba(255, 255, 255, 0.24);
-    
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(7.6px);
-    -webkit-backdrop-filter: blur(7.6px);
+    .glass-section {
+        background: rgba(255, 255, 255, 0.24);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(7.6px);
+        -webkit-backdrop-filter: blur(7.6px);
         margin: calc( 5vh+2vw) auto 0;
-}
-
-    
+    }
 
 </style>
 
-<body >
+<body>
 
     <section class="jumbotron text-center ">
         <div class="container">
@@ -223,7 +217,7 @@ body {
         </div>
     </section>
 
-    <section class="features py-5 glass-section " style="margin-bottom: 60px; margin-top: -30px;>
+    <section class="features py-5 glass-section " style="margin-bottom: 60px; margin-top: -30px;" >
         <div class="container">
             <h2 class="text-center mb-5 text-white custom-heading">Why Choose Our Platform?</h2>
             <div class="row">
@@ -301,7 +295,7 @@ body {
 
     <section class="pricing glass-section" style="margin-bottom: 80px;">
         <div class="container">
-            <h2 class="text-center mb-5 text-white custom-heading" >Pricing Plans</h2>
+            <h2 class="text-center mb-5 text-white custom-heading">Pricing Plans</h2>
             <div class="row">
                 <div class="col-md-4">
                     <div class="card">

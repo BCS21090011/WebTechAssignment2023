@@ -1,0 +1,10 @@
+﻿/*Light theme*/
+:root {
+    --text-color: white;
+    background: rgb(0,14,255);
+    background: linear-gradient(152deg, rgba(10,14,255,1) 0%, rgba(70,255,247,1) 100%);
+}
+
+html[dark-theme='dark'] {
+    --text-color: black;
+}
