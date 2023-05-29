@@ -38,8 +38,6 @@ h1 {
     color: #333333;
 }
 
-
-
 input[type="email"],
 input[type="password"] {
     width: 90%;
@@ -50,15 +48,10 @@ input[type="password"] {
     font-size: 16px;
 }
 
-
-
-
-
-
-
 /* Register button */
 button[type="submit"] {
-    background-color: #0077cc;
+    /*background-color: #0077cc;*/
+    background-color: black;
     border: none;
     color: white;
     padding: 10px 20px;
@@ -71,10 +64,10 @@ button[type="submit"] {
     border-radius: 5px;
     width: 95%
 }
-
-
-
-
+    button[type="submit"]:hover {
+        color: wheat;
+        font-size:20px;
+    }
 #account h2 {
     margin-top: -20px;
     text-align: center;
@@ -83,8 +76,6 @@ button[type="submit"] {
 #account .form-floating {
     margin-bottom: -30px;
 }
-
-
 
     #account .form-floating label {
         font-size: 16px;
@@ -124,3 +115,5 @@ button[type="submit"] {
     margin-bottom: 10px;
     margin-top: 50px;
 }
+
+

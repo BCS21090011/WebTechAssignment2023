@@ -20,7 +20,7 @@
 
     body {
         font-family: 'Roboto', sans-serif;
-        background-color: grey; 
+        background-color: grey;
     }
 
     .ui-w-100 {
@@ -44,10 +44,7 @@
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
     }
-
-    }
-
-
+  
     .user-view-table td:first-child {
         width: 9rem;
     }
@@ -100,7 +97,6 @@
 
     .table {
         background-color: #fff;
-        
         border-radius: 4px;
     }
 
@@ -111,23 +107,21 @@
         }
 
         .table th {
-            
             font-weight: 600;
             text-align: left;
         }
 
         .table tbody tr:nth-child(even) {
-            
         }
-    .cardquestionbank
-    {
-        width:auto;
-        height:auto;
+
+    .cardquestionbank {
+        width: auto;
+        height: auto;
         margin-top: 80px;
         border: none;
         border-radius: 0;
-        display:table;
-        padding:30px 30px;
+        display: table;
+        padding: 30px 30px;
         box-shadow: 0 1px 4px rgba(24, 28, 33, 0.012);
         background: rgba(255, 255, 255, 0.24);
         border-radius: 16px;
@@ -138,26 +132,24 @@
 
     .btn-top-left {
         position: absolute;
-        top:60px;
+        top: 60px;
         right: 30px;
-        background-color: #007bff;
+        background-color: black;
         color: white;
         padding: 8px 15px;
         border: none;
-        
         border-radius: 10px;
         cursor: pointer;
-        
         font-weight: bold;
-        transition: all 0.3s ease-in-out;}    
-        
-        .btn-top-left:hover{
-            background-color: #ffffff;
-            color: #007bff;
+        transition: all 0.3s ease-in-out;
+    }
+
+        .btn-top-left:hover {
+            background-color: black;
+            color: wheat;
             border-color: #007bff;
             cursor: pointer;
         }
-
 
 </style>
 <body>
@@ -166,7 +158,6 @@
         <h2 class="mt-4 mb-3" style="text-align: left; font-weight:bold; color:black;">Question Bank</h2>
         <hr class="border-light m-0">
         <div class="table-responsive" id="questionbanks" style="margin: auto; height: 60vh; max-height: 60vh; overflow-y: auto; width: 80vw;">
-
         </div>
         <div style="display: flex; justify-content: center; align-items: center;">
             <button onclick="PrevChunck()">Prev</button>
@@ -183,7 +174,7 @@
         function redirectToPage() {
             window.location.href = '/Pages/KeyInPage';
         }
-        
+
     </script>
     <script>
         /*
@@ -368,7 +359,7 @@
         */
 
 
-       var Qsts = [];
+        var Qsts = [];
 
         function AppendQuestionsList(list, id, qst, mark, subject, difficulty, qstImgFileName, ans, ansImgFileName) {
             let question = {
@@ -398,7 +389,7 @@
         function SplitArrayIntoChuncks(array, sizePerChunck) {
             let chuncks = [];
 
-            for(let i = 0; i < array.length; i += sizePerChunck) {
+            for (let i = 0; i < array.length; i += sizePerChunck) {
                 const chunck = array.slice(i, i + sizePerChunck);
                 chuncks.push(chunck);
             }
@@ -411,7 +402,7 @@
 
         const curPageNum = document.getElementById("CurPageNum");
         const maxPageNum = document.getElementById("MaxPageNum");
-        if(QstsChuncks.length > 0) {
+        if (QstsChuncks.length > 0) {
             curPageNum.max = QstsChuncks.length;
             maxPageNum.textContent = '/' + QstsChuncks.length;
         }
@@ -419,16 +410,16 @@
             curPageNum.max = 1;
             maxPageNum.textContent = '/' + 1;
         }
-            
+
         function CurPageNumFunc() {
             const page = parseInt(curPageNum.value);
-            if(!isNaN(page)) {
+            if (!isNaN(page)) {
                 GotoChunckIndex(page - 1);
             }
         }
 
         function NextChunck() {
-            if(curChunckIndex < QstsChuncks.length - 1) {
+            if (curChunckIndex < QstsChuncks.length - 1) {
                 GotoChunckIndex(curChunckIndex + 1);
             }
             else {
@@ -437,7 +428,7 @@
         }
 
         function PrevChunck() {
-            if(curChunckIndex > 0) {
+            if (curChunckIndex > 0) {
                 GotoChunckIndex(curChunckIndex - 1);
             }
             else {
@@ -446,7 +437,7 @@
         }
 
         function GotoChunckIndex(index) {
-            if(index >= 0 && index < QstsChuncks.length) {
+            if (index >= 0 && index < QstsChuncks.length) {
                 curPageNum.value = index + 1;
                 curChunckIndex = index;
                 CreateQATable(QstsChuncks[index], "questionbanks");
@@ -459,8 +450,8 @@
 
         GotoChunckIndex(0);
 
-        // These below will just display all instead of chunk by chunck.
-        // CreateQATable(Qsts, "questionbanks");
+                        // These below will just display all instead of chunk by chunck.
+                        // CreateQATable(Qsts, "questionbanks");
     </script>
 </body>
 </html>

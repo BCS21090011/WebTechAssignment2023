@@ -1,10 +1,8 @@
 ﻿body {
     /*background-color: #f2f2f2;*/
     font-family: Arial, sans-serif;
-    width: 100%;
-    height: 100%;
-    
 }
+
 h2 {
     text-align: center;
     margin-top: -10px;
@@ -17,13 +15,13 @@ form {
     margin: 150px auto;
     padding: 50px;
     background-color: #ffffff;
-    
     background: rgba(255, 255, 255, 0.72);
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(7.8px);
     -webkit-backdrop-filter: blur(7.8px);
-}   
+}
+
 @media screen and (max-width: 768px) {
     form {
         width: 80%;
@@ -41,7 +39,7 @@ form {
     }
 }
 
-input[type=text], input[type=password] {
+input[type=password] {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -50,50 +48,11 @@ input[type=text], input[type=password] {
     box-sizing: border-box;
 }
 
-button {
-    background-color: #af4ca1;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-}
-
- 
-
-.checkbox {
-    margin-bottom: 16px;
-    font-size: .9em;
-    color: #999;
-    font-weight: normal;
-    display: block
-}
-
-input[type=checkbox] {
-    position: relative;
-    top: -1.5px
-}
-
-span.psw {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.login-page-container {
-    margin: 0 auto;
-    max-width: 500px;
-    border: 1px solid #ccc;
-    padding: 20px;
-    border-radius: 5px;
-}
 
 h1 {
     font-size: 36px;
     font-weight: bold;
 }
-
 
 input[type="email"] {
     width: 100%;
@@ -103,7 +62,7 @@ input[type="email"] {
 }
 
 button[type="submit"] {
-    background-color: #007bff;
+    background-color: black;
     border-color: #007bff;
     padding: 14px 20px;
     margin: 8px 0;
@@ -113,13 +72,12 @@ button[type="submit"] {
     margin-top: 30px;
 }
 
-/*    button[type="submit"]:hover {
-        opacity: 0.8;
-        background-color: blue;
-        color: #007bff;
-        border-color: #007bff;
+    button[type="submit"]:hover {
+        border-color: aqua;
         cursor: pointer;
-    }*/
+        color: wheat;
+        font-size: 20px;
+    }
 
 .register-section {
     margin-bottom: 20px;
@@ -139,4 +97,3 @@ button[type="submit"] {
     border-radius: 5px;
     text-decoration: none;
 }
-
