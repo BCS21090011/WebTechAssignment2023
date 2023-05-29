@@ -8,8 +8,8 @@
         <link rel="stylesheet" href="~/css/CreateQuestionsVer5.css" asp-append-version="true" />
     </head>
     <body>
-        <div class="container" style="align-content: center; margin-top: 60px;" onchange="RunFilter()">
-            <select id="Subject">
+        <div class="container" style="align-content: center; margin-top: 60px;">
+            <select id="Subject" onchange="RunFilter()">
                 <option value="">All</option>
                 @foreach (var subject in Model.Subjects)
                 {
@@ -262,7 +262,8 @@
                     qstSelections = FilterQstsByAttr(qstSelections, "Difficulty", difficulty.value);
                 }
 
-                Initializing();
+                QstSelectionsDisplayQuestions();
+                QstSelectionsUlAddExtendHideButton();
             }
 
             RunFilter();

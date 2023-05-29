@@ -189,6 +189,7 @@ function MoveQuestion(id, from, to, draggable) {
         to.push(selected);
     }
     console.log("\tAfter :\n" + from.toString() + "\n" + to.toString());
+    RunFilter();
     UpdateQuestions();
 }
 
