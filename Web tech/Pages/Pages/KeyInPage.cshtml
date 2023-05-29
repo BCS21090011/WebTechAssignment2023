@@ -69,7 +69,7 @@
         }
 
             .form-wrapper input[type="submit"] {
-                background-color: black;
+                background-color: #007bff;
                 color: white;
                 padding: 12px 20px;
                 border: none;
@@ -83,8 +83,9 @@
             }
 
                 .form-wrapper input[type="submit"]:hover {
-                    color: wheat;
-                    font-size: 18px;
+                    background-color: #ffffff;
+                    color: #007bff;
+                    border-color: #007bff;
                     cursor: pointer;
                 }
 
@@ -106,9 +107,12 @@
     <body>
         <div class="Container">
             <div class="form-wrapper">
-                <form method="post" >
-                    <label for="difficulty"  >Difficulty level:</label>
+                <form method="post" enctype="multipart/form-data">
+                    <label for="difficulty">Difficulty level:</label>
                     <select id="difficulty" asp-for="Questions.QuestionDifficulty" class="form-control">
+                        <option value="1">Easy</option>
+                        <option value="2">Medium</option>
+                        <option value="3">Hard</option>
                     </select>
 
                     <label for="subject">Subject:</label>
@@ -118,7 +122,7 @@
                             <option value="@subject.SubjectsId">@subject.SubjectName</option>
                         }
                     </select>
-                   
+
                     <label for="question">Question:</label>
                     <div id="question-editor" class="form-control"></div>
                     <input type="hidden" id="question" name="Questions.Question" />
@@ -129,16 +133,16 @@
 
                     <label for="marks">Marks:</label>
                     <input type="number" id="marks" name="Questions.QuestionMark" min="0" asp-for="Questions.QuestionMark" class="form-control">
-                    
-                    <label for="question-image">Upload image:</label>
-                    <input type="file" id="question-image" name="questionImage" onchange="previewImage(event, 'question-preview')">
+
+                    <label for="question_image">Upload image:</label>
+                    <input type="file" id="question_image" name="questionImage" asp-for="questionImage" onchange="previewImage(event, 'question-preview')">
                     <img id="question-preview" src="#" alt="Preview Image" style="display: none; max-width: 300px; max-height: 300px;">
 
-                    <label for="answer-image">Upload image:</label>
-                    <input type="file" id="answer-image" name="answerImage" onchange="previewImage(event, 'answer-preview')">
+                    <label for="answer_image">Upload image:</label>
+                    <input type="file" id="answer_image" name="answerImage" asp-for="answerImage" onchange="previewImage(event, 'answer-preview')">
                     <img id="answer-preview" src="#" alt="Preview Image" style="display: none; max-width: 300px; max-height: 300px;">
 
-                    <input type="submit" value="Submit"  class="btn btn-primary form-control">
+                    <input type="submit" value="Submit" class="btn btn-primary form-control">
                 </form>
             </div>
         </div>
@@ -160,7 +164,7 @@
     </script>
     <script>
         let subjects = [
-            
+
             {
                 Text: "Math",
                 Value: "7"
@@ -195,7 +199,7 @@
         ];
 
         // UpdateOptions(subjects, "subject");
-        UpdateOptions(difficulty, "difficulty");
+        // UpdateOptions(difficulty, "difficulty");
     </script>
     <script>
         const subjectSelect = document.getElementById('subject');

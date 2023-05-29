@@ -2,11 +2,11 @@
 
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using Data.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -16,53 +16,44 @@ namespace Web_tech.Pages
     [Authorize(Roles = "Admin")]
     public class KeyInPageModel : PageModel
     {
-
+        private readonly IWebHostEnvironment _webHostEnvironment;
         private readonly DatabaseContext _context;
 
-        /*
-        [Display(Name = "Question Image")]
-        public IFormFile questionImage { get; set; }
-
-        [Display(Name = "Answer Image")]
-        public IFormFile answerImage { get; set; }
-        */
-
-        public KeyInPageModel(DatabaseContext context)
+        public KeyInPageModel(IWebHostEnvironment webHostEnvironment, DatabaseContext context)
         {
+            _webHostEnvironment = webHostEnvironment;
             _context = context;
         }
+
         [BindProperty]
         public Questions? Questions { get; set; }
 
         [BindProperty]
         public List<Subjects>? Subjects { get; set; }
 
+        [BindProperty]
+        public IFormFile? questionImage { get; set; }
+
+        [BindProperty]
+        public IFormFile? answerImage { get; set; }
+
         public void OnGet()
         {
             // Get the subjects:
             Subjects = _context.Subjects.ToList();
         }
+
         public async Task<IActionResult> OnPost()
         {
             if (ModelState.IsValid)
             {
-                /*
-                // Handle question image upload
-                string? questionImageName = HandleImgFile(questionImage);
-
-                // Handle answer image upload
-                string? answerImageName = HandleImgFile(answerImage);
-
-                // Save the image filenames in the database
-                Questions.QuestionImageFileName = questionImageName;
-                Questions.AnswerImageFileName = answerImageName;
-                */
+                Questions.QuestionImageFileName = HandleImgFile(questionImage);
+                Questions.AnswerImageFileName = HandleImgFile(answerImage);
 
                 // Save the data to the database
                 await _context.Questions.AddAsync(Questions);
                 await _context.SaveChangesAsync();
                 Console.WriteLine("Success");
-
 
                 return RedirectToPage("/Pages/Keyinpage");
             }
@@ -70,25 +61,43 @@ namespace Web_tech.Pages
             {
                 return Page();
             }
+
         }
 
-        private string? HandleImgFile(IFormFile imageFile)
+        private string? HandleImgFile(IFormFile? imageFile)
         {
             if (imageFile != null)
             {
-                string uniqueFileName = GetUniqueFileName(imageFile.FileName);
-                string filePath = Path.Combine("/WareHouse/Images", uniqueFileName);
+                // Get the web root path
+                var webRootPath = _webHostEnvironment.WebRootPath;
 
+                // Specify the folder path to save the image
+                var imagePath = Path.Combine(webRootPath, "WareHouse", "Images");
+
+                // Create the folder if it doesn't exist
+                if (!Directory.Exists(imagePath))
+                {
+                    Directory.CreateDirectory(imagePath);
+                }
+
+                // Generate a unique file name
+                var uniqueFileName = GetUniqueFileName(imageFile.FileName);
+
+                // Combine the folder path and unique file name
+                var filePath = Path.Combine(imagePath, uniqueFileName);
+
+                // Save the image to the specified folder
                 using (var stream = new FileStream(filePath, FileMode.Create))
                 {
                     imageFile.CopyTo(stream);
                 }
 
-                return uniqueFileName;
+                return "/WareHouse/Images/" + uniqueFileName;
             }
 
             return null;
         }
+
 
         private string GetUniqueFileName(string fileName)
         {
@@ -99,3 +108,5 @@ namespace Web_tech.Pages
 
     }
 }
+
+

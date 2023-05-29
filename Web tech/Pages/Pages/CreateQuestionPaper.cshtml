@@ -255,7 +255,7 @@
                 }
             ];
 
-            function AppendQuestionsList(list, id, qst, mark, subject, difficulty, qstImgFileName, ans, ansImgFileName){
+            function AppendQuestionsList(list, id, qst, mark, subject, difficulty, qstImgFileName, ans, ansImgFileName) {
                 let question = {
                     ID: id,
                     Qst: qst,
@@ -271,7 +271,7 @@
             }
         </script>
 
-        @foreach(var qst in Model.Qsts)
+        @foreach (var qst in Model.Qsts)
         {
             <script>
                 AppendQuestionsList(qstSelections, @qst.QuestionsId, "@qst.Question", @qst.QuestionMark, "@qst.SubjectsId", "@qst.QuestionDifficulty", "@qst.QuestionImageFileName", "@qst.Answer", "@qst.AnswerImageFileName");

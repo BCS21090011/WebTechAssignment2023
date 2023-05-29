@@ -22,7 +22,7 @@ namespace Web_tech.Pages
 
         public void OnGet()
         {
-            
+
             Qsts = _context.Questions.ToList();
             Console.WriteLine("Qsts:\n");
             Console.Write(Qsts);
@@ -48,5 +48,5 @@ namespace Web_tech.Pages
                 Qsts.Add(question); */
         }
     }
-    
+
 }
