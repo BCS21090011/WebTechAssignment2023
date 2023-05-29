@@ -8,10 +8,19 @@
         <link rel="stylesheet" href="~/css/CreateQuestionsVer5.css" asp-append-version="true" />
     </head>
     <body>
-        <div class="container" style="align-content: center; margin-top: 60px;">
+        <div class="container" style="align-content: center; margin-top: 60px;" onchange="RunFilter()">
             <select id="Subject">
+                <option value="">All</option>
+                @foreach (var subject in Model.Subjects)
+                {
+                    <option value="@subject.SubjectsId">@subject.SubjectName</option>
+                }
             </select>
-            <select id="Difficulty" style="float: left">
+            <select id="Difficulty" style="float: left" onchange="RunFilter()">
+                <option value="">All</option>
+                <option value="1">Easy</option>
+                <option value="2">Medium</option>
+                <option value="3">Hard</option>
             </select>
             <div class="Column-Container">
                 <div class="Column" id="Selection-Section" style="flex: 1; width: 300px;">
@@ -53,6 +62,7 @@
             //after request success, use for loop to push() item into array
             //call the method and pass the array
 
+            var oriQstSelections = [];
             var qstSelections = [];
             var selectedQsts = [
                 {
@@ -217,44 +227,6 @@
                 }
             ];
 
-            let subjects = [
-                {
-                    Text: "All",
-                    Value: "*"
-                },
-                {
-                    Text: "Math",
-                    Value: "math"
-                },
-                {
-                    Text: "English",
-                    Value: "english"
-                },
-                {
-                    Text: "History",
-                    Value: "history"
-                },
-                {
-                    Text: "Science",
-                    Value: "science"
-                }
-            ];
-
-            let difficulty = [
-                {
-                    Text: "Easy",
-                    Value: 1
-                },
-                {
-                    Text: "Medium",
-                    Value: 2
-                },
-                {
-                    Text: "Hard",
-                    Value: 3
-                }
-            ];
-
             function AppendQuestionsList(list, id, qst, mark, subject, difficulty, qstImgFileName, ans, ansImgFileName) {
                 let question = {
                     ID: id,
@@ -269,19 +241,31 @@
 
                 list.push(question);
             }
+            @foreach(var qst in Model.Qsts)
+            {
+                @:AppendQuestionsList(oriQstSelections, @qst.QuestionsId, "@qst.Question", @qst.QuestionMark, "@qst.SubjectsId", "@qst.QuestionDifficulty", "@qst.QuestionImageFileName", "@qst.Answer", "@qst.AnswerImageFileName");
+            }
         </script>
-
-        @foreach (var qst in Model.Qsts)
-        {
-            <script>
-                AppendQuestionsList(qstSelections, @qst.QuestionsId, "@qst.Question", @qst.QuestionMark, "@qst.SubjectsId", "@qst.QuestionDifficulty", "@qst.QuestionImageFileName", "@qst.Answer", "@qst.AnswerImageFileName");
-            </script>
-        }
-
         <script>
-            UpdateOptions(subjects, "Subject");
-            UpdateOptions(difficulty, "Difficulty");
+            function RunFilter() {
+                qstSelections = FilterQsts(oriQstSelections, selectedQsts);
+                
+                // Filter by subject:
+                const subject = document.getElementById("Subject");
+                if(subject.value) {
+                    qstSelections = FilterQstsByAttr(qstSelections, "Subject", subject.value);
+                }
 
+                // Filter by difficulty:
+                const difficulty = document.getElementById("Difficulty");
+                if(difficulty.value) {
+                    qstSelections = FilterQstsByAttr(qstSelections, "Difficulty", difficulty.value);
+                }
+
+                Initializing();
+            }
+
+            RunFilter();
             Initializing();
         </script>
     </body>

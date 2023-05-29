@@ -14,6 +14,9 @@ namespace Web_tech.Pages
         [BindProperty]
         public List<Questions>? Qsts { get; set; }
 
+        [BindProperty]
+        public List<Subjects>? Subjects { get; set; }
+
         public QuestionBankModel(DatabaseContext? context)
         {
             _context = context;
@@ -21,6 +24,7 @@ namespace Web_tech.Pages
         public void OnGet()
         {
             Qsts = _context.Questions.ToList();
+            Subjects = _context.Subjects.ToList();
         }
     }
 }

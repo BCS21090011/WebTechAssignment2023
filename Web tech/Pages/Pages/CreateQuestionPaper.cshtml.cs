@@ -15,6 +15,9 @@ namespace Web_tech.Pages
         [BindProperty]
         public List<Questions>? Qsts { get; set; }
 
+        [BindProperty]
+        public List<Subjects>? Subjects { get; set; }
+
         public CreateQuestionPaperModel(DatabaseContext? context)
         {
             _context = context;
@@ -22,10 +25,11 @@ namespace Web_tech.Pages
 
         public void OnGet()
         {
+            // Get the subjects:
+            Subjects = _context.Subjects.ToList();
 
+            // Get the questions:
             Qsts = _context.Questions.ToList();
-            Console.WriteLine("Qsts:\n");
-            Console.Write(Qsts);
             /*
 
             // Testing samples:
