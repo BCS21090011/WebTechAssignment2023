@@ -39,6 +39,11 @@ builder.Services.ConfigureApplicationCookie(options =>
 //    options.AddPolicy("AdminOnly", policy =>
 //        policy.RequireRole("Admin"));
 //});
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("SuperAdminOnly", policy =>
+        policy.RequireRole("SuperAdmin"));
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -57,8 +62,6 @@ app.UseSession();
 app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
-
-
 
 app.MapRazorPages();
 

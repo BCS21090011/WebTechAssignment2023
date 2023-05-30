@@ -1,6 +1,11 @@
 ﻿@page "/pages/keyinpage"
 @model Web_tech.Pages.KeyInPageModel
+@using Microsoft.AspNetCore.Authorization
 @{
+    if (User.IsInRole("Admin"))
+    {
+        // Content visible to SuperAdmin only
+    
     <html lang="en">
 
     <head>
@@ -289,5 +294,5 @@
         }
     </script>
     </html>
-
+    }
 }

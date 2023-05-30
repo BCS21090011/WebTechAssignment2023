@@ -1,0 +1,51 @@
+﻿@page
+@model Web_tech.Pages.Pages.CRUDModel
+@{
+}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.ajax.unobtrusive/3.2.6/jquery.unobtrusive-ajax.min.js"></script>
+
+<h1>Question Banks</h1>
+
+<p>
+    <a asp-page="CRUD" asp-page-handler="Create" class="btn btn-primary">Create New</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Question</th>
+            <th>Question Mark</th>
+            <th>Question Difficulty</th>
+            <th>Subjects Id</th>
+            <th>Question Image File Name</th>
+            <th>Answer</th>
+            <th>Answer Image File Name</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Questions)
+        {
+            <tr>
+                <td>@item.QuestionsId</td>
+                <td>@item.Question</td>
+                <td>@item.QuestionMark</td>
+                <td>@item.QuestionDifficulty</td>
+                <td>@item.SubjectsId</td>
+                <td><img src="@item.QuestionImageFileName" alt="@item.QuestionImageFileName" /></td>
+                <td>@item.Answer</td>
+                <td><img src="@item.AnswerImageFileName" alt="@item.AnswerImageFileName" /></td>
+                <td>
+                    <form asp-page-handler="Delete" asp-route-id="@item.QuestionsId" method="post">
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                    <a asp-page="./Edit" asp-route-id="@item.QuestionsId">Edit</a>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.QuestionsId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.QuestionsId })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

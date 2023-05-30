@@ -1,0 +1,72 @@
+﻿@page
+@model Web_tech.Pages.Pages.EditModel
+@{
+}
+<body>
+    <h1>Edit Question</h1>
+    <div class="form-group">
+        <form method="post" enctype="multipart/form-data">
+            <input type="hidden" asp-for="Question.QuestionsId" />
+
+            <label for="difficulty">Difficulty level:</label>
+            <select id="difficulty" asp-for="Question.QuestionDifficulty" class="form-control">
+                <option value="1">Easy</option>
+                <option value="2">Medium</option>
+                <option value="3">Hard</option>
+            </select>
+
+            <label for="subject">Subject:</label>
+            <select id="subject" asp-for="Question.SubjectsId" class="form-control">
+                @foreach (var subject in Model.Subjects)
+                {
+                    <option value="@subject.SubjectsId">@subject.SubjectName</option>
+                }
+            </select>
+
+            <label for="question">Question:</label>
+            <div id="question-editor" class="form-control"></div>
+            <input type="text" id="question" name="Question.Question" asp-for="Question.Question" />
+
+            <label for="answer">Answer:</label>
+            <div id="answer-editor" class="form-control"></div>
+            <input type="text" id="answer" name="Question.Answer" asp-for="Question.Answer"/>
+
+            <label for="marks">Marks:</label>
+            <input type="number" id="marks" name="Question.QuestionMark" min="0" asp-for="Question.QuestionMark" class="form-control">
+
+            <label for="question_image">Upload image:</label>
+            <input type="file" id="question_image" name="questionImage" onchange="previewImage(event, 'question-preview')">
+            <img id="question-preview" src="#" alt="Preview Image" style="display: none; max-width: 300px; max-height: 300px;">
+
+            <label for="answer_image">Upload image:</label>
+            <input type="file" id="answer_image" name="answerImage" onchange="previewImage(event, 'answer-preview')">
+            <img id="answer-preview" src="#" alt="Preview Image" style="display: none; max-width: 300px; max-height: 300px;">
+
+            <input type="submit" value="Submit" class="btn btn-primary form-control">
+        </form>
+    </div>
+
+    <script>
+        function previewImage(event, previewId) {
+            var input = event.target;
+            var preview = document.getElementById(previewId);
+
+            if (input.files && input.files[0]) {
+                console.log("Image should be displayed!");
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    console.log(e);
+                    preview.src = e.target.result;
+                    preview.style.display = "block";
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            } else {
+                console.log("No image should be displayed!");
+                preview.src = "#";
+                preview.style.display = "none";
+            }
+        }
+    </script>
+</body>
