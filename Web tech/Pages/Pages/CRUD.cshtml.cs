@@ -16,6 +16,7 @@ namespace Web_tech.Pages.Pages
             _context = context;
         }
 
+        [BindProperty]
         public IList<Questions> Questions { get; set; }
 
         public async Task<IActionResult> OnGet()
@@ -28,26 +29,8 @@ namespace Web_tech.Pages.Pages
             return Page();
         }
 
-        public IActionResult OnGetCreate()
-        {
-            return Page();
-        }
-
         [BindProperty]
         public Questions Question { get; set; }
-
-        public async Task<IActionResult> OnPostCreateAsync()
-        {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
-
-            _context.Questions.Add(Question);
-            await _context.SaveChangesAsync();
-
-            return RedirectToPage("CRUD");
-        }
 
         public async Task<IActionResult> OnGetEdit(int? id)
         {
