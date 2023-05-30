@@ -11,7 +11,7 @@ namespace Web_tech.Pages.Pages
     [Authorize(Roles = "Admin")]
     public class ProfilePageModel : PageModel
     {
-private readonly UserManager<IdentityUser> _userManager;
+        private readonly UserManager<IdentityUser> _userManager;
 
         public ProfilePageModel(UserManager<IdentityUser> userManager)
         {
@@ -62,7 +62,7 @@ private readonly UserManager<IdentityUser> _userManager;
             }
 
             // Update the user's profile information
-            user.UserName = UserName;
+           // user.UserName = UserName;
             user.Email = Email;
             user.PhoneNumber = PhoneNumber;
 

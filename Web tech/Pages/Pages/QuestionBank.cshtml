@@ -15,143 +15,144 @@
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="~/css/QATablesVer4.css">
 
-</head>
-<style>
+    <style>
 
-    body {
-        font-family: 'Roboto', sans-serif;
-        background-color: grey;
-    }
-
-    .ui-w-100 {
-        width: 100px !important;
-        height: auto;
-    }
-
-    .container {
-        padding: 20px;
-    }
-
-
-    .card {
-        margin-top: 80px;
-        border: none;
-        border-radius: 0;
-        box-shadow: 0 1px 4px rgba(24, 28, 33, 0.012);
-        background: rgba(255, 255, 255, 0.72);
-        border-radius: 16px;
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-    }
-  
-    .user-view-table td:first-child {
-        width: 9rem;
-    }
-
-    .user-view-table td {
-        padding-right: 0;
-        padding-left: 0;
-        border: 0;
-    }
-
-    .text-light {
-        color: #babbbc !important;
-    }
-
-    .card .row-bordered > [class*=" col-"]::after {
-        border-color: rgba(24, 28, 33, 0.075);
-    }
-
-    .text-xlarge {
-        font-size: 170% !important;
-    }
-
-    .btn-primary {
-        color: #fff;
-        background-color: #007bff;
-        border-color: #007bff;
-        padding: 0.375rem 0.75rem;
-        font-size: 0.875rem;
-        line-height: 1.5;
-        border-radius: 0.2rem;
-    }
-
-        .btn-primary:hover {
-            color: #fff;
-            background-color: #0069d9;
-            border-color: #0062cc;
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: grey;
         }
 
-        .btn-primary:focus, .btn-primary.focus {
-            box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.5);
+        .ui-w-100 {
+            width: 100px !important;
+            height: auto;
+        }
+
+        .container {
+            padding: 20px;
         }
 
 
-
-    .history-title {
-        font-size: 20rem;
-        font-weight: bold;
-        margin-bottom: 1.25rem;
-    }
-
-    .table {
-        background-color: #fff;
-        border-radius: 4px;
-    }
-
-        .table th,
-        .table td {
+        .card {
+            margin-top: 80px;
             border: none;
-            padding: 10px 15px;
+            border-radius: 0;
+            box-shadow: 0 1px 4px rgba(24, 28, 33, 0.012);
+            background: rgba(255, 255, 255, 0.72);
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
 
-        .table th {
-            font-weight: 600;
-            text-align: left;
+        .user-view-table td:first-child {
+            width: 9rem;
         }
 
-        .table tbody tr:nth-child(even) {
+        .user-view-table td {
+            padding-right: 0;
+            padding-left: 0;
+            border: 0;
         }
 
-    .cardquestionbank {
-        width: auto;
-        height: auto;
-        margin-top: 80px;
-        border: none;
-        border-radius: 0;
-        display: table;
-        padding: 30px 30px;
-        box-shadow: 0 1px 4px rgba(24, 28, 33, 0.012);
-        background: rgba(255, 255, 255, 0.24);
-        border-radius: 16px;
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-    }
+        .text-light {
+            color: #babbbc !important;
+        }
 
-    .btn-top-left {
-        position: absolute;
-        top: 60px;
-        right: 30px;
-        background-color: black;
-        color: white;
-        padding: 8px 15px;
-        border: none;
-        border-radius: 10px;
-        cursor: pointer;
-        font-weight: bold;
-        transition: all 0.3s ease-in-out;
-    }
+        .card .row-bordered > [class*=" col-"]::after {
+            border-color: rgba(24, 28, 33, 0.075);
+        }
 
-        .btn-top-left:hover {
-            background-color: black;
-            color: wheat;
+        .text-xlarge {
+            font-size: 170% !important;
+        }
+
+        .btn-primary {
+            color: #fff;
+            background-color: #007bff;
             border-color: #007bff;
-            cursor: pointer;
+            padding: 0.375rem 0.75rem;
+            font-size: 0.875rem;
+            line-height: 1.5;
+            border-radius: 0.2rem;
         }
 
-</style>
+            .btn-primary:hover {
+                color: #fff;
+                background-color: #0069d9;
+                border-color: #0062cc;
+            }
+
+            .btn-primary:focus, .btn-primary.focus {
+                box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.5);
+            }
+
+
+
+        .history-title {
+            font-size: 20rem;
+            font-weight: bold;
+            margin-bottom: 1.25rem;
+        }
+
+        .table {
+            background-color: #fff;
+            border-radius: 4px;
+        }
+
+            .table th,
+            .table td {
+                border: none;
+                padding: 10px 15px;
+            }
+
+            .table th {
+                font-weight: 600;
+                text-align: left;
+            }
+
+            .table tbody tr:nth-child(even) {
+            }
+
+        .cardquestionbank {
+            width: auto;
+            height: auto;
+            margin-top: 80px;
+            border: none;
+            border-radius: 0;
+            display: table;
+            padding: 30px 30px;
+            box-shadow: 0 1px 4px rgba(24, 28, 33, 0.012);
+            background: rgba(255, 255, 255, 0.24);
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .btn-top-left {
+            position: absolute;
+            top: 60px;
+            right: 30px;
+            background-color: black;
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease-in-out;
+        }
+
+            .btn-top-left:hover {
+                background-color: black;
+                color: wheat;
+                border-color: #007bff;
+                cursor: pointer;
+            }
+
+    </style>
+</head>
+
 <body>
     <div class="cardquestionbank mb-4" style="margin-left: auto; margin-right: auto;">
         <button onclick="redirectToPage()" class="btn-top-left">New Question</button>

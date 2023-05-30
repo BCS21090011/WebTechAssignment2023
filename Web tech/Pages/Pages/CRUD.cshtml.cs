@@ -1,12 +1,12 @@
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using Data.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
 namespace Web_tech.Pages.Pages
 {
+    [Authorize(Roles = "SuperAdmin")]
     public class CRUDModel : PageModel
     {
         private readonly DatabaseContext _context;
@@ -17,7 +17,7 @@ namespace Web_tech.Pages.Pages
         }
 
         [BindProperty]
-        public IList<Questions> Questions { get; set; }
+        public IList<Questions>? Questions { get; set; }
 
         public async Task<IActionResult> OnGet()
         {
@@ -30,7 +30,7 @@ namespace Web_tech.Pages.Pages
         }
 
         [BindProperty]
-        public Questions Question { get; set; }
+        public Questions? Question { get; set; }
 
         public async Task<IActionResult> OnGetEdit(int? id)
         {

@@ -12,113 +12,113 @@
               integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
         <link rel="stylesheet" href="index.css">
         <link rel="stylesheet" href="~/css/QATablesVer4.css">
+        <style>
+
+            body {
+                font-family: 'Roboto', sans-serif;
+                background-color: grey;
+            }
+
+            .ui-w-100 {
+                width: 100px !important;
+                height: auto;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+
+            .card {
+                margin-top: 80px;
+                border: none;
+                border-radius: 0;
+                box-shadow: 0 1px 4px rgba(24, 28, 33, 0.012);
+                background: rgba(255, 255, 255, 0.72);
+                border-radius: 16px;
+                box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+            }
+
+            .cardhistory {
+                margin-top: 80px;
+                border: none;
+                border-radius: 0;
+                display: table;
+                padding: 30px 30px;
+                box-shadow: 0 1px 4px rgba(24, 28, 33, 0.012);
+                background: rgba(255, 255, 255, 0.72);
+                border-radius: 16px;
+                box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+            }
+
+            .media {
+                box-shadow: 0 1px 4px rgba(24, 28, 33, 0.012);
+                background: rgba(255, 255, 255, 0.72);
+                border-radius: 16px;
+                box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+            }
+
+
+            .user-view-table td:first-child {
+                width: 9rem;
+            }
+
+            .user-view-table td {
+                padding-right: 0;
+                padding-left: 0;
+                border: 0;
+            }
+
+            .text-light {
+                color: #babbbc !important;
+            }
+
+            .card .row-bordered > [class*=" col-"]::after {
+                border-color: rgba(24, 28, 33, 0.075);
+            }
+
+            .text-xlarge {
+                font-size: 170% !important;
+            }
+
+            .history-title {
+                font-size: 20rem;
+                font-weight: bold;
+                margin-bottom: 1.25rem;
+            }
+
+
+            .table {
+                background-color: #fff;
+                border: 1px solid #dee2e6;
+                border-radius: 4px;
+            }
+
+                .table th,
+                .table td {
+                    border: none;
+                    padding: 10px 15px;
+                }
+
+                .table th {
+                    background-color: #f5f5f5;
+                    font-weight: 600;
+                    text-align: left;
+                }
+
+                .table tbody tr:nth-child(even) {
+                    background-color: #f2f2f2;
+                }
+
+        </style>
 
     </head>
-    <style>
-
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color:grey;
-        }
-
-        .ui-w-100 {
-            width: 100px !important;
-            height: auto;
-        }
-
-        .container {
-            padding: 20px;
-        }
-
-
-        .card {
-            margin-top: 80px;
-            border: none;
-            border-radius: 0;
-            box-shadow: 0 1px 4px rgba(24, 28, 33, 0.012);
-            background: rgba(255, 255, 255, 0.72);
-            border-radius: 16px;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-        }
-
-        .cardhistory {
-            margin-top: 80px;
-            border: none;
-            border-radius: 0;
-            display: table;
-            padding: 30px 30px;
-            box-shadow: 0 1px 4px rgba(24, 28, 33, 0.012);
-            background: rgba(255, 255, 255, 0.72);
-            border-radius: 16px;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-        }
-
-        .media {
-            box-shadow: 0 1px 4px rgba(24, 28, 33, 0.012);
-            background: rgba(255, 255, 255, 0.72);
-            border-radius: 16px;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-        }
-
-
-        .user-view-table td:first-child {
-            width: 9rem;
-        }
-
-        .user-view-table td {
-            padding-right: 0;
-            padding-left: 0;
-            border: 0;
-        }
-
-        .text-light {
-            color: #babbbc !important;
-        }
-
-        .card .row-bordered > [class*=" col-"]::after {
-            border-color: rgba(24, 28, 33, 0.075);
-        }
-
-        .text-xlarge {
-            font-size: 170% !important;
-        }
-
-        .history-title {
-            font-size: 20rem;
-            font-weight: bold;
-            margin-bottom: 1.25rem;
-        }
-
-
-        .table {
-            background-color: #fff;
-            border: 1px solid #dee2e6;
-            border-radius: 4px;
-        }
-
-            .table th,
-            .table td {
-                border: none;
-                padding: 10px 15px;
-            }
-
-            .table th {
-                background-color: #f5f5f5;
-                font-weight: 600;
-                text-align: left;
-            }
-
-            .table tbody tr:nth-child(even) {
-                background-color: #f2f2f2;
-            }
-
-    </style>
 
     <body>
 
@@ -128,10 +128,17 @@
                 <img src="/Resources/Images/user.png" alt="My Image" class="d-block ui-w-100 rounded-circle">
                 <div class="media-body ml-4">
                     <h4 class="font-weight-bold mb-0">Username: <span class="text-muted font-weight-normal">@ViewData["UserName"]</span></h4>
-           
+
                     <div class="text-muted mb-2">ID: </div>
-                   <!-- <a href="javascript:void(0)" class="btn btn-primary btn-sm" onclick="editProfile()">Edit Profile</a> -->
+                    <!-- <a href="javascript:void(0)" class="btn btn-primary btn-sm" onclick="editProfile()">Edit Profile</a> -->
                 </div>
+                @if (User.IsInRole("SuperAdmin"))
+                {
+                    <div class="text-center">
+                        <a href="/pages/crud" class="btn btn-danger">Manage Question</a>
+                        <a href="/user/ManageRoles" class="btn btn-danger">ManageRoles</a>
+                    </div>
+                }
             </div>
 
 
@@ -150,9 +157,7 @@
                     <dt class="col-sm-2">Email:</dt>
                     <dd class="col-sm-10">@ViewData["Email"]</dd>
                     </tr>
-                    <tr>
-                        <td>School:</td>
-                    </tr>
+            
                     <tr>
                     <dt class="col-sm-2">Phone Number:</dt>
                     <dd class="col-sm-10">@ViewData["PhoneNumber"]</dd>
@@ -161,10 +166,10 @@
                     </tbody>
                     </table>
                     <form method="post">
-                        <div class="form-group">
-                            <label for="UserName">Username:</label>
+                       <div class="form-group">
+                            <!--       <label for="UserName">Username:</label>
                             <input type="text" id="UserName" name="UserName" class="form-control" value="@ViewData["UserName"]" />
-                        </div>
+                        </div> -->
 
                         <div class="form-group">
                             <label for="Email">Email:</label>

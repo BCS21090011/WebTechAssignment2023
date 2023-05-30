@@ -1,13 +1,17 @@
 using Data.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using System.Data;
 
 namespace Web_tech.Pages.Pages
 {
+    [Authorize(Roles = "SuperAdmin")]
     public class EditModel : PageModel
     {
+       
         private readonly DatabaseContext _context;
         private readonly IWebHostEnvironment _webHostEnvironment;
 

@@ -5,17 +5,93 @@
 <head>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/jquery.ajax.unobtrusive/3.2.6/jquery.unobtrusive-ajax.min.js"></script>
-
     <style>
-        table{
-            background-color:white;
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            margin: 0 auto;
+            background-color: white;
+
         }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+            border-right: 1px solid #ddd; /* Add this line to create vertical lines between columns */
+        }
+
+        th {
+            background-color: #f2f2f2;
+            border-top: 1px solid #ddd; /* Add this line to create horizontal lines between header and rows */
+        }
+
+        img {
+            max-width: 100px;
+            max-height: 100px;
+        }
+
+        .btn, .EditButton {
+            display: inline-block;
+            padding: 6px 12px;
+            margin-bottom:10px;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 1.42857143;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: middle;
+            -ms-touch-action: manipulation;
+            touch-action: manipulation;
+            cursor: pointer;
+            user-select: none;
+            background-image: none;
+            border: 1px solid transparent;
+            border-radius: 4px;
+            width: 100%; /* Add this line to make the buttons the same width */
+        }
+
+        .btn-danger, .EditButton {
+            color: #fff;
+            background-color: black;
+        }
+
+        .btn-danger:hover, .EditButton:hover{
+            color: wheat;
+        
+        }
+
+
+        .create {
+            margin-bottom: 20px;
+            margin-left:10%;
+        }
+
+            .create a {
+                display: inline-block;
+                padding: 8px 16px;
+                background-color: black;
+                color: #fff;
+                text-decoration: none;
+                border-radius: 4px;
+                font-size: 18px;
+            }
+
+                .create a:hover {
+                    color: wheat;
+                    font-size: 20px;
+                }
+
     </style>
+
+
 </head>
 <body>
     <h1>Question Banks</h1>
 
-    <a href="/Pages/KeyInPage">Create New</a>
+    <div class="create">
+        <a href="/Pages/KeyInPage">Create New</a>
+    </div>
 
     <table class=" table table-bordered">
         <thead>
@@ -57,7 +133,8 @@
                         <form asp-page-handler="Delete" asp-route-id="@item.QuestionsId" method="post">
                             <button type="submit" class="btn btn-danger">Delete</button>
                         </form>
-                        <a asp-page="./Edit" asp-route-id="@item.QuestionsId">Edit</a>
+                        <button type="button" onclick="location.href='@Url.Page("./Edit", new { id = item.QuestionsId })'" class="EditButton">Edit</button>
+
                     </td>
                 </tr>
             }

@@ -2,10 +2,89 @@
 @model Web_tech.Pages.Pages.EditModel
 @{
 }
+<head>
+
+    <style>
+        #edit-form {
+            position: relative;
+            padding: 20px;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 60%;
+            margin: 0 auto;
+           
+        }
+
+        label {
+            display: block;
+            width: 150px;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+
+        #marks {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: black;
+            color: #fff;
+            text-decoration: none;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+            .btn-primary:hover {
+                color: wheat;
+                font-size:18px;
+            }
+
+        #question,
+        #answer {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        #difficulty, #subject{
+            font-size:18px;
+        }
+
+        .btn-primary {
+            display: block;
+            margin: 20px auto 0;
+        }
+
+        .delete-button {
+            display: inline-block;
+            padding: 4px 8px;
+            background-color: black;
+            color: #fff;
+            text-decoration: none;
+            border: none;
+            border-radius: 4px;
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+    </style>
+
+</head>
+
 <body>
     <h1>Edit Question</h1>
     <div class="form-group">
-        <form method="post" enctype="multipart/form-data">
+        <form id="edit-form" method="post" enctype="multipart/form-data">
             <input type="hidden" asp-for="Question.QuestionsId" />
 
             <label for="difficulty">Difficulty level:</label>
@@ -37,10 +116,12 @@
             <label for="question_image">Upload image:</label>
             <input type="file" id="question_image" name="questionImage" onchange="previewImage(event, 'question-preview')">
             <img id="question-preview" src="#" alt="Preview Image" style="display: none; max-width: 300px; max-height: 300px;">
+            <button id="question-preview-delete" type="button" class="delete-button" onclick="deleteImage('question-preview')">Delete</button>
 
             <label for="answer_image">Upload image:</label>
             <input type="file" id="answer_image" name="answerImage" onchange="previewImage(event, 'answer-preview')">
             <img id="answer-preview" src="#" alt="Preview Image" style="display: none; max-width: 300px; max-height: 300px;">
+            <button id="answer-preview-delete" type="button" class="delete-button" onclick="deleteImage('answer-preview')">Delete</button>
 
             <input type="submit" value="Submit" class="btn btn-primary form-control">
         </form>
@@ -52,21 +133,33 @@
             var preview = document.getElementById(previewId);
 
             if (input.files && input.files[0]) {
-                console.log("Image should be displayed!");
                 var reader = new FileReader();
 
                 reader.onload = function (e) {
-                    console.log(e);
                     preview.src = e.target.result;
                     preview.style.display = "block";
                 };
 
                 reader.readAsDataURL(input.files[0]);
             } else {
-                console.log("No image should be displayed!");
                 preview.src = "#";
                 preview.style.display = "none";
             }
+
+            var deleteButton = document.querySelector(`#${previewId}-delete`);
+            deleteButton.style.display = 'inline-block';
+        }
+
+        function deleteImage(previewId) {
+            var preview = document.getElementById(previewId);
+            preview.src = '#';
+            preview.style.display = 'none';
+
+            var deleteButton = document.querySelector(`#${previewId}-delete`);
+            deleteButton.style.display = 'none';
+
+            var fileInput = document.querySelector(`#${previewId.split('-')[0]}_image`);
+            fileInput.value = '';
         }
     </script>
 </body>
