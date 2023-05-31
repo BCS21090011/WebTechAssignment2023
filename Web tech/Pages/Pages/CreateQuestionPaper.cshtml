@@ -56,32 +56,13 @@
         <script src="~/js/PreviewVer4.js" asp-append-version="true"></script>
         <script src="~/js/CreateQuestionsVer5.js" asp-append-version="true"></script>
         <script src="~/js/Filters.js" asp-append-version="true"></script>
+        <script src="~/js/AddQstsToJS.js" asp-append-version="true"></script>
         <script>
-            var oriQstSelections = [];
-            var qstSelections = [];
-            var selectedQsts = [];
+            var oriQstSelections = [];  // This stores the all the questions.
+            var qstSelections = []; // This stores all the unselected questions (filtered).
+            var selectedQsts = [];  // This stores all the selected questions and will be used to generate pdf files.
 
-            function AppendQuestionsList(list, id, qst, mark, subject, difficulty, qstImgFileName, ans, ansImgFileName) {
-                let question = {
-                    ID: id,
-                    Qst: decodeHtmlEntities(qst),
-                    Mark: mark,
-                    Subject: subject,
-                    Difficulty: difficulty,
-                    QstImgFileName: qstImgFileName,
-                    Ans: decodeHtmlEntities(ans),
-                    AnsImgFileName: ansImgFileName
-                };
-
-                list.push(question);
-            }
-
-            function decodeHtmlEntities(text) {
-                var elem = document.createElement('textarea');
-                elem.innerHTML = text;
-                return elem.value;
-            }
-
+            // Get the questions from database:
             @foreach(var qst in Model.Qsts)
             {
                 @:AppendQuestionsList(oriQstSelections, @qst.QuestionsId, "@qst.Question", @qst.QuestionMark, "@qst.SubjectsId", "@qst.QuestionDifficulty", "@qst.QuestionImageFileName", "@qst.Answer", "@qst.AnswerImageFileName");
@@ -104,6 +85,7 @@
             }
 
             function RunFilter() {
+                // Filter out all the selected questions:
                 qstSelections = FilterQsts(oriQstSelections, selectedQsts);
                 
                 // Filter by subject:

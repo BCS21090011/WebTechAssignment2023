@@ -25,11 +25,10 @@
                 }
             </select>
             <label for="question">Question:</label>
-           
-            <textarea name="Question.Question"></textarea>           
+            <textarea name="Question.Question" asp-for="Question.Question"></textarea>
 
             <label for="answer">Answer:</label>
-            <textarea name="Question.Answer"></textarea>           
+            <textarea name="Question.Answer" asp-for="Question.Answer"></textarea>           
 
             <label for="marks">Marks:</label>
             <input type="number" id="marks" name="Question.QuestionMark" min="0" asp-for="Question.QuestionMark" class="form-control">
@@ -67,6 +66,7 @@
                 preview.style.display = "none";
             }
         }
+
         function deleteImage(previewId) {
             var preview = document.getElementById(previewId);
             preview.src = '#';

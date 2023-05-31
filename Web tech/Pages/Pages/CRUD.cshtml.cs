@@ -19,8 +19,12 @@ namespace Web_tech.Pages.Pages
         [BindProperty]
         public IList<Questions>? Questions { get; set; }
 
+        [BindProperty]
+        public List<Subjects>? Subjects { get; set; }
+
         public async Task<IActionResult> OnGet()
         {
+            Subjects = _context.Subjects.ToList();
             Questions = await _context.Questions.ToListAsync();
             if (Questions == null)
             {

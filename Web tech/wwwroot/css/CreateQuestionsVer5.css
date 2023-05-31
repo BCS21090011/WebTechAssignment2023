@@ -27,7 +27,7 @@
     padding: 10px;
     height: 100%; /* Fill column-container. */
     border: 1px solid black;
-    overflow-y: scroll;
+    overflow-y: auto;
     width: 100%;
 }
 

@@ -52,6 +52,7 @@
     <script src="~/js/QATablesVer2.js"></script>
     <script src="~/js/ConvertValues.js"></script>
     <script src="~/js/Filters.js"></script>
+    <script src="~/js/AddQstsToJS.js"></script>
     <script>
         function redirectToPage() {
             window.location.href = '/Pages/KeyInPage';
@@ -59,47 +60,29 @@
     </script>
     <script>
         var subjects = {};
+        // Get all the subjects from database:
         @foreach (var subject in Model.Subjects)
         {
             @:subjects[@subject.SubjectsId] = "@subject.SubjectName";
         }
 
-                var difficulty = {
+        var difficulty = {
             1: "Easy",
             2: "Medium",
             3: "Hard"
         };
 
         var Qsts = [];
-        function AppendQuestionsList(list, id, qst, mark, subject, difficulty, qstImgFileName, ans, ansImgFileName) {
-            let question = {
-                ID: id,
-                Qst: decodeHtmlEntities(qst),
-                Mark: mark,
-                Subject: subject,
-                Difficulty: difficulty,
-                QstImgFileName: qstImgFileName,
-                Ans: decodeHtmlEntities(ans),
-                AnsImgFileName: ansImgFileName
-            };
-            list.push(question);
-        }
-
-        function decodeHtmlEntities(text) {
-            var elem = document.createElement('textarea');
-            elem.innerHTML = text;
-            return elem.value;
-        }
-   
+        
+        // Get all the questions from database:
         @foreach (var qst in Model.Qsts)
         {
             @:AppendQuestionsList(Qsts, @qst.QuestionsId, "@qst.Question", @qst.QuestionMark, "@qst.SubjectsId", "@qst.QuestionDifficulty", "@qst.QuestionImageFileName", "@qst.Answer", "@qst.AnswerImageFileName");
         }
 
-            ConvertAttrToValue(Qsts, "Subject", subjects);
+        ConvertAttrToValue(Qsts, "Subject", subjects);
         ConvertAttrToValue(Qsts, "Difficulty", difficulty);
     </script>
- 
     <script>
         function SplitArrayIntoChuncks(array, sizePerChunck) {
             let chuncks = [];
@@ -109,14 +92,6 @@
             }
             return chuncks;
         }
-
-        var chunkSize = 10;
-        var QstsChuncks = SplitArrayIntoChuncks(Qsts, chunkSize);
-        var curChunckIndex = 0;
-
-        const curPageNum = document.getElementById("CurPageNum");
-        const maxPageNum = document.getElementById("MaxPageNum");
-        SetPageNum();
 
         function SetPageNum() {
             if (QstsChuncks.length > 0) {
@@ -169,15 +144,21 @@
             else {
                 curPageNum.value = 1;
                 curChunckIndex = 0;
+
                 const table = document.getElementById("questionbanks");
                 table.innerHTML = "";
+
+                // What should be shown if there are no questions:
+                const h1 = document.createElement("h1");
+                h1.textContent = "No Question found!";
+                h1.style.textAlign = "center";
+                h1.style.justifyContent = "center";
+                h1.style.alignItems = "center";
+
+                table.appendChild(h1);
             }
         }
-        GotoChunckIndex(0);
-        // These below will just display all instead of chunk by chunck.
-        // CreateQATable(Qsts, "questionbanks");
-    </script>
-    <script>
+
         function RunFilter() {
             var filteredQsts = Qsts
             const subject = document.getElementById("Subject");
@@ -194,6 +175,17 @@
 
             GotoChunckIndex(0);
         }
+
+        var chunkSize = 10;
+        var QstsChuncks = SplitArrayIntoChuncks(Qsts, chunkSize);
+        var curChunckIndex = 0;
+
+        const curPageNum = document.getElementById("CurPageNum");
+        const maxPageNum = document.getElementById("MaxPageNum");
+        SetPageNum();
+        GotoChunckIndex(0);
+        // These below will just display all instead of chunk by chunck.
+        // CreateQATable(Qsts, "questionbanks");
     </script>
 </body>
 </html>
