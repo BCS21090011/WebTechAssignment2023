@@ -3,16 +3,99 @@
 @{
     ViewData["Title"] = "Manage Account Roles";
 }
+<html>
+    <head>
+<style>
+        .widget {
+            padding: 40px 40px;
+            text-align: left;
+            transition: all 0.3s ease-in-out;
+            cursor: pointer;
+            margin-bottom: 10px;
+            background: rgba(255, 255, 255, 0.72);
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(7.8px);
+            -webkit-backdrop-filter: blur(7.8px);
+            margin-top: 10%;
+            margin-top: 10%;
+            margin-left: 30%;
+            margin-right: 30%;
 
-<h1>Manage Account Roles</h1>
+        }
 
-@if (!string.IsNullOrEmpty(Model.SuccessMessage))
-{
-    <div class="alert alert-success">@Model.SuccessMessage</div>
-}
+        h1 {
+            display: block;
+            font-size: 2em;
+            
+            font-weight: bold;
+            font-size: 30px
+        }
 
-<h3>Assign Role</h3>
+        h3 {
+            display: block;
+            font-size: 1.17em;
+            margin-right: 60%;
+            font-weight: bold;
+        }
+        .form-group
+        {
+            margin-bottom:5%;
+        }
+
+        button {
+            
+            font-size: 15px;
+            font-weight: bold;
+            /*background-color: #007bff;*/
+            background-color: black;
+            border-color: black;
+            border: none;
+            border-radius: 7px;
+            padding: 10px 15px;
+            color: #fff;
+            text-transform: uppercase;
+            transition: all 0.3s ease-in-out;
+        }
+
+            button:hover {
+                /*background-color: #ffffff;*/
+                /*                color: #007bff;
+                        border-color: #007bff;*/
+                background-color: black;
+                cursor: pointer;
+                transform: translateY(-2px);
+                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            }
+
+        label {
+            display: block;
+            width: 150px;
+            margin: 10px 0;
+        }
+
+        input[type="text"], input[type="number"], select {
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+</style>
+</head>
+<body>
+
 <form method="post">
+    <div class="widget">
+            <h1>Manage Account Roles</h1>
+
+            @if (!string.IsNullOrEmpty(Model.SuccessMessage))
+            {
+                <div class="alert alert-success">@Model.SuccessMessage</div>
+            }
+            <hr />
+            <h3>Assign Role</h3>
     <div class="form-group">
         <label for="userId">User:</label>
         <select class="form-control" id="userId" name="userId">
@@ -39,6 +122,11 @@
             }
         </select>
     </div>
+            <button type="submit" class="btn btn-primary" asp-page-handler="AssignRole">Assign Role</button>
+        </div>
 
-    <button type="submit" class="btn btn-primary" asp-page-handler="AssignRole">Assign Role</button>
+   
 </form>
+</body>
+
+</html>

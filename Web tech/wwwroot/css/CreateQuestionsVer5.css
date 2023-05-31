@@ -48,6 +48,7 @@
     padding-right: 10px;
     border: 1px solid black;
     max-width: 100%;
+    background:white;
 }
 
     /* Selects only the span elements that are direct children of an element with a class of "Question". */
@@ -86,6 +87,7 @@
 
 .QstAct-Button {
     flex-shrink: 0; /* Add this line to prevent the button from shrinking. */
+    color:black
 }
 
 .Dragging {
@@ -118,4 +120,16 @@
     font-weight: bold;
     text-decoration: underline;
     font-size: 20px;
+}
+button {
+    border: none;
+    outline: none;
+    background: none;
+    margin: 0;
+    cursor: pointer;
+    color: #fff;
+    text-decoration: none;
+    padding: 0 10px;
+    color: black;
+    transition: color 0.3s;
 }

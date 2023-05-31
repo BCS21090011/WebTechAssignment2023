@@ -88,7 +88,7 @@
                     }
 
                         .form-wrapper input[type="submit"]:hover {
-                            color: wheat;
+                            color: white;
                             font-size: 18px;
                         }
 
@@ -130,7 +130,7 @@
         <body>
             <div class="Container">
                 <div class="form-wrapper">
-                    <form method="post" enctype="multipart/form-data">
+                    <form method="post" enctype="multipart/form-data" >
                         <label for="difficulty">Difficulty level:</label>
                         <select id="difficulty" asp-for="Questions.QuestionDifficulty" class="form-control">
                             <option value="1">Easy</option>
@@ -167,9 +167,10 @@
                         <input type="file" id="answer_image" name="answerImage" onchange="previewImage(event, 'answer-preview')">
                         <button id="answer-preview-delete" type="button" class="delete-button" onclick="deleteImage('answer-preview')">Delete</button>
                         <img id="answer-preview" src="#" alt="Preview Image" style="display: none; max-width: 300px; max-height: 300px;">
-                        
 
-                        <input type="submit" value="Submit" class="btn btn-primary form-control">
+
+                        <input type="submit" value="Submit"  class="btn btn-primary form-control">
+                        
                     </form>
                 </div>
             </div>
@@ -184,8 +185,9 @@
                     }
                 </ul>
             </div>
-
+           
         </body>
+        
         <script>
             const subjectSelect = document.getElementById('subject');
             const otherSubjectInput = document.getElementById('other-subject');
