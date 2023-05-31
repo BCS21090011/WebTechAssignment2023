@@ -5,106 +5,8 @@
 <head>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/jquery.ajax.unobtrusive/3.2.6/jquery.unobtrusive-ajax.min.js"></script>
-    <style>
-        table {
-            border-collapse: collapse;
-            width: 90%;
-            margin: 0 auto;
-            margin-bottom:5%;
-            background-color: white;
-
-        }
-
-        th, td {
-            padding: 8px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-            border-right: 1px solid #ddd; /* Add this line to create vertical lines between columns */
-        }
-
-        th {
-            background-color: #f2f2f2;
-            border-top: 1px solid #ddd; /* Add this line to create horizontal lines between header and rows */
-        }
-
-        img {
-            max-width: 100px;
-            max-height: 100px;
-        }
-
-        .btn, .EditButton {
-            display: inline-block;
-            padding: 6px 12px;
-            margin-bottom:10px;
-            font-size: 14px;
-            font-weight: 400;
-            line-height: 1.42857143;
-            text-align: center;
-            white-space: nowrap;
-            vertical-align: middle;
-            -ms-touch-action: manipulation;
-            touch-action: manipulation;
-            cursor: pointer;
-            user-select: none;
-            background-image: none;
-            border: 1px solid transparent;
-            border-radius: 4px;
-            width: 100%; /* Add this line to make the buttons the same width */
-        }
-
-        .btn-danger, .EditButton {
-            color: #fff;
-            background-color: black;
-        }
-
-        .btn-danger:hover, .EditButton:hover{
-            color: wheat;
-        
-        }
-
-
-        .create {
-            margin-bottom: 20px;
-            margin-left:5%;
-            
-        }
-
-            .create a {
-                display: inline-block;
-                padding: 8px 16px;
-                background-color: black;
-                color: #fff;
-                text-decoration: none;
-                border-radius: 4px;
-                font-size: 18px;
-            }
-
-                .create a:hover {
-                    color: wheat;
-                    font-size: 20px;
-                }
-
-        .card {
-            margin-left:5vw;
-            margin-right:5vw;
-            margin-top: 15vh;
-            margin-bottom: 15vh;
-            border: none;
-            padding:1.25rem;
-            border-radius: 0;
-            box-shadow: 0 1px 4px rgba(24, 28, 33, 0.012);
-            background: rgba(255, 255, 255, 0.72);
-            border-radius: 16px;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-        }
-
-        h1{
-            margin-left: 3%;          
-            padding: 1.25rem;
-        }
-    </style>
+    <link rel="stylesheet" href="~/css/CRUD.css" asp-append-version="true" />
+    
 
 
 </head>
@@ -114,6 +16,7 @@
 
     <div class="create">
         <a href="/Pages/KeyInPage">Create New</a>
+            <a href="/Pages/AddSubject">AddSubject</a>
     </div>
 
     <table class=" table table-bordered">
@@ -154,7 +57,7 @@
                     </td>
                     <td>
                         <form asp-page-handler="Delete" asp-route-id="@item.QuestionsId" method="post">
-                            <button type="submit" class="btn btn-danger">Delete</button>
+                            <button type="submit" class="btn ">Delete</button>
                         </form>
                         <button type="button" onclick="location.href='@Url.Page("./Edit", new { id = item.QuestionsId })'" class="EditButton">Edit</button>
 

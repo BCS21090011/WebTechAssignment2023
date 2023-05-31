@@ -1,0 +1,45 @@
+﻿@page
+@model Web_tech.Pages.Pages.AddSubjectModel
+@{
+    <!DOCTYPE html>
+    <html>
+        <head>
+            <title>AddSubject</title>
+        <link rel="stylesheet" href="~/css/AddSubject.css" asp-append-version="true" />
+        </head>
+        <body>
+        <div class="widget1">
+        <div class=" widget">
+                <h1>Add Subject</h1>
+                <hr/>
+            <form method="post">
+                <label for="SubjectName">Subject Name:</label>
+                <input type="text" id="SubjectName" name="Subject.SubjectName">
+
+                <button type="submit" class="btn-primary">Submit</button>
+            </form>
+            <hr />
+            <div class="table1">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Subject ID</th>
+                        <th>Subject Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach(var subject in Model.Subjects)
+                    {
+                        <tr>
+                            <th>@subject.SubjectsId</th>
+                            <th>@subject.SubjectName</th>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+                </div>
+        </div>
+        </div>
+        </body>
+    </html>
+}

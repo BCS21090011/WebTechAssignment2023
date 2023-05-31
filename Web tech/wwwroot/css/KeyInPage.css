@@ -1,0 +1,115 @@
+﻿form {
+    position: relative;
+    padding: 20px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+label {
+    display: block;
+    width: 150px;
+    margin: 10px 0;
+}
+
+textarea {
+    resize: none;
+    overflow: auto;
+    width: 100%;
+    border: none;
+    height: 200px;
+}
+
+input[type="text"],
+input[type="number"],
+select {
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+input[type="submit"] {
+}
+
+    input[type="submit"]:hover {
+        background-color: #45a049;
+    }
+
+#question-editor {
+    height: 200px;
+    width: 100%;
+    background-color: white;
+}
+
+#answer-editor {
+    height: 200px;
+    width: 100%;
+    background-color: white;
+}
+
+.form-wrapper {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    width: 80%;
+    margin: auto;
+    margin-top: 50px;
+    position: relative;
+    background: rgba(255, 255, 255, 0.72);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(7.8px);
+    -webkit-backdrop-filter: blur(7.8px);
+}
+
+    .form-wrapper input[type="submit"] {
+        background-color: black;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        position: absolute;
+        border-radius: 15px;
+        cursor: pointer;
+        bottom: 15px;
+        right: 15px;
+        font-weight: bold;
+        transition: all 0.3s ease-in-out;
+    }
+
+        .form-wrapper input[type="submit"]:hover {
+            color: white;
+            font-size: 18px;
+        }
+
+
+
+.Container {
+    margin-top: calc(10vh + 2vw);
+    margin-bottom: calc(10vh + 2vw);
+}
+
+
+
+
+.delete-button {
+    display: inline-block;
+    padding: 8px 8px;
+    font-size: 15px;
+    background-color: black;
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    border-radius: 4px;
+    font-size: 15px;
+    cursor: pointer;
+    margin-left: 5vw;
+}
+
+    .delete-button:hover {
+        background-color: black;
+        cursor: pointer;
+        transform: translateY(-2px);
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }

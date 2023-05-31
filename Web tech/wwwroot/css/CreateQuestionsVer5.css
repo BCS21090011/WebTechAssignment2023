@@ -10,7 +10,9 @@
     padding: 10px;
     height: 100%;
 }
-
+.row2{
+    margin-left: 3%;
+}
 .Row-Container {
     display: flex;
     flex-direction: column; /* This should place the elements inside vertically because display: flex will let them placed horizontally. */
@@ -37,6 +39,7 @@
     box-sizing: border-box;
     height: 100%;
     width: 100%;
+
 }
 
 .Question {
@@ -63,6 +66,19 @@
     /* Hide the img. */
     .Question > img {
         display: none;
+    }
+
+    .Question > button {
+        border: none;
+        outline: none;
+        background: none;
+        margin: 0;
+        cursor: pointer;
+        color: #fff;
+        text-decoration: none;
+        padding: 0 10px;
+        color: black;
+        transition: color 0.3s;
     }
 
     .Question.Extended {
@@ -98,7 +114,7 @@
 
 .container {
     width: 90%;
-    height: 90%;
+    height: 80%;
     margin-left: auto;
     margin-right: auto;
     border: none;
@@ -112,7 +128,9 @@
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     background-color: grey;
-
+    margin-top:15vh;
+    margin-bottom:15vh;
+    
 }
 
 #Preview-Name {
@@ -121,15 +139,18 @@
     text-decoration: underline;
     font-size: 20px;
 }
-button {
+
+.btn-primary {
+    /* background-color: #007bff; */
+    /* border-color: #007bff; */
+    font-size: 10px; 
+    font-weight: bold;
+    /* background-color: #007bff; */
+    background-color: black;
     border: none;
-    outline: none;
-    background: none;
-    margin: 0;
-    cursor: pointer;
+    border-radius: 7px;
+    padding: 0.5rem;
     color: #fff;
-    text-decoration: none;
-    padding: 0 10px;
-    color: black;
-    transition: color 0.3s;
+    text-transform: uppercase;
+    transition: all 0.3s ease-in-out;
 }

@@ -1,0 +1,82 @@
+﻿.widget {
+    padding: 40px 40px;
+    text-align: left;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    margin-bottom: 10px;
+    background: rgba(255, 255, 255, 0.72);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(7.8px);
+    -webkit-backdrop-filter: blur(7.8px);
+    margin-top: 10%;
+    margin-top: 10%;
+    margin-left: 30%;
+    margin-right: 30%;
+}
+
+.widget1 {
+    margin-top: 15vh;
+    margin-bottom: 5vh;
+}
+
+h1 {
+    display: block;
+    font-size: 2em;
+    font-weight: bold;
+    font-size: 30px
+}
+
+table {
+    margin-top: 5%;
+    border-collapse: collapse;
+    width: 90%;
+    margin: 0 auto;
+    margin-bottom: 5%;
+    background-color: white;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    border-right: 1px solid #ddd; /* Add this line to create vertical lines between columns */
+}
+
+th {
+    background-color: #f2f2f2;
+    border-top: 1px solid #ddd; /* Add this line to create horizontal lines between header and rows */
+}
+
+form {
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.table1 {
+    margin-top: 10%;
+}
+
+input[type="text"], input[type="number"], select {
+    padding: 5px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 49%;
+    box-sizing: border-box;
+}
+
+.btn-primary {
+    /* background-color: #007bff; */
+    /* border-color: #007bff; */
+    /* font-size: 15px; */
+    font-weight: bold;
+    /* background-color: #007bff; */
+    background-color: black;
+    border: none;
+    border-radius: 7px;
+    padding: 0.5rem;
+    color: #fff;
+    text-transform: uppercase;
+    transition: all 0.3s ease-in-out;
+}

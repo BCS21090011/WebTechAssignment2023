@@ -1,0 +1,136 @@
+﻿body {
+    font-family: Arial, sans-serif;
+    background-color: grey;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+}
+
+.container {
+    margin-top: calc(30vh + 2vw);
+    margin-bottom: calc(10vh + 2vw);
+}
+
+.row {
+    margin-bottom: 50px;
+}
+
+    .row .widget {
+        width: 100%;
+        margin: auto;
+        padding: 20px;
+    }
+
+.widget {
+    padding: 40px 40px;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    margin-bottom: 10px;
+    background: rgba(255, 255, 255, 0.72);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(7.8px);
+    -webkit-backdrop-filter: blur(7.8px);
+}
+
+    .widget:hover {
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+        transform: translateY(-5px);
+    }
+
+.widget-icon {
+    font-size: 50px;
+    color: #333;
+    margin-top: 5vh;
+}
+
+.widget-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.widget-description {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 5vh;
+}
+
+.widget-link {
+    margin-bottom: 5vh;
+    font-size: 15px;
+    font-weight: bold;
+    /*background-color: #007bff;*/
+    background-color: black;
+    border-color: black;
+    border: none;
+    border-radius: 7px;
+    padding: 10px 15px;
+    color: #fff;
+    text-transform: uppercase;
+    transition: all 0.3s ease-in-out;
+}
+
+    .widget-link:hover {
+        /*background-color: #ffffff;*/
+        /*                color: #007bff;
+                border-color: #007bff;*/
+        background-color: black;
+        cursor: pointer;
+        transform: translateY(-2px);
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+
+.bg-dark {
+    background-color: #333;
+    color: #fff;
+}
+
+.text-white {
+    color: #fff;
+}
+
+.mt-3 {
+    margin-top: 1rem !important;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.navbar {
+    background-color: #0e0e0f;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
+    padding: 20px 30px;
+}
+
+.navbar-brand {
+    font-size: 36px;
+    color: #007bff;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+}
+
+    .navbar-brand:hover {
+        color: #0056b3;
+        cursor: pointer;
+    }
+
+.navbar-nav {
+    margin-right: 20px;
+}
+
+.nav-link {
+    color: #343a40;
+    font-size: 18px;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+}
+
+    .nav-link:hover {
+        color: #007bff;
+        cursor: pointer;
+    }

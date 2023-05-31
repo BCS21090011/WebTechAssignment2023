@@ -8,225 +8,14 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Web_tech</title>
-    <style>
-
-        html, body {
-            overflow-x: hidden;
-            height: 100%;
-        }
-
-            body::-webkit-scrollbar {
-                display: none;
-            }
-
-        body {
-            /*background: rgb(0,14,255);*/
-            /*background: linear-gradient(152deg, rgba(10,14,255,1) 0%, rgba(70,255,247,1) 100%);*/
-            /*background-color: grey;*/
-            background: rgb(2,0,36);
-            background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(14,14,18,1) 35%, rgba(115,125,128,1) 100%);
-            padding: 0;
-            margin: 0;
-            font-family: 'Varela Round', sans-serif;
-        }
-
-        .header {
-            display: block;
-            margin: 0 auto;
-            width: 100%;
-            max-width: 100%;
-            box-shadow: none;
-            height: 60px;
-            position: fixed;
-            height: 60px !important;
-            overflow: hidden;
-            z-index: 10;
-            background: black;
-            
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-            background: rgba(0, 0, 0, 0.49);
-            
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(10.3px);
-            -webkit-backdrop-filter: blur(10.3px);
-        }
-
-        .dark-mode {
-            background: linear-gradient(152deg, rgba(0,14,255,1) 0%, rgba(70,255,247,1) 100%);
-        }
-
-            .dark-mode.header {
-                display: block;
-                margin: 0 auto;
-                width: 100%;
-                max-width: 100%;
-                box-shadow: none;
-                height: 60px;
-                position: fixed;
-                height: 60px !important;
-                overflow: hidden;
-                z-index: 10;
-                background: rgba(255, 255, 255, 0.24);
-                box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-                backdrop-filter: blur(7.6px);
-                -webkit-backdrop-filter: blur(7.6px);
-                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-            }
-
-        .headerInner {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 100%;
-            padding: 0 20px;
-            color: #fff;
-        }
-
-        .headerLinks {
-            display: flex;
-            align-items: center;
-        }
-
-        .headerTitle {
-            font-size: 18px;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-
-        .headerLinks a {
-            color: #fff;
-            text-decoration: none;
-            padding: 0 10px;
-            transition: color 0.3s;
-            flex-grow: 1;
-        }
-
-            .headerLinks a:hover {
-                color: #fff;
-            }
-
-        .headerLinks ul {
-            display: flex;
-            align-items: center;
-            margin-left: auto;
-            list-style: none;
-            padding: 0;
-        }
-
-        .headerLinks li {
-            margin-left: 0px;
-        }
-
-            .headerLinks li:first-child {
-                margin-left: 0;
-            }
-
-        .headerAction {
-            font-size: 18px;
-            font-weight: bold;
-            color: #fff;
-            display: flex;
-            align-items: center;
-        }
-
-            .headerAction:hover {
-                background-color: #fff;
-                color: #222;
-                cursor: pointer;
-            }
-
-        .headerLinks button {
-            color: #fff;
-            text-decoration: none;
-            padding: 0 10px;
-            transition: color 0.3s;
-            flex-grow: 1;
-        }
-
-        button {
-            border: none;
-            outline: none;
-            background: none;
-            margin: 0;
-            cursor: pointer;
-            color: #fff;
-            text-decoration: none;
-            padding: 0 10px;
-            transition: color 0.3s;
-        }
-
-
-
-        .main {
-            margin: 0 auto;
-            display: block;
-            height: 100%;
-            margin-top: 60px;
-        }
-
-        .mainInner {
-            display: table;
-            height: 100%;
-            width: 100%;
-            text-align: center;
-        }
-
-            .mainInner div {
-                display: table-cell;
-                vertical-align: middle;
-                font-size: 3em;
-                font-weight: bold;
-                letter-spacing: 1.25px;
-            }
-
-        .nav-menu__link {
-            color: white;
-            position: relative;
-        }
-
-            .nav-menu__link:hover {
-                color: blueviolet;
-            }
-
-            .nav-menu__link::before, .nav-menu__link::after {
-                content: '';
-                position: absolute;
-                left: 0;
-                width: 100%;
-                height: 2px;
-                background-color: antiquewhite;
-                transform: scaleX(0);
-                transition: all 0.5s;
-                transform-origin: left;
-            }
-
-            .nav-menu__link::before {
-                top: -10px;
-            }
-
-            .nav-menu__link::after {
-                transform-origin: right;
-                bottom: -10px;
-            }
-
-            .nav-menu__link:hover {
-                color: white;
-                font-weight: bold;
-            }
-
-                .nav-menu__link:hover::before, .nav-menu__link:hover::after {
-                    color: #fff;
-                    transform: scaleX(1);
-                }
-
-    </style>
+    <link rel="stylesheet" href="~/css/Layout.css" asp-append-version="true" />
 </head>
 <body>
 
     <div class="header">
         <div class="headerInner">
             <div class="headerTitle" onclick="myFunction()">Create Exam Paper</div>
-            <div class="headerLinks">
+            <div class="headerLinks">            
                 <a href="/index" class="nav-menu__link">Homepage</a>
                 <a href="~/pages/CreateQuestionPages" class="nav-menu__link">Create question</a>
                 <a href="/user/profilepage" class="nav-menu__link">Profile</a>
@@ -234,28 +23,17 @@
 
                 @if (SignInManager.IsSignedIn(User))
                 {
-
                     <a id="manage" class="headerLinks" asp-area="Identity" asp-page="/user/profilepage" title="Manage">Hello @UserManager.GetUserName(User)!</a>
-
-
                     <form id="logoutForm" class="headerLinks" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/Index", new { area = "" })">
                         <button id="logout" type="submit" class="headerLinks">Logout</button>
                     </form>
-
                 }
                 else
                 {
-
                     <a href="~/user/Register">Register</a>
-
-
                     <a href="~/user/Login">Login</a>
-
                 }
-
             </div>
-
-
         </div>
     </div>
     <div>
@@ -266,6 +44,30 @@
         function myFunction() {
             var element = document.body;
             element.classList.toggle("dark-mode");
+        }
+    </script>
+    <script>
+        var checkbox = document.getElementById('darkModeCheckbox');
+        var body = document.body;
+
+        // Function to set the dark/light mode
+        function setDarkMode(isDarkMode) {
+            localStorage.setItem('dark', isDarkMode);
+            if (isDarkMode) {
+                body.classList.add('dark');
+            } else {
+                body.classList.remove('dark');
+            }
+        }
+        // Event listener for checkbox change
+        checkbox.addEventListener('change', function () {
+            setDarkMode(this.checked);
+        });
+
+        // Load the dark/light mode on page load
+        if (localStorage.getItem('dark') === 'true') {
+            checkbox.checked = true;
+            setDarkMode(true);
         }
     </script>
 </body>

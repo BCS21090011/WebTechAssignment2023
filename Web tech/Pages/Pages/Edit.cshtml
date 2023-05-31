@@ -3,139 +3,20 @@
 @{
 }
 <head>
-    <style>
-        form {
-            position: relative;
-            padding: 20px;
-            flex-wrap: wrap;
-            justify-content: space-between;
-        }
-
-        label {
-            display: block;
-            width: 150px;
-            margin: 10px 0;
-        }
-
-        input[type="text"],
-        input[type="number"],
-        select {
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            width: 100%;
-            box-sizing: border-box;
-        }
-
-        input[type="submit"] {
-        }
-
-            input[type="submit"]:hover {
-                background-color: #45a049;
-            }
-
-        #question-editor {
-            height: 200px;
-            width: 100%;
-            background-color: white;
-        }
-
-        #answer-editor {
-            height: 200px;
-            width: 100%;
-            background-color: white;
-        }
-
-        .form-wrapper {
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            padding: 20px;
-            width: 80%;
-            margin: auto;
-            margin-top: 50px;
-            position: relative;
-            background: rgba(255, 255, 255, 0.72);
-            border-radius: 16px;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(7.8px);
-            -webkit-backdrop-filter: blur(7.8px);
-        }
-
-            .form-wrapper input[type="submit"] {
-                background-color: black;
-                color: white;
-                padding: 12px 20px;
-                border: none;
-                position: absolute;
-                border-radius: 15px;
-                cursor: pointer;
-                bottom: 15px;
-                right: 15px;
-                font-weight: bold;
-                transition: all 0.3s ease-in-out;
-            }
-
-                .form-wrapper input[type="submit"]:hover {
-                    color: wheat;
-                    font-size: 18px;
-                }
-
-
-
-        .Container {
-            margin-top: calc(10vh + 2vw);
-            margin-bottom: calc(10vh + 2vw);
-        }
-
-
-
-
-        .delete-button {
-            display: inline-block;
-            padding: 8px 8px;
-            font-size: 15px;
-            background-color: black;
-            color: #fff;
-            text-decoration: none;
-            border: none;
-            border-radius: 4px;
-            font-size: 15px;
-            cursor: pointer;
-            margin-left: 5vw;
-        }
-
-            .delete-button:hover {
-                background-color: black;
-                cursor: pointer;
-                transform: translateY(-2px);
-                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            }
-    h1{
-        margin-left:2%;
-    }
-
-        .inputform {
-            height:10px;
-        }
-    </style>
+    <link rel="stylesheet" href="~/css/Edit.css" asp-append-version="true" />
 </head>
-
 <body>
-    <div class="Container">
-    
+    <div class="Container">    
     <div class="form-wrapper">
             <h1>Edit Question</h1>
         <form id="edit-form" method="post" enctype="multipart/form-data">
             <input type="hidden" asp-for="Question.QuestionsId" />
-
             <label for="difficulty">Difficulty level:</label>
             <select id="difficulty" asp-for="Question.QuestionDifficulty" class="form-control">
                 <option value="1">Easy</option>
                 <option value="2">Medium</option>
                 <option value="3">Hard</option>
             </select>
-
             <label for="subject">Subject:</label>
             <select id="subject" asp-for="Question.SubjectsId" class="form-control">
                 @foreach (var subject in Model.Subjects)
@@ -143,15 +24,12 @@
                     <option value="@subject.SubjectsId">@subject.SubjectName</option>
                 }
             </select>
-
             <label for="question">Question:</label>
-            <div id="question-editor" class="form-control"></div>
-            <textarea name="Question.Question"></textarea>
-            <input type="text" id="question" class="inputform"/>
+           
+            <textarea name="Question.Question"></textarea>           
 
             <label for="answer">Answer:</label>
-            <div id="answer-editor" class="form-control"></div>
-            <input type="text" id="answer" class="inputform" name="Question.Answer" asp-for="Question.Answer"/>
+            <textarea name="Question.Answer"></textarea>           
 
             <label for="marks">Marks:</label>
             <input type="number" id="marks" name="Question.QuestionMark" min="0" asp-for="Question.QuestionMark" class="form-control">
@@ -169,76 +47,19 @@
             <input type="submit" value="Submit" class="btn btn-primary form-control">
         </form>
         </div>
-    </div>
-
-    
+    </div>   
     <script>
-        var questionEditor = new Quill('#question-editor', {
-            modules: {
-                toolbar: [
-                    [{ 'header': [1, 2, 3, false] }],
-                    ['bold', 'italic', 'underline'],
-                    ['code', 'strike'],
-                    ['image', 'link'],
-                    [{ 'list': 'ordered' }, { 'list': 'bullet' }],
-                    ['clean']
-                ]
-            },
-            placeholder: 'Enter your question here',
-            theme: 'snow'
-        });
-
-        questionEditor.on('text-change', function () {
-            var questionContent = questionEditor.root.innerHTML;
-            var questionContent = questionContent.replace(/<p><\/p>/g, '');
-            questionContent = questionContent.replace(/<p>/g, ''); // Remove opening <p> tags
-            questionContent = questionContent.replace(/<\/p>/g, ''); // Remove closing </p> tags
-
-            document.getElementById('question').value = questionContent.trim();
-        });
-
-        var answerEditor = new Quill('#answer-editor', {
-            modules: {
-                toolbar: [
-                    [{ 'header': [1, 2, 3, false] }],
-                    ['bold', 'italic', 'underline'],
-                    ['code', 'strike'],
-                    [{ 'indent': '-1' }, { 'indent': '+1' }],
-                    [{ 'align': [] }],
-                    [{ 'direction': 'rtl' }],
-                    [{ 'code-block': 'language' }],
-                    ['image', 'link'],
-                    [{ 'list': 'ordered' }, { 'list': 'bullet' }],
-                    ['clean']
-                ]
-            },
-            placeholder: 'Enter your answer here',
-            theme: 'snow'
-        });
-
-        answerEditor.on('text-change', function () {
-            var answerContent = answerEditor.root.innerHTML;
-            var asnwerContent = answerContent.replace(/<p><\/p>/g, ''); // Remove empty <p> tags
-            asnwerContent = asnwerContent.replace(/<p>/g, ''); // Remove opening <p> tags
-            asnwerContent = asnwerContent.replace(/<\/p>/g, ''); // Remove closing </p> tags
-            document.getElementById('answer').value = asnwerContent.trim();
-        });
-
-
         function previewImage(event, previewId) {
             var input = event.target;
             var preview = document.getElementById(previewId);
-
             if (input.files && input.files[0]) {
                 console.log("Image should be displayed!");
                 var reader = new FileReader();
-
                 reader.onload = function (e) {
                     console.log(e);
                     preview.src = e.target.result;
                     preview.style.display = "block";
                 };
-
                 reader.readAsDataURL(input.files[0]);
             } else {
                 console.log("No image should be displayed!");
@@ -246,7 +67,6 @@
                 preview.style.display = "none";
             }
         }
-
         function deleteImage(previewId) {
             var preview = document.getElementById(previewId);
             preview.src = '#';

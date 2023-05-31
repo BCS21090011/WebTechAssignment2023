@@ -14,109 +14,10 @@
           integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="~/css/QATablesVer4.css">
+    <link rel="stylesheet" href="~/css/QuestionBank.css" asp-append-version="true" />
 
     <style>
 
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: grey;
-        }
-
-        .ui-w-100 {
-            width: 100px !important;
-            height: auto;
-        }
-
-        .container {
-            padding: 20px;
-        }
-
-
-
-        .user-view-table td:first-child {
-            width: 9rem;
-        }
-
-        .user-view-table td {
-            padding-right: 0;
-            padding-left: 0;
-            border: 0;
-        }
-
-        .text-light {
-            color: #babbbc !important;
-        }
-
-
-
-        .text-xlarge {
-            font-size: 170% !important;
-        }
-
-
-
-
-        .history-title {
-            font-size: 20rem;
-            font-weight: bold;
-            margin-bottom: 1.25rem;
-        }
-
-        .table {
-            background-color: #fff;
-            border-radius: 4px;
-        }
-
-            .table th,
-            .table td {
-                border: none;
-                padding: 10px 15px;
-            }
-
-            .table th {
-                font-weight: 600;
-                text-align: left;
-            }
-
-            .table tbody tr:nth-child(even) {
-            }
-
-        .cardquestionbank {
-            width: auto;
-            height: auto;
-            margin-top: 80px;
-            border: none;
-            border-radius: 0;
-            display: table;
-            padding: 30px 30px;
-            box-shadow: 0 1px 4px rgba(24, 28, 33, 0.012);
-            background: rgba(255, 255, 255, 0.24);
-            border-radius: 16px;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-        }
-
-        .btn-top-left {
-            position: absolute;
-            top: 60px;
-            right: 30px;
-            background-color: black;
-            color: white;
-            padding: 8px 15px;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: all 0.3s ease-in-out;
-        }
-
-            .btn-top-left:hover {
-                background-color: black;
-                cursor: pointer;
-                transform: translateY(-2px);
-                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            }
 
     </style>
 </head>
@@ -133,7 +34,7 @@
                 <option value="@subject.SubjectName">@subject.SubjectName</option>
             }
         </select>
-        <select id="Difficulty" style="float: left" onchange="RunFilter()">
+        <select id="Difficulty"  onchange="RunFilter()">
             <option value="">All</option>
             <option value="Easy">Easy</option>
             <option value="Medium">Medium</option>
@@ -148,7 +49,6 @@
             <button onclick="NextChunck()">Next</button>
         </div>
     </div>
-
     <script src="~/js/QATablesVer2.js"></script>
     <script src="~/js/ConvertValues.js"></script>
     <script src="~/js/Filters.js"></script>
@@ -156,7 +56,6 @@
         function redirectToPage() {
             window.location.href = '/Pages/KeyInPage';
         }
-
     </script>
     <script>
         var subjects = {};
@@ -172,7 +71,6 @@
         };
 
         var Qsts = [];
-
         function AppendQuestionsList(list, id, qst, mark, subject, difficulty, qstImgFileName, ans, ansImgFileName) {
             let question = {
                 ID: id,
@@ -184,7 +82,6 @@
                 Ans: decodeHtmlEntities(ans),
                 AnsImgFileName: ansImgFileName
             };
-
             list.push(question);
         }
 
@@ -193,7 +90,7 @@
             elem.innerHTML = text;
             return elem.value;
         }
-
+   
         @foreach (var qst in Model.Qsts)
         {
             @:AppendQuestionsList(Qsts, @qst.QuestionsId, "@qst.Question", @qst.QuestionMark, "@qst.SubjectsId", "@qst.QuestionDifficulty", "@qst.QuestionImageFileName", "@qst.Answer", "@qst.AnswerImageFileName");
@@ -202,15 +99,14 @@
             ConvertAttrToValue(Qsts, "Subject", subjects);
         ConvertAttrToValue(Qsts, "Difficulty", difficulty);
     </script>
+ 
     <script>
         function SplitArrayIntoChuncks(array, sizePerChunck) {
             let chuncks = [];
-
-            for (let i = 0; i < array.length; i += sizePerChunck) {
+           for (let i = 0; i < array.length; i += sizePerChunck) {
                 const chunck = array.slice(i, i + sizePerChunck);
                 chuncks.push(chunck);
             }
-
             return chuncks;
         }
 
@@ -277,9 +173,7 @@
                 table.innerHTML = "";
             }
         }
-
         GotoChunckIndex(0);
-
         // These below will just display all instead of chunk by chunck.
         // CreateQATable(Qsts, "questionbanks");
     </script>
@@ -290,12 +184,10 @@
             if (subject.value) {
                 filteredQsts = FilterQstsByAttr(filteredQsts, "Subject", subject.value);
             }
-
             const difficulty = document.getElementById("Difficulty");
             if (difficulty.value) {
                 filteredQsts = FilterQstsByAttr(filteredQsts, "Difficulty", difficulty.value);
             }
-
             console.log(filteredQsts);
             QstsChuncks = SplitArrayIntoChuncks(filteredQsts, chunkSize);
             SetPageNum();

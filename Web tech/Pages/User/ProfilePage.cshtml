@@ -10,146 +10,10 @@
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
               integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-        <link rel="stylesheet" href="index.css">
-        <link rel="stylesheet" href="~/css/QATablesVer4.css">
-        <style>
-
-            body {
-                font-family: 'Roboto', sans-serif;
-                background-color: grey;
-            }
-
-            .ui-w-100 {
-                width: 100px !important;
-                height: auto;
-            }
-
-            .container {
-                padding: 20px;
-            }
-
-
-            .card {
-                margin-top: 80px;
-                border: none;
-                border-radius: 0;
-                box-shadow: 0 1px 4px rgba(24, 28, 33, 0.012);
-                background: rgba(255, 255, 255, 0.72);
-                border-radius: 16px;
-                box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-                backdrop-filter: blur(10px);
-                -webkit-backdrop-filter: blur(10px);
-            }
-
-            .cardhistory {
-                margin-top: 80px;
-                border: none;
-                border-radius: 0;
-                display: table;
-                padding: 30px 30px;
-                box-shadow: 0 1px 4px rgba(24, 28, 33, 0.012);
-                background: rgba(255, 255, 255, 0.72);
-                border-radius: 16px;
-                box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-                backdrop-filter: blur(10px);
-                -webkit-backdrop-filter: blur(10px);
-            }
-
-            .media {
-                box-shadow: 0 1px 4px rgba(24, 28, 33, 0.012);
-                background: rgba(255, 255, 255, 0.72);
-                border-radius: 16px;
-                box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-                backdrop-filter: blur(10px);
-                -webkit-backdrop-filter: blur(10px);
-            }
-
-
-            .user-view-table td:first-child {
-                width: 9rem;
-            }
-
-            .user-view-table td {
-                padding-right: 0;
-                padding-left: 0;
-                border: 0;
-            }
-
-            .text-light {
-                color: #babbbc !important;
-            }
-
-            .card .row-bordered > [class*=" col-"]::after {
-                border-color: rgba(24, 28, 33, 0.075);
-            }
-
-            .text-xlarge {
-                font-size: 170% !important;
-            }
-
-            .history-title {
-                font-size: 20rem;
-                font-weight: bold;
-                margin-bottom: 1.25rem;
-            }
-
-
-            .table {
-                background-color: #fff;
-                border: 1px solid #dee2e6;
-                border-radius: 4px;
-            }
-
-                .table th,
-                .table td {
-                    border: none;
-                    padding: 10px 15px;
-                }
-
-                .table th {
-                    background-color: #f5f5f5;
-                    font-weight: 600;
-                    text-align: left;
-                }
-
-                .table tbody tr:nth-child(even) {
-                    background-color: #f2f2f2;
-                }
-        .text-center{
-            padding:1.25rem;
-        }
-
-            .btn-primary {
-                /*background-color: #007bff;*/
-                /*border-color: #007bff;*/
-                margin-bottom: 5vh;
-                font-size: 15px;
-                font-weight: bold;
-                /*background-color: #007bff;*/
-                background-color: black;
-                border: none;
-                border-radius: 7px;
-                padding: 10px 15px;
-                color: #fff;
-                text-transform: uppercase;
-                transition: all 0.3s ease-in-out;
-            }
-
-                .btn-primary:hover {
-                    background-color: black;
-                    cursor: pointer;
-                    transform: translateY(-2px);
-                    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-                }
-
-        </style>
-
+        <link rel="stylesheet" href="~/css/Profilepage.css" asp-append-version="true" />
     </head>
-
     <body>
-
         <div class="container bootdey flex-grow-1 container-p-y">
-
             <div class="media align-items-center py-3 mb-3" style="margin-top: 80px;background: #f5f5f5;">
                 <img src="/Resources/Images/user.png" alt="My Image" class="d-block ui-w-100 rounded-circle">
                 <div class="media-body ml-4">
@@ -161,16 +25,12 @@
                 @if (User.IsInRole("SuperAdmin"))
                 {
                     <div class="text-center">
-                        <a href="/pages/crud" class="btn btn-danger">Manage Question</a>
-                        <a href="/user/ManageRoles" class="btn btn-danger">ManageRoles</a>
+                        <a href="/pages/crud" class="btn-primary">Manage Question</a>
+                        <a href="/user/ManageRoles" class="btn-primary">Manage Roles</a>
                     </div>
                 }
             </div>
-
-
-
             <div class="card">
-
                 <div class="card-body">
                     <h5 class="mt-4 mb-3">Information</h5>
                     <table class="table user-view-table m-0">
@@ -178,13 +38,13 @@
                         <tr>
                     <dt class="col-sm-2">Username:</dt>
                     <dd class="col-sm-10">@ViewData["UserName"]</dd>
-                    
+                 
                     </tr>
                     <tr>
                     <dt class="col-sm-2">Email:</dt>
                     <dd class="col-sm-10">@ViewData["Email"]</dd>
                     </tr>
-            
+                    
                     <tr>
                     <dt class="col-sm-2">Phone Number:</dt>
                     <dd class="col-sm-10">@ViewData["PhoneNumber"]</dd>
@@ -202,140 +62,16 @@
                             <label for="Email">Email:</label>
                             <input type="email" id="Email" name="Email" class="form-control" value="@ViewData["Email"]" />
                         </div>
-
                         <div class="form-group">
                             <label for="PhoneNumber">Phone Number:</label>
                             <input type="tel" id="PhoneNumber" name="PhoneNumber" class="form-control" value="@ViewData["PhoneNumber"]" />
                         </div>
-
                         <!-- Add more form fields as needed -->
-
                         <button type="submit" class= "btn-primary">Update</button>
                     </form>
-
                 </div>
             </div>
-            <div class="cardhistory mb-4">
-                <h2 class="mt-4 mb-3" style="text-align: center;">History</h2>
-                <hr class="border-light m-0">
-                <div class="table-responsive" id="profilep">
-                </div>
-            </div>
-
-
-        </div>
-
-        <script src="~/js/HistoryTables.js">
-
-        </script>
-
-        <script>
-            let histories = [
-                {
-                    ID: 1,
-                    GeneratedTime: "1901/10/24 09:00:00",
-                    Subject: "History"
-                },
-                {
-                    ID: 2,
-                    GeneratedTime: "1901/10/25 10:30:00",
-                    Subject: "Math"
-                },
-                {
-                    ID: 3,
-                    GeneratedTime: "1901/10/26 14:15:00",
-                    Subject: "English"
-                },
-                {
-                    ID: 4,
-                    GeneratedTime: "1901/10/27 16:45:00",
-                    Subject: "Science"
-                },
-                {
-                    ID: 5,
-                    GeneratedTime: "1901/10/28 11:20:00",
-                    Subject: "Geography"
-                },
-                {
-                    ID: 6,
-                    GeneratedTime: "1991/10/29 08:30:00",
-                    Subject: "Art"
-                },
-                {
-                    ID: 7,
-                    GeneratedTime: "1999/10/30 13:10:00",
-                    Subject: "Music"
-                },
-                {
-                    ID: 8,
-                    GeneratedTime: "2011/10/31 17:00:00",
-                    Subject: "Physical Education"
-                },
-                {
-                    ID: 9,
-                    GeneratedTime: "2012/11/01 09:45:00",
-                    Subject: "Chemistry"
-                },
-                {
-                    ID: 10,
-                    GeneratedTime: "2023/11/02 12:30:00",
-                    Subject: "Biology"
-                },
-                {
-                    ID: 11,
-                    GeneratedTime: "2023/11/03 14:00:00",
-                    Subject: "Physics"
-                },
-                {
-                    ID: 12,
-                    GeneratedTime: "2023/11/04 16:20:00",
-                    Subject: "Computer Science"
-                },
-                {
-                    ID: 13,
-                    GeneratedTime: "2023/11/05 09:10:00",
-                    Subject: "Economics"
-                },
-                {
-                    ID: 14,
-                    GeneratedTime: "2023/11/06 10:45:00",
-                    Subject: "Literature"
-                },
-                {
-                    ID: 15,
-                    GeneratedTime: "2023/11/07 12:15:00",
-                    Subject: "Psychology"
-                },
-                {
-                    ID: 16,
-                    GeneratedTime: "2023/11/08 14:30:00",
-                    Subject: "Sociology"
-                },
-                {
-                    ID: 17,
-                    GeneratedTime: "2023/11/09 16:50:00",
-                    Subject: "Anthropology"
-                },
-                {
-                    ID: 18,
-                    GeneratedTime: "2023/11/10 09:40:00",
-                    Subject: "Philosophy"
-                },
-                {
-                    ID: 19,
-                    GeneratedTime: "2023/11/11 11:05:00",
-                    Subject: "Political Science"
-                },
-                {
-                    ID: 20,
-                    GeneratedTime: "4048/11/12 13:25:00",
-                    Subject: "Foreign Languages"
-                }
-            ];
-
-            CreateHistoryTable(histories, "profilep");
-        </script>
+        </div>                   
     </body>
-
     </html>
 }

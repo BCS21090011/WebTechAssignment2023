@@ -55,7 +55,7 @@ namespace Web_tech.Pages
                 await _context.SaveChangesAsync();
                 Console.WriteLine("Success");
 
-                return RedirectToPage("/Pages/Keyinpage");
+                return RedirectToPage("/Pages/QuestionBank");
             }
             else
             {

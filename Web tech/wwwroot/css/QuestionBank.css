@@ -1,0 +1,101 @@
+﻿
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: grey;
+}
+
+.ui-w-100 {
+    width: 100px !important;
+    height: auto;
+}
+
+.container {
+    padding: 20px;
+}
+
+
+
+.user-view-table td:first-child {
+    width: 9rem;
+}
+
+.user-view-table td {
+    padding-right: 0;
+    padding-left: 0;
+    border: 0;
+}
+
+.text-light {
+    color: #babbbc !important;
+}
+
+
+
+.text-xlarge {
+    font-size: 170% !important;
+}
+
+
+
+
+.history-title {
+    font-size: 20rem;
+    font-weight: bold;
+    margin-bottom: 1.25rem;
+}
+
+.table {
+    background-color: #fff;
+    border-radius: 4px;
+}
+
+    .table th,
+    .table td {
+        border: none;
+        padding: 10px 15px;
+    }
+
+    .table th {
+        font-weight: 600;
+        text-align: left;
+    }
+
+    .table tbody tr:nth-child(even) {
+    }
+
+.cardquestionbank {
+    width: auto;
+    height: auto;
+    margin-top: 80px;
+    border: none;
+    border-radius: 0;
+    display: table;
+    padding: 30px 30px;
+    box-shadow: 0 1px 4px rgba(24, 28, 33, 0.012);
+    background: rgba(255, 255, 255, 0.24);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.btn-top-left {
+    position: absolute;
+    top: 60px;
+    right: 30px;
+    background-color: black;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+}
+
+    .btn-top-left:hover {
+        background-color: black;
+        cursor: pointer;
+        transform: translateY(-2px);
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
