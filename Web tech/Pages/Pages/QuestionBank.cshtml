@@ -158,6 +158,19 @@
         <button onclick="redirectToPage()" class="btn-top-left">New Question</button>
         <h2 class="mt-4 mb-3" style="text-align: left;font-size=100px; font-weight:bold; color:black;">Question Bank</h2>
         <hr class="border-light m-0">
+        <select id="Subject" onchange="RunFilter()">
+            <option value="">All</option>
+            @foreach (var subject in Model.Subjects)
+            {
+                <option value="@subject.SubjectName">@subject.SubjectName</option>
+            }
+        </select>
+        <select id="Difficulty" style="float: left" onchange="RunFilter()">
+            <option value="">All</option>
+            <option value="Easy">Easy</option>
+            <option value="Medium">Medium</option>
+            <option value="Hard">Hard</option>
+        </select>
         <div class="table-responsive" id="questionbanks" style="margin: auto; height: 60vh; max-height: 60vh; overflow-y: auto; width: 80vw;">
         </div>
         <div style="display: flex; justify-content: center; align-items: center;">
@@ -170,6 +183,7 @@
 
     <script src="~/js/QATablesVer2.js"></script>
     <script src="~/js/ConvertValues.js"></script>
+    <script src="~/js/Filters.js"></script>
     <script>
         function redirectToPage() {
             window.location.href = '/Pages/KeyInPage';
@@ -225,18 +239,23 @@
             return chuncks;
         }
 
-        let QstsChuncks = SplitArrayIntoChuncks(Qsts, 10);
+        var chunkSize = 10;
+        var QstsChuncks = SplitArrayIntoChuncks(Qsts, chunkSize);
         var curChunckIndex = 0;
 
         const curPageNum = document.getElementById("CurPageNum");
         const maxPageNum = document.getElementById("MaxPageNum");
-        if (QstsChuncks.length > 0) {
-            curPageNum.max = QstsChuncks.length;
-            maxPageNum.textContent = '/' + QstsChuncks.length;
-        }
-        else {
-            curPageNum.max = 1;
-            maxPageNum.textContent = '/' + 1;
+        SetPageNum();
+
+        function SetPageNum() {
+            if (QstsChuncks.length > 0) {
+                curPageNum.max = QstsChuncks.length;
+                maxPageNum.textContent = '/' + QstsChuncks.length;
+            }
+            else {
+                curPageNum.max = 1;
+                maxPageNum.textContent = '/' + 1;
+            }
         }
 
         function CurPageNumFunc() {
@@ -265,14 +284,22 @@
         }
 
         function GotoChunckIndex(index) {
-            if (index >= 0 && index < QstsChuncks.length) {
-                curPageNum.value = index + 1;
-                curChunckIndex = index;
-                CreateQATable(QstsChuncks[index], "questionbanks");
+            if (QstsChuncks.length > 0) {
+                if (index >= 0 && index < QstsChuncks.length) {
+                    curPageNum.value = index + 1;
+                    curChunckIndex = index;
+                    CreateQATable(QstsChuncks[index], "questionbanks");
+                }
+                else {
+                    console.log("Chunck index (" + index + ") is out of range (0, " + QstsChuncks.length + ")");
+                    curPageNum.value = curChunckIndex + 1;
+                }
             }
             else {
-                console.log("Chunck index (" + index + ") is out of range (0, " + QstsChuncks.length + ")");
-                curPageNum.value = curChunckIndex + 1;
+                curPageNum.value = 1;
+                curChunckIndex = 0;
+                const table = document.getElementById("questionbanks");
+                table.innerHTML = "";
             }
         }
 
@@ -280,6 +307,26 @@
 
         // These below will just display all instead of chunk by chunck.
         // CreateQATable(Qsts, "questionbanks");
+    </script>
+    <script>
+        function RunFilter() {
+            var filteredQsts = Qsts
+            const subject = document.getElementById("Subject");
+            if(subject.value) {
+                filteredQsts = FilterQstsByAttr(filteredQsts, "Subject", subject.value);
+            }
+
+            const difficulty = document.getElementById("Difficulty");
+            if(difficulty.value) {
+                filteredQsts = FilterQstsByAttr(filteredQsts, "Difficulty", difficulty.value);
+            }
+
+            console.log(filteredQsts);
+            QstsChuncks = SplitArrayIntoChuncks(filteredQsts, chunkSize);
+            SetPageNum();
+            
+            GotoChunckIndex(0);
+        }
     </script>
 </body>
 </html>

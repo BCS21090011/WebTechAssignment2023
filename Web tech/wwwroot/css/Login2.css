@@ -24,7 +24,7 @@
         height: 40%;
         max-width: 450px;
         margin: 50px auto;
-        padding: 50px;
+        padding:3rem;
         background-color: #ffffff;
         border-radius: 50px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
@@ -93,7 +93,7 @@ button[type="submit"] {
 
 .form-links {
     text-align: center;
-    margin-top: 50px;
+   
 }
 
     .form-links p {

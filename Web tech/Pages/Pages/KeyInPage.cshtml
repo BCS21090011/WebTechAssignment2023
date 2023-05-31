@@ -159,10 +159,7 @@
 
                         <label for="question_image">Upload image:</label>
                         <input type="file" id="question_image" name="questionImage" onchange="previewImage(event, 'question-preview')">
-                        @if (Model.questionImage != null)
-                        {
-                            <button id="question-preview-delete" type="button" class="delete-button" onclick="deleteImage('question-preview')">Delete</button>
-                        }
+                        <button id="question-preview-delete" type="button" class="delete-button" onclick="deleteImage('question-preview')">Delete</button>
                         <img id="question-preview" src="#" alt="Preview Image" style="display: none; max-width: 300px; max-height: 300px;">
                         
 
@@ -189,48 +186,6 @@
             </div>
 
         </body>
-        <script src="~/js/UpdateOptions.js">
-
-        </script>
-        <script>
-            let subjects = [
-
-                {
-                    Text: "Math",
-                    Value: "7"
-                },
-                {
-                    Text: "English",
-                    Value: "8"
-                },
-                {
-                    Text: "History",
-                    Value: "9"
-                },
-                {
-                    Text: "Science",
-                    Value: "10"
-                }
-            ];
-
-            let difficulty = [
-                {
-                    Text: "Easy",
-                    Value: 1
-                },
-                {
-                    Text: "Medium",
-                    Value: 2
-                },
-                {
-                    Text: "Hard",
-                    Value: 3
-                }
-            ];
-
-            // UpdateOptions(subjects, "subject");
-            // UpdateOptions(difficulty, "difficulty");
-        </script>
         <script>
             const subjectSelect = document.getElementById('subject');
             const otherSubjectInput = document.getElementById('other-subject');
@@ -328,6 +283,8 @@
 
                 var fileInput = document.querySelector(`#${previewId.split('-')[0]}_image`);
                 fileInput.value = '';
+                var originalDeleteButton = document.getElementById(previewId.split('-')[0] + '-preview-delete');
+                originalDeleteButton.style.display = 'inline-block';
             }
         </script>
         </html>
