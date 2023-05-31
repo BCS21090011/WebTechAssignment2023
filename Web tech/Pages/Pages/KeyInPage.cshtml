@@ -105,6 +105,7 @@
                 .delete-button {
                     display: inline-block;
                     padding: 8px 8px;
+                    font-size: 15px;
                     background-color: black;
                     color: #fff;
                     text-decoration: none;
@@ -112,11 +113,14 @@
                     border-radius: 4px;
                     font-size: 15px;
                     cursor: pointer;
+                    margin-left:5vw;
                 }
 
                     .delete-button:hover {
-                        background-color: #333;
-                        color: wheat;
+                        background-color: black;
+                        cursor: pointer;
+                        transform: translateY(-2px);
+                        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
                     }
 
             </style>
@@ -155,13 +159,18 @@
 
                         <label for="question_image">Upload image:</label>
                         <input type="file" id="question_image" name="questionImage" onchange="previewImage(event, 'question-preview')">
+                        @if (Model.questionImage != null)
+                        {
+                            <button id="question-preview-delete" type="button" class="delete-button" onclick="deleteImage('question-preview')">Delete</button>
+                        }
                         <img id="question-preview" src="#" alt="Preview Image" style="display: none; max-width: 300px; max-height: 300px;">
-                        <button id="question-preview-delete" type="button" class="delete-button" onclick="deleteImage('question-preview')">Delete</button>
+                        
 
                         <label for="answer_image">Upload image:</label>
                         <input type="file" id="answer_image" name="answerImage" onchange="previewImage(event, 'answer-preview')">
-                        <img id="answer-preview" src="#" alt="Preview Image" style="display: none; max-width: 300px; max-height: 300px;">
                         <button id="answer-preview-delete" type="button" class="delete-button" onclick="deleteImage('answer-preview')">Delete</button>
+                        <img id="answer-preview" src="#" alt="Preview Image" style="display: none; max-width: 300px; max-height: 300px;">
+                        
 
                         <input type="submit" value="Submit" class="btn btn-primary form-control">
                     </form>

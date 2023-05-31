@@ -21,8 +21,8 @@
                 
                 max-width: 700px;
                         
-                margin: calc(5vh + 3vw) auto 0;
-                padding: 5% 2vw  ; /* Add padding to create margin around the form */
+                margin: calc(10vh + 3vw) auto 0;
+                padding: 1.25rem ; /* Add padding to create margin around the form */
                 background: rgba(255, 255, 255, 0.72);
                 border-radius: 16px;
                 box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
@@ -63,27 +63,30 @@
 
           
                 
-              .rowbody button[type="submit"]{
+             
+
+            .btn-primary {
+                /*background-color: #007bff;*/
+                /*border-color: #007bff;*/
                 
-                background-color: #007bff;
-                color: white;
-                padding: 12px 20px;
-                border: none;
-                position: absolute;
-                border-radius: 15px;
-                cursor: pointer;
-                margin-bottom:10px;
+                font-size: 15px;
                 font-weight: bold;
+                /*background-color: #007bff;*/
+                background-color: black;
+                border: none;
+                border-radius: 7px;
+                padding: 10px 15px;
+                color: #fff;
+                text-transform: uppercase;
                 transition: all 0.3s ease-in-out;
             }
 
-            .rowbody button[type="submit"]:hover {
-                background-color: #ffffff;
-                color: #007bff;
-                border-color: #007bff;
-                cursor: pointer;
-            }
-
+                .btn-primary:hover {
+                    background-color: black;
+                    cursor: pointer;
+                    transform: translateY(-2px);
+                    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+                }
         </style>
 
 
@@ -127,7 +130,7 @@
                         </li>
                         <li>
                             <p>
-                                <button type="submit" >Submit</button>
+                                <button type="submit" class="btn-primary">Submit</button>
                             </p>
                         </li>
                     </ul>
