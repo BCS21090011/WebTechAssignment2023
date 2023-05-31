@@ -231,17 +231,24 @@
             function AppendQuestionsList(list, id, qst, mark, subject, difficulty, qstImgFileName, ans, ansImgFileName) {
                 let question = {
                     ID: id,
-                    Qst: qst,
+                    Qst: decodeHtmlEntities(qst),
                     Mark: mark,
                     Subject: subject,
                     Difficulty: difficulty,
                     QstImgFileName: qstImgFileName,
-                    Ans: ans,
+                    Ans: decodeHtmlEntities(ans),
                     AnsImgFileName: ansImgFileName
-                }
+                };
 
                 list.push(question);
             }
+
+            function decodeHtmlEntities(text) {
+                var elem = document.createElement('textarea');
+                elem.innerHTML = text;
+                return elem.value;
+            }
+
             @foreach(var qst in Model.Qsts)
             {
                 @:AppendQuestionsList(oriQstSelections, @qst.QuestionsId, "@qst.Question", @qst.QuestionMark, "@qst.SubjectsId", "@qst.QuestionDifficulty", "@qst.QuestionImageFileName", "@qst.Answer", "@qst.AnswerImageFileName");
