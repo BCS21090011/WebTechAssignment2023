@@ -31,7 +31,7 @@ builder.Services.ConfigureApplicationCookie(options =>
     options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
 
     options.LoginPath = "/user/login";
-    options.AccessDeniedPath = "/Identity/Account/AccessDenied";
+    options.AccessDeniedPath = "/pages/AccessDenied";
     options.SlidingExpiration = true;
 });
 //builder.Services.AddAuthorization(options =>
@@ -39,11 +39,11 @@ builder.Services.ConfigureApplicationCookie(options =>
 //    options.AddPolicy("AdminOnly", policy =>
 //        policy.RequireRole("Admin"));
 //});
-builder.Services.AddAuthorization(options =>
-{
-    options.AddPolicy("SuperAdminOnly", policy =>
-        policy.RequireRole("SuperAdmin"));
-});
+//builder.Services.AddAuthorization(options =>
+//{
+//    options.AddPolicy("SuperAdminOnly", policy =>
+//        policy.RequireRole("SuperAdmin"));
+//});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

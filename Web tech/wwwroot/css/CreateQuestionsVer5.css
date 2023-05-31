@@ -97,10 +97,8 @@
 .container {
     width: 90%;
     height: 90%;
-    
     margin-left: auto;
     margin-right: auto;
-    
     border: none;
     border-radius: 0;
     display: table;
@@ -111,4 +109,13 @@
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
+    background-color: grey;
+
+}
+
+#Preview-Name {
+    margin-top: 10px;
+    font-weight: bold;
+    text-decoration: underline;
+    font-size: 20px;
 }

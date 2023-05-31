@@ -32,17 +32,6 @@
         }
 
 
-        .card {
-            margin-top: 80px;
-            border: none;
-            border-radius: 0;
-            box-shadow: 0 1px 4px rgba(24, 28, 33, 0.012);
-            background: rgba(255, 255, 255, 0.72);
-            border-radius: 16px;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-        }
 
         .user-view-table td:first-child {
             width: 9rem;
@@ -58,33 +47,12 @@
             color: #babbbc !important;
         }
 
-        .card .row-bordered > [class*=" col-"]::after {
-            border-color: rgba(24, 28, 33, 0.075);
-        }
+
 
         .text-xlarge {
             font-size: 170% !important;
         }
 
-        .btn-primary {
-            color: #fff;
-            background-color: #007bff;
-            border-color: #007bff;
-            padding: 0.375rem 0.75rem;
-            font-size: 0.875rem;
-            line-height: 1.5;
-            border-radius: 0.2rem;
-        }
-
-            .btn-primary:hover {
-                color: #fff;
-                background-color: #0069d9;
-                border-color: #0062cc;
-            }
-
-            .btn-primary:focus, .btn-primary.focus {
-                box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.5);
-            }
 
 
 
@@ -156,7 +124,7 @@
 <body>
     <div class="cardquestionbank mb-4" style="margin-left: auto; margin-right: auto;">
         <button onclick="redirectToPage()" class="btn-top-left">New Question</button>
-        <h2 class="mt-4 mb-3" style="text-align: left;font-size=100px; font-weight:bold; color:black;">Question Bank</h2>
+        <h2 class="mt-4 mb-3" style="text-align: left;font-size:40px; font-weight:bold; color:black;">Question Bank</h2>
         <hr class="border-light m-0">
         <select id="Subject" onchange="RunFilter()">
             <option value="">All</option>
@@ -197,7 +165,7 @@
             @:subjects[@subject.SubjectsId] = "@subject.SubjectName";
         }
 
-        var difficulty = {
+                var difficulty = {
             1: "Easy",
             2: "Medium",
             3: "Hard"
@@ -226,12 +194,12 @@
             return elem.value;
         }
 
-        @foreach(var qst in Model.Qsts)
+        @foreach (var qst in Model.Qsts)
         {
             @:AppendQuestionsList(Qsts, @qst.QuestionsId, "@qst.Question", @qst.QuestionMark, "@qst.SubjectsId", "@qst.QuestionDifficulty", "@qst.QuestionImageFileName", "@qst.Answer", "@qst.AnswerImageFileName");
         }
 
-        ConvertAttrToValue(Qsts, "Subject", subjects);
+            ConvertAttrToValue(Qsts, "Subject", subjects);
         ConvertAttrToValue(Qsts, "Difficulty", difficulty);
     </script>
     <script>
@@ -319,19 +287,19 @@
         function RunFilter() {
             var filteredQsts = Qsts
             const subject = document.getElementById("Subject");
-            if(subject.value) {
+            if (subject.value) {
                 filteredQsts = FilterQstsByAttr(filteredQsts, "Subject", subject.value);
             }
 
             const difficulty = document.getElementById("Difficulty");
-            if(difficulty.value) {
+            if (difficulty.value) {
                 filteredQsts = FilterQstsByAttr(filteredQsts, "Difficulty", difficulty.value);
             }
 
             console.log(filteredQsts);
             QstsChuncks = SplitArrayIntoChuncks(filteredQsts, chunkSize);
             SetPageNum();
-            
+
             GotoChunckIndex(0);
         }
     </script>

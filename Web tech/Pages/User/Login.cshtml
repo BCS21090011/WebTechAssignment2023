@@ -1,69 +1,52 @@
 ﻿@page
 @model Web_tech.Pages.Study_loginModel
 @{
-    <!DOCTYPE html>
-    <html>
-    <head>
-        <link rel="stylesheet" href="~/css/Login2.css" asp-append-version="true" />
-    </head>
-    <body>
-        <div class="row">
-            <div class="col-md-4">
-                <section>
-                    <form class="LoginForm" id="account" method="post">
-                        <h2 style="margin-top:-5px">Login</h2>
-                        <hr />
-                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                        <div style="margin-top: 40px">
-                            <div class="form-floating" style="">
-                                <label asp-for="Input.Email" class="form-label"></label>
-                                <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" />
-                                <span asp-validation-for="Input.Email" class="text-danger"></span>
-                            </div>
-                            <div class="form-floating">
-                                <label asp-for="Input.Password" class="form-label"></label>
-                                <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" />
-                                <span asp-validation-for="Input.Password" class="text-danger"></span>
-                            </div>
-                        </div>
-                        
-                        <!--     <div>
-                            <div class="checkbox">
-                                <label asp-for="Input.RememberMe" class="form-label">
-                                    <input class="form-check-input" asp-for="Input.RememberMe" />
-                                    @Html.DisplayNameFor(m => m.Input.RememberMe)
-                                </label>
-                            </div>
-                       </div> -->
-                        <div>
-                            <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary" style="margin-top:30px">Log in</button>
-                        </div>
-                        <div class="form-links">
-                            <p>
-                                <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
-                            </p>
-                            <p>
-                                <a asp-page="/user/Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
-                            </p>
-                            <p>
-                                <!--<a id="resend-confirmation" asp-page="./ResendEmailConfirmation">Resend email confirmation</a>-->
-                            </p>
-                        </div>
+    ViewData["Title"] = "Login Page";
 
-                    </form>
-                </section>
-            </div>
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="~/css/Login.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="row">
+        <div class="col-md-4">
+            <section>
+                <form class="LoginForm" id="account" method="post">
+                    <h2 style="margin-top:-5px">Login</h2>
+                    <hr />
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div style="margin-top: 40px">
+                        <div class="form-floating" style="">
+                            <label asp-for="Input.Email" class="form-label"></label>
+                            <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" />
+                            <span asp-validation-for="Input.Email" class="text-danger"></span>
+                        </div>
+                        <div class="form-floating">
+                            <label asp-for="Input.Password" class="form-label"></label>
+                            <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" />
+                            <span asp-validation-for="Input.Password" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div>
+                        <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary" style="margin-top:30px">Log in</button>
+                    </div>
+                    <div class="form-links">
+                        <p>
+                            <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
+                        </p>
+                        <p>
+                            <a asp-page="/user/Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
+                        </p>
+                    </div>
+
+                </form>
+            </section>
         </div>
-    </body>
-    <!--  <script>
-    $('form').submit(function (event) {
-    event.preventDefault();
-    $.post('@Url.Page("study_login")', $(this).serialize(), function (data) {
-    alert("JWT token: " + data.token);
-    });
-    });
-    </script> -->
-    </html>
+    </div>
+</body>
+</html>
 }
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
