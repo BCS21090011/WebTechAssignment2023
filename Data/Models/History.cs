@@ -14,7 +14,6 @@ namespace Data.Models
 
         public int HistoryId { get; set; }
         public DateTime GeneratedTime { get; set; }
-        public string Id { get; set; }
 
         public virtual ICollection<HistoryQuestion> HistoryQuestion { get; set; }
     }

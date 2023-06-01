@@ -22,7 +22,6 @@ namespace Data.Models
         public virtual DbSet<HistoryQuestion> HistoryQuestion { get; set; }
         public virtual DbSet<Questions> Questions { get; set; }
         public virtual DbSet<Subjects> Subjects { get; set; }
-        public virtual DbSet<Users> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -30,15 +29,9 @@ namespace Data.Models
 
             modelBuilder.Entity<History>(entity =>
             {
-                entity.HasKey(e => e.HistoryId);
-
                 entity.Property(e => e.HistoryId).HasColumnName("History_ID");
 
                 entity.Property(e => e.GeneratedTime).HasColumnType("datetime");
-
-                entity.Property(e => e.Id)
-                    .IsRequired()
-                    .HasMaxLength(450);
             });
 
             modelBuilder.Entity<HistoryQuestion>(entity =>
@@ -93,37 +86,6 @@ namespace Data.Models
 
                 entity.Property(e => e.SubjectName)
                     .IsRequired()
-                    .HasMaxLength(255)
-                    .IsUnicode(false);
-            });
-
-            modelBuilder.Entity<Users>(entity =>
-            {
-                entity.Property(e => e.UsersId).HasColumnName("Users_ID");
-
-                entity.Property(e => e.UserCountry)
-                    .HasMaxLength(255)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.UserEmail)
-                    .IsRequired()
-                    .HasMaxLength(255)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.UserGender)
-                    .HasMaxLength(255)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.UserName)
-                    .HasMaxLength(255)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.UserPassword)
-                    .IsRequired()
-                    .HasMaxLength(255)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.UserSchoolName)
                     .HasMaxLength(255)
                     .IsUnicode(false);
             });
