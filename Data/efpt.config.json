@@ -29,10 +29,6 @@
       {
          "Name": "[dbo].[Subjects]",
          "ObjectType": 0
-      },
-      {
-         "Name": "[dbo].[Users]",
-         "ObjectType": 0
       }
    ],
    "UiHint": "..\\Database\\Database.sqlproj",

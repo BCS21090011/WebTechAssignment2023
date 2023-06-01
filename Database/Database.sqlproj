@@ -64,7 +64,6 @@
     <Build Include="dbo\Tables\HistoryQuestion.sql" />
     <Build Include="dbo\Tables\Questions.sql" />
     <Build Include="dbo\Tables\Subjects.sql" />
-    <Build Include="dbo\Tables\Users.sql" />
     <Build Include="dbo\Tables\AspNetUserTokens.sql" />
     <Build Include="dbo\Tables\AspNetUsers.sql" />
     <Build Include="dbo\Tables\AspNetUserRoles.sql" />

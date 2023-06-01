@@ -2,21 +2,15 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-
-
-
 namespace Data.Models
 {
-    public partial class DatabaseContext : IdentityDbContext<IdentityUser>
+    public partial class DatabaseContext : DbContext
     {
         public DatabaseContext()
         {
-            
         }
 
         public DatabaseContext(DbContextOptions<DatabaseContext> options)
@@ -28,27 +22,16 @@ namespace Data.Models
         public virtual DbSet<HistoryQuestion> HistoryQuestion { get; set; }
         public virtual DbSet<Questions> Questions { get; set; }
         public virtual DbSet<Subjects> Subjects { get; set; }
-        public virtual DbSet<Users> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasAnnotation("Scaffolding:ConnectionString", "Data Source=(local);Initial Catalog=Database;Integrated Security=true");
-            base.OnModelCreating(modelBuilder);
-
 
             modelBuilder.Entity<History>(entity =>
             {
                 entity.Property(e => e.HistoryId).HasColumnName("History_ID");
 
                 entity.Property(e => e.GeneratedTime).HasColumnType("datetime");
-
-                entity.Property(e => e.UsersId).HasColumnName("Users_ID");
-
-                entity.HasOne(d => d.Users)
-                    .WithMany(p => p.History)
-                    .HasForeignKey(d => d.UsersId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_History_Users");
             });
 
             modelBuilder.Entity<HistoryQuestion>(entity =>
@@ -78,21 +61,15 @@ namespace Data.Models
 
                 entity.Property(e => e.Answer)
                     .IsRequired()
-                    .HasMaxLength(255)
                     .IsUnicode(false);
 
-                entity.Property(e => e.AnswerImageFileName)
-                    .HasMaxLength(255)
-                    .IsUnicode(false);
+                entity.Property(e => e.AnswerImageFileName).IsUnicode(false);
 
                 entity.Property(e => e.Question)
                     .IsRequired()
-                    .HasMaxLength(255)
                     .IsUnicode(false);
 
-                entity.Property(e => e.QuestionImageFileName)
-                    .HasMaxLength(255)
-                    .IsUnicode(false);
+                entity.Property(e => e.QuestionImageFileName).IsUnicode(false);
 
                 entity.Property(e => e.SubjectsId).HasColumnName("Subjects_ID");
 
@@ -108,41 +85,6 @@ namespace Data.Models
                 entity.Property(e => e.SubjectsId).HasColumnName("Subjects_ID");
 
                 entity.Property(e => e.SubjectName)
-                    .IsRequired()
-                    .HasMaxLength(255)
-                    .IsUnicode(false);
-            });
-
-            modelBuilder.Entity<Users>(entity =>
-            {
-                entity.Property(e => e.UsersId).HasColumnName("Users_ID");
-
-                entity.Property(e => e.UserCountry)
-                    .IsRequired()
-                    .HasMaxLength(255)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.UserEmail)
-                    .IsRequired()
-                    .HasMaxLength(255)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.UserGender)
-                    .IsRequired()
-                    .HasMaxLength(255)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.UserName)
-                    .IsRequired()
-                    .HasMaxLength(255)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.UserPassword)
-                    .IsRequired()
-                    .HasMaxLength(255)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.UserSchoolName)
                     .IsRequired()
                     .HasMaxLength(255)
                     .IsUnicode(false);

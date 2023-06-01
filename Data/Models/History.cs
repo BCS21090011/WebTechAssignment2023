@@ -14,9 +14,7 @@ namespace Data.Models
 
         public int HistoryId { get; set; }
         public DateTime GeneratedTime { get; set; }
-        public int UsersId { get; set; }
 
-        public virtual Users Users { get; set; }
         public virtual ICollection<HistoryQuestion> HistoryQuestion { get; set; }
     }
 }
