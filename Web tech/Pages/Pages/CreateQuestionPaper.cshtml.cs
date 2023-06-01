@@ -7,7 +7,7 @@ using System.Data;
 
 namespace Web_tech.Pages
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "User")]
     public class CreateQuestionPaperModel : PageModel
     {
         private readonly DatabaseContext? _context;

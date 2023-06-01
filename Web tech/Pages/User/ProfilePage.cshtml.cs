@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Web_tech.Pages.Pages
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "User")]
     public class ProfilePageModel : PageModel
     {
         private readonly UserManager<IdentityUser> _userManager;

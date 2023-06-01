@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Web_tech.Pages
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "User")]
     public class KeyInPageModel : PageModel
     {
         private readonly IWebHostEnvironment _webHostEnvironment;

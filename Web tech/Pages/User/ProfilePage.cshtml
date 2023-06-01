@@ -22,7 +22,7 @@
                     <div class="text-muted mb-2">ID: </div>
                     <!-- <a href="javascript:void(0)" class="btn btn-primary btn-sm" onclick="editProfile()">Edit Profile</a> -->
                 </div>
-                @if (User.IsInRole("SuperAdmin"))
+                @if (User.IsInRole("Admin"))
                 {
                     <div class="text-center">
                         <a href="/pages/crud" class="btn-primary">Manage Question</a>

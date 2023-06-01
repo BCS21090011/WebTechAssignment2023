@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Web_tech.Pages.Pages
 {
-    [Authorize(Roles = "SuperAdmin")]
+    [Authorize(Roles = "Admin")]
     public class CRUDModel : PageModel
     {
         private readonly DatabaseContext _context;

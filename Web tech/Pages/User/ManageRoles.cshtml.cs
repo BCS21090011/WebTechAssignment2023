@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Web_tech.Pages.User
 {
-    [Authorize(Roles = "SuperAdmin")]
+    [Authorize(Roles = "Admin")]
     public class ManageRolesModel : PageModel
     {
         private readonly UserManager<IdentityUser> _userManager;

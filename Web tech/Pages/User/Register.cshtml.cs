@@ -121,32 +121,32 @@ namespace Web_tech.Pages
 
                     // For role:
                     // Check if the role exists
-                    var roleExists = await _roleManager.RoleExistsAsync("Admin");
+                    var roleExists = await _roleManager.RoleExistsAsync("User");
                   
                     if (!roleExists)
                     {
                         // Create the role if it doesn't exist
-                        var role = new IdentityRole("Admin");
+                        var role = new IdentityRole("User");
                         await _roleManager.CreateAsync(role);
                     }
 
                     // This is for SuperAdmin and for testing purpose only!
-                    var superAdminRoleExists = await _roleManager.RoleExistsAsync("SuperAdmin");
+                    var superAdminRoleExists = await _roleManager.RoleExistsAsync("Admin");
                     if (!superAdminRoleExists)
                     {
                         // Create the "SuperAdmin" role if it doesn't exist
-                        var superAdminRole = new IdentityRole("SuperAdmin");
+                        var superAdminRole = new IdentityRole("Admin");
                         await _roleManager.CreateAsync(superAdminRole);
                     }
 
                     // Assign the role to the user
-                    await _userManager.AddToRoleAsync(user, "Admin");
+                    await _userManager.AddToRoleAsync(user, "User");
 
                     // This is for SuperAdmin and for testing purpose only!
-                    if (Input.Email == "IMSudo@gmail.com")
+                    if (Input.Email == "admin@adminuts.com")
                     {
                         // Assign the "SuperAdmin" role to the user
-                        await _userManager.AddToRoleAsync(user, "SuperAdmin");
+                        await _userManager.AddToRoleAsync(user, "Admin");
                     }
 
 

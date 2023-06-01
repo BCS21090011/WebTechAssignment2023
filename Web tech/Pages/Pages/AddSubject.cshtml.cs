@@ -7,7 +7,7 @@ using System.Data;
 
 namespace Web_tech.Pages.Pages
 {
-    [Authorize(Roles = "SuperAdmin")]
+    [Authorize(Roles = "Admin")]
     public class AddSubjectModel : PageModel
     {
         private readonly DatabaseContext _context;
