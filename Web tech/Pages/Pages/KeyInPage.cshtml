@@ -2,7 +2,7 @@
 @model Web_tech.Pages.KeyInPageModel
 @using Microsoft.AspNetCore.Authorization
 @{
-    if (User.IsInRole("Admin"))
+    if (User.IsInRole("User"))
     {
         // Content visible to SuperAdmin only
         <html lang="en">
